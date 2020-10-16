@@ -301,7 +301,18 @@ public class OVRGrabber : MonoBehaviour
                 m_grabbedObjectRotOff = m_gripTransform.localRotation;
                 if(m_grabbedObj.snapOffset)
                 {
-                    m_grabbedObjectRotOff = m_grabbedObj.snapOffset.rotation * m_grabbedObjectRotOff;
+                    //added code
+                    Vector3 snapRot = m_grabbedObj.snapOffset.eulerAngles;
+                   if (m_controller == OVRInput.Controller.LTouch)
+                    {
+                        Quaternion tempSnapRotation = Quaternion.Euler(snapRot.x, -snapRot.y, -snapRot.z);
+                        m_grabbedObjectRotOff = tempSnapRotation * m_grabbedObjectRotOff;
+                        //m_grabbedObjectRotOff = Quaternion.Inverse(m_grabbedObjectRotOff);
+                    }
+                    else
+                    {
+                        m_grabbedObjectRotOff = m_grabbedObj.snapOffset.rotation * m_grabbedObjectRotOff;
+                    }
                 }
             }
             else

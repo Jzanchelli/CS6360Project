@@ -1,59 +1,80 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
+using System.Globalization;
+using System.Security.Cryptography;
 using System.Security.Permissions;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    public GameObject bulletEmitter;
-    public GameObject bullet;
-    public float bulletSpeed;
-    public AudioClip audio;
+    //public GameObject bulletEmitter;
+    public Transform gunBarrel;
+    //public GameObject bulletHit;
+    //public float bulletSpeed;
+    public AudioClip shotAudio;
+    public AudioClip reloadAudio;
+    public AudioClip dryFireAudio;
     public AudioSource audioSource;
     public OVRGrabbable gun;
+    public int numberOfShots;
+    public float range;
+    private int remainingShots;
+    //private GameObject newBulletHit;
+    // public LineRenderer ray;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.audioSource.clip= audio;
+        this.remainingShots = numberOfShots;
+        //ray = gameObject.GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(this.gun.isGrabbed && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, this.gun.grabbedBy.GetController()))
+        if (this.gun.isGrabbed)
         {
-            Triggered(this.gun.grabbedBy.GetController());
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, this.gun.grabbedBy.GetController()))
+            {
+                if (remainingShots > 0)
+                {
+                    this.remainingShots--;
+                    this.audioSource.clip = shotAudio;
+                    audioSource.Play();
+                    RaycastGun();
+                }
+                else if (remainingShots == 0)
+                {
+                    this.audioSource.clip = dryFireAudio;
+                    audioSource.Play();
+                }
+            }
+            else if (remainingShots == 0 && OVRInput.GetDown(OVRInput.Button.One, this.gun.grabbedBy.GetController()))
+            {
+                this.remainingShots = this.numberOfShots;
+                this.audioSource.clip = this.reloadAudio;
+                audioSource.Play();
+            }
         }
     }
 
-    public void Triggered(OVRInput.Controller controller)
+    private void RaycastGun()
     {
-        audioSource.Play();
-        GameObject newBullet = Instantiate(bullet, bulletEmitter.transform.position, bulletEmitter.transform.rotation) as GameObject;
-        Rigidbody newBulletRigidbody = newBullet.GetComponent<Rigidbody>();
-        newBulletRigidbody.AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
-        Destroy(newBullet, 4.0f);
-        byte[] noize = { 255 };
-        if (controller == OVRInput.Controller.LTouch)
+        RaycastHit hit;
+        UnityEngine.Debug.Log("shooting: Position: " + gunBarrel.position + " Rotation: " + gunBarrel.transform.forward);
+        if (Physics.Raycast(gunBarrel.position, gunBarrel.transform.forward, out hit, this.range))
         {
-            //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
-            OVRHaptics.LeftChannel.Preempt(new OVRHapticsClip(noize, 1));
-        }
-        else if (controller == OVRInput.Controller.RTouch)
-        {
-            OVRHaptics.RightChannel.Preempt(new OVRHapticsClip(noize, 1));
-            //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
-        }
-        /*yield return new WaitForSeconds(0.5f);
-        if (controller == OVRInput.Controller.LTouch)
-        {
-            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
-        }
-        else if (controller == OVRInput.Controller.RTouch)
-        {
-            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
-        }*/
+            UnityEngine.Debug.Log("destroying! ");
+            if (hit.collider.gameObject.CompareTag("target"))
+            {
+                UnityEngine.Debug.Log("destroying! ");
 
+                Destroy(hit.collider.gameObject);
+
+            }
+        }
     }
 }

@@ -69,17 +69,18 @@ public class OVRGrabbable : MonoBehaviour
         get { return m_snapOrientation; }
     }
 
-	/// <summary>
-	/// An offset relative to the OVRGrabber where this object can snap when grabbed.
-	/// </summary>
+    /// <summary>
+    /// An offset relative to the OVRGrabber where this object can snap when grabbed.
+    /// </summary>
     public Transform snapOffset
     {
         get { return m_snapOffset; }
     }
 
-	/// <summary>
-	/// Returns the OVRGrabber currently grabbing this object.
-	/// </summary>
+
+    /// <summary>
+    /// Returns the OVRGrabber currently grabbing this object.
+    /// </summary>
     public OVRGrabber grabbedBy
     {
         get { return m_grabbedBy; }
