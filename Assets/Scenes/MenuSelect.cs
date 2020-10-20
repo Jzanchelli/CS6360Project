@@ -18,8 +18,10 @@ public class MenuSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.Get(OVRInput.RawButton.Start))
+        //Debug.Log()
+        if (OVRInput.Get(OVRInput.RawButton.A))
         {
+            UnityEngine.Debug.Log("Trying to turn menu on/off");
             if(!menuVisible)
             {
                 SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
@@ -37,10 +39,11 @@ public class MenuSelect : MonoBehaviour
         {
             if(other.name == "Level")
             {
-
+                UnityEngine.Debug.Log("Level Select Selected");
             }
             else if(other.name == "Quit")
             {
+                UnityEngine.Debug.Log("Quit Selected");
                 #if UNITY_EDITOR
             	UnityEditor.EditorApplication.isPlaying = false;
 			    #else
@@ -49,7 +52,7 @@ public class MenuSelect : MonoBehaviour
             }
             else if(other.name == "optionsTrigger")
             {
-
+                UnityEngine.Debug.Log("Options Selected");
             }
         }
     }
