@@ -5,9 +5,34 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+
+    void FixedUpdate()
     {
-        UnityEngine.Debug.Log("hit " + other.name + "!");
-        Destroy(gameObject);
+        RaycastHit hit;
+
+        if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out hit, 250))
+        {
+            UnityEngine.Debug.Log("hit " + hit.collider.name + " - distance: " + hit.distance);
+            Destroy(gameObject);
+            if (hit.collider.tag == "target")
+            {
+                
+                    Destroy(hit.collider.gameObject);
+                
+            }
+        }
+            
     }
+    /*private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+        UnityEngine.Debug.Log("hit " + other.name + "!");
+        if (other.isTrigger)
+        {
+            if (other.name != "OVRPlayerController")
+            {
+                Destroy(other.gameObject);
+            }
+        }        
+    }*/
 }
