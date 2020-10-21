@@ -50,6 +50,11 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/TouchPad",
+      "type": "vector2",
+      "requirement": "suggested"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -90,7 +95,7 @@
   "action_sets": [
     {
       "name": "/actions/default",
-      "usage": "single"
+      "usage": "leftright"
     },
     {
       "name": "/actions/platformer",
