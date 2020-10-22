@@ -6,41 +6,73 @@ using UnityEngine.SceneManagement;
 public class MenuSelect : MonoBehaviour
 {
     // Start is called before the first frame update
-    private static bool menuVisible;
+
     // private GameObject lvlSelectTrigger;
     // private GameObject optionsTrigger;
     // private GameObject quitTrigger;
+    private int menuSceneIndex;
+    private bool previousFramePressed;
     void Start()
     {
-        menuVisible = false;
-    }
-
+        //unloadMenu();
+        menuSceneIndex = 0;
+        previousFramePressed = false;
+    }    
+    
     // Update is called once per frame
     void Update()
     {
         //Debug.Log()
-        if (OVRInput.Get(OVRInput.RawButton.A))
+        // if (OVRInput.GetUp(OVRInput.Button.Start))
+        // {
+        //     if(!previousFramePressed)
+        //     {
+        //         previousFramePressed = true;
+        //         UnityEngine.Debug.Log("Trying to turn menu on/off");
+        //         if(!SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
+        //         {
+        //             LoadMenu();
+        //         }
+        //         else
+        //         {
+        //             UnloadMenu();
+        //         }			
+
+        //     }
+        // }
+        // else
+        // {
+        //     previousFramePressed = false;
+        // }
+
+        //This works, for some reason using the same button registers it for 2 frames
+        if(OVRInput.GetDown(OVRInput.Button.Start))
         {
-            UnityEngine.Debug.Log("Trying to turn menu on/off");
-            if(!menuVisible)
+            UnityEngine.Debug.Log("Menu Pressed");
+            if(!SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
             {
-                SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+                LoadMenu();
             }
-            else
+        }
+        if(OVRInput.GetDown(OVRInput.Button.One))
+        {
+            UnityEngine.Debug.Log("A Pressed");
+            if(SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
             {
-                SceneManager.UnloadSceneAsync("MainMenu");
-            }			
+                UnloadMenu();
+            }
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger)>0.5f)
+        if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
         {
             if(other.name == "Level")
             {
                 UnityEngine.Debug.Log("Level Select Selected");
             }
+            //This works!
             else if(other.name == "Quit")
             {
                 UnityEngine.Debug.Log("Quit Selected");
@@ -50,10 +82,23 @@ public class MenuSelect : MonoBehaviour
             	Application.Quit();
 			    #endif
             }
-            else if(other.name == "optionsTrigger")
+            else if(other.name == "Options")
             {
                 UnityEngine.Debug.Log("Options Selected");
             }
         }
+    }
+
+    public void LoadMenu()
+    {
+        UnityEngine.Debug.Log("Trying to load menu");
+        SceneManager.LoadScene(menuSceneIndex, LoadSceneMode.Additive);
+    }
+
+    public void UnloadMenu()
+    {
+        UnityEngine.Debug.Log("Trying to unload menu");
+        SceneManager.UnloadSceneAsync(menuSceneIndex);
+        Resources.UnloadUnusedAssets();
     }
 }
