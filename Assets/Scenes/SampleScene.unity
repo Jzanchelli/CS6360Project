@@ -7303,7 +7303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input:
-    actionPath: /actions/platformer/in/Move
+    actionPath: /actions/default/in/TouchPad
     needsReinit: 0
   speed: 1
 --- !u!4 &1342851473 stripped
