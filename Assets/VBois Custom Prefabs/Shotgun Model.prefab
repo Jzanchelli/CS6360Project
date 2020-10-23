@@ -274,6 +274,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunBarrel: {fileID: 4709004870796621606}
+  fireAction:
+    actionPath: /actions/default/in/InteractUI
+    needsReinit: 0
+  reloadAction:
+    actionPath: /actions/default/in/Teleport
+    needsReinit: 0
   shotAudio: {fileID: 8300000, guid: a493a0069ef65934d9a7bcf639745c95, type: 3}
   reloadAudio: {fileID: 0}
   dryFireAudio: {fileID: 8300000, guid: 16181d92e2d089d41bf4b48a7c4b2569, type: 3}

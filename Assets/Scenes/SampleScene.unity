@@ -6908,6 +6908,11 @@ PrefabInstance:
       propertyPath: fireAction.actionPath
       value: /actions/default/in/InteractUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7169455386653818222, guid: 665f6dd970757c448a80270c5c9beded,
+        type: 3}
+      propertyPath: reloadAction.actionPath
+      value: /actions/default/in/Teleport
+      objectReference: {fileID: 0}
     - target: {fileID: 7169455386653818224, guid: 665f6dd970757c448a80270c5c9beded,
         type: 3}
       propertyPath: m_snapOffset

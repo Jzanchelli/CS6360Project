@@ -17,6 +17,7 @@ public class Fire : MonoBehaviour
     //public GameObject bulletHit;
     //public float bulletSpeed;
     public SteamVR_Action_Boolean fireAction;
+    public SteamVR_Action_Boolean reloadAction;
     public AudioClip shotAudio;
     public AudioClip reloadAudio;
     public AudioClip dryFireAudio;
@@ -58,7 +59,7 @@ public class Fire : MonoBehaviour
                     audioSource.Play();
                 }
             }
-            else if (remainingShots == 0 && fireAction[source].stateDown)
+            else if (remainingShots == 0 && reloadAction[source].stateDown)
             {
                 this.remainingShots = this.numberOfShots;
                 this.audioSource.clip = this.reloadAudio;
