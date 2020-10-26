@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 665f6dd970757c448a80270c5c9beded
+<<<<<<< HEAD
+guid: b7700045d2e66f3449b9552830e1fb12
+=======
+guid: 9effff1b399d6fa40813da50cf1fe5aa
+>>>>>>> steamVR-test
 PrefabImporter:
   externalObjects: {}
   userData: 

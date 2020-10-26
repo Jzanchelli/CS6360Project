@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Security.Permissions;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
 using UnityEngine;
 
 public class Fire : MonoBehaviour
@@ -14,14 +16,16 @@ public class Fire : MonoBehaviour
     public Transform gunBarrel;
     //public GameObject bulletHit;
     //public float bulletSpeed;
+    public SteamVR_Action_Boolean fireAction;
+    public SteamVR_Action_Boolean reloadAction;
     public AudioClip shotAudio;
     public AudioClip reloadAudio;
     public AudioClip dryFireAudio;
     public AudioSource audioSource;
-    public OVRGrabbable gun;
     public int numberOfShots;
     public float range;
     private int remainingShots;
+    private Interactable interactable;
     //private GameObject newBulletHit;
     // public LineRenderer ray;
 
@@ -29,15 +33,17 @@ public class Fire : MonoBehaviour
     void Start()
     {
         this.remainingShots = numberOfShots;
+        interactable = GetComponent<Interactable>();
         //ray = gameObject.GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.gun.isGrabbed)
+        if (interactable.attachedToHand != null)
         {
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, this.gun.grabbedBy.GetController()))
+            SteamVR_Input_Sources source = interactable.attachedToHand.handType;
+            if (fireAction[source].stateDown)
             {
                 if (remainingShots > 0)
                 {
@@ -52,7 +58,7 @@ public class Fire : MonoBehaviour
                     audioSource.Play();
                 }
             }
-            else if (remainingShots == 0 && OVRInput.GetDown(OVRInput.Button.One, this.gun.grabbedBy.GetController()))
+            else if (remainingShots == 0 && reloadAction[source].stateDown)
             {
                 this.remainingShots = this.numberOfShots;
                 this.audioSource.clip = this.reloadAudio;
