@@ -50,6 +50,11 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/TouchPad",
+      "type": "vector2",
+      "requirement": "suggested"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -81,12 +86,16 @@
       "name": "/actions/mixedreality/in/ExternalCamera",
       "type": "pose",
       "requirement": "optional"
+    },
+    {
+      "name": "/actions/gun/in/gunFire",
+      "type": "boolean"
     }
   ],
   "action_sets": [
     {
       "name": "/actions/default",
-      "usage": "single"
+      "usage": "leftright"
     },
     {
       "name": "/actions/platformer",
@@ -98,6 +107,10 @@
     },
     {
       "name": "/actions/mixedreality",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/gun",
       "usage": "single"
     }
   ],

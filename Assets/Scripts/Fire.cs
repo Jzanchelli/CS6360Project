@@ -22,7 +22,6 @@ public class Fire : MonoBehaviour
     public AudioClip reloadAudio;
     public AudioClip dryFireAudio;
     public AudioSource audioSource;
-    public OVRGrabbable gun;
     public int numberOfShots;
     public float range;
     private int remainingShots;
