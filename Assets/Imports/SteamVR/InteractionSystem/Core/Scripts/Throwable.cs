@@ -40,9 +40,14 @@ namespace Valve.VR.InteractionSystem
         [Tooltip( "When detaching the object, should it return to its original parent?" )]
 		public bool restoreOriginalParent = false;
 
+        public bool canHolster;
+
+        public bool smallHolsterCompatible;
+        public int holsterSnapPosition;
 
 
-		protected VelocityEstimator velocityEstimator;
+
+        protected VelocityEstimator velocityEstimator;
         protected bool attached = false;
         protected float attachTime;
         protected Vector3 attachPosition;
@@ -52,6 +57,7 @@ namespace Valve.VR.InteractionSystem
 		public UnityEvent onPickUp;
         public UnityEvent onDetachFromHand;
         public HandEvent onHeldUpdate;
+       
 
 
         protected RigidbodyInterpolation hadInterpolation = RigidbodyInterpolation.None;
@@ -60,6 +66,8 @@ namespace Valve.VR.InteractionSystem
 
         [HideInInspector]
         public Interactable interactable;
+
+        public bool CanHolster { get => canHolster; set => canHolster = value; }
 
 
         //-------------------------------------------------
@@ -161,6 +169,7 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         protected virtual void OnDetachedFromHand(Hand hand)
         {
+           
             attached = false;
 
             onDetachFromHand.Invoke();
@@ -169,13 +178,33 @@ namespace Valve.VR.InteractionSystem
 
             rigidbody.interpolation = hadInterpolation;
 
-            Vector3 velocity;
-            Vector3 angularVelocity;
+            //-------------------------------
+            //adding holstering logic
+            //-------------------------------
 
-            GetReleaseVelocities(hand, out velocity, out angularVelocity);
+            if (canHolster)
+            {
+                if (!HolsterWeapon())
+                {
+                    Vector3 velocity;
+                    Vector3 angularVelocity;
 
-            rigidbody.velocity = velocity;
-            rigidbody.angularVelocity = angularVelocity;
+                    GetReleaseVelocities(hand, out velocity, out angularVelocity);
+
+                    rigidbody.velocity = velocity;
+                    rigidbody.angularVelocity = angularVelocity;
+                }
+            }
+            else
+            {
+                Vector3 velocity;
+                Vector3 angularVelocity;
+
+                GetReleaseVelocities(hand, out velocity, out angularVelocity);
+
+                rigidbody.velocity = velocity;
+                rigidbody.angularVelocity = angularVelocity;
+            }
         }
 
 
@@ -277,7 +306,46 @@ namespace Valve.VR.InteractionSystem
             if (velocityEstimator != null)
                 velocityEstimator.FinishEstimatingVelocity();
 		}
-	}
+
+        public bool HolsterWeapon()
+        {
+           
+                var holsters = GameObject.FindGameObjectsWithTag("holsters");
+                foreach (var holster in holsters)
+                {
+                    var distanceToHolster = Vector3.Distance(gameObject.transform.position, holster.transform.position);
+                    var childrenOfHolster = holster.FindChildrenWithTag("weapon");
+                    if (childrenOfHolster == null && distanceToHolster < 0.25f)
+                    {
+                        switch (canHolsterComp.SnapPosition)
+                        {
+                            case 0:
+                                gameObject.transform.rotation = holster.transform.GetChild(0).transform.rotation;
+                                gameObject.transform.position = holster.transform.GetChild(0).transform.position;
+                                break;
+                            case 1:
+                                gameObject.transform.rotation = holster.transform.GetChild(1).transform.rotation;
+                                gameObject.transform.position = holster.transform.GetChild(1).transform.position;
+                                break;
+                            case 2:
+                                gameObject.transform.rotation = holster.transform.GetChild(2).transform.rotation;
+                                gameObject.transform.position = holster.transform.GetChild(2).transform.position;
+                                break;
+                            default:
+                                gameObject.transform.rotation = holster.transform.GetChild(0).transform.rotation;
+                                gameObject.transform.position = holster.transform.GetChild(0).transform.position;
+                                break;
+                        }
+                        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        gameObject.transform.parent = holster.transform;
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+
+        }
+    }
 
     public enum ReleaseStyle
     {
@@ -285,5 +353,5 @@ namespace Valve.VR.InteractionSystem
         GetFromHand,
         ShortEstimation,
         AdvancedEstimation,
-    }
+    }    
 }
