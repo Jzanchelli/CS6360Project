@@ -30,7 +30,7 @@ public class TargetMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (childTransform != null) Move();
     }
 
     private void Move()
