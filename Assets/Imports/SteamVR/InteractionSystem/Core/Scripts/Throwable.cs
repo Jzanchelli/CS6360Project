@@ -186,6 +186,7 @@ namespace Valve.VR.InteractionSystem
             {
                 if (!HolsterWeapon())
                 {
+                    gameObject.GetComponent<Rigidbody>().isKinematic = false;
                     Vector3 velocity;
                     Vector3 angularVelocity;
 
@@ -197,6 +198,8 @@ namespace Valve.VR.InteractionSystem
             }
             else
             {
+                gameObject.GetComponent<Rigidbody>().isKinematic = false;
+
                 Vector3 velocity;
                 Vector3 angularVelocity;
 
@@ -310,14 +313,13 @@ namespace Valve.VR.InteractionSystem
         public bool HolsterWeapon()
         {
            
-                var holsters = GameObject.FindGameObjectsWithTag("holsters");
+                var holsters = GameObject.FindGameObjectsWithTag("holster");
                 foreach (var holster in holsters)
                 {
                     var distanceToHolster = Vector3.Distance(gameObject.transform.position, holster.transform.position);
-                    var childrenOfHolster = holster.FindChildrenWithTag("weapon");
-                    if (childrenOfHolster == null && distanceToHolster < 0.25f)
+                    if (distanceToHolster < 0.2f)
                     {
-                        switch (canHolsterComp.SnapPosition)
+                        switch (holsterSnapPosition)
                         {
                             case 0:
                                 gameObject.transform.rotation = holster.transform.GetChild(0).transform.rotation;

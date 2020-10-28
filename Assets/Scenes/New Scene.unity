@@ -314,6 +314,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 661590896063552658, guid: b7700045d2e66f3449b9552830e1fb12,
+        type: 3}
+      propertyPath: canHolster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7661032921845987869, guid: b7700045d2e66f3449b9552830e1fb12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -743,6 +748,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &623951926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623951927}
+  m_Layer: 0
+  m_Name: RevolverSnap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &623951927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623951926}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.01, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1013782830}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
 --- !u!1 &804235990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1361,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8e19829d751d4941b41ae78a7276f7c, type: 3}
+--- !u!1 &1390903491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390903492}
+  m_Layer: 0
+  m_Name: RevolverSnap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1390903492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390903491}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.01, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 812241569}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
 --- !u!1 &1437346867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,6 +1584,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 351671226024195292, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: canHolster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5024009367128234573, guid: d0f4c6a04f933be48b80b1fe9fbac458,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1840,6 +1910,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Revolver
       objectReference: {fileID: 0}
+    - target: {fileID: 4199681675403100201, guid: 3e4c167b543a8a344adffe2a142ae4e4,
+        type: 3}
+      propertyPath: canHolster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199681675403100201, guid: 3e4c167b543a8a344adffe2a142ae4e4,
+        type: 3}
+      propertyPath: smallHolsterCompatible
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e4c167b543a8a344adffe2a142ae4e4, type: 3}
 --- !u!1 &2059007853
@@ -1972,6 +2052,16 @@ PrefabInstance:
         type: 3}
       propertyPath: onDetachFromHand.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199681675403100201, guid: 3e4c167b543a8a344adffe2a142ae4e4,
+        type: 3}
+      propertyPath: canHolster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4199681675403100201, guid: 3e4c167b543a8a344adffe2a142ae4e4,
+        type: 3}
+      propertyPath: smallHolsterCompatible
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e4c167b543a8a344adffe2a142ae4e4, type: 3}
