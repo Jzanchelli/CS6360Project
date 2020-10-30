@@ -383,6 +383,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   restoreOriginalParent: 0
+  canHolster: 1
+  holsterProximity: 0.2
+  holsterCompatibilityIndicator: 2
+  holsterSnapPosition: 0
   onPickUp:
     m_PersistentCalls:
       m_Calls: []

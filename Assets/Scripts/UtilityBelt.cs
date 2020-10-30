@@ -9,6 +9,7 @@ public class UtilityBelt : MonoBehaviour
     public GameObject anchor;
     public float hipTurnAngle;
     public float turnSpeed;
+    public float beltDistanceFromHead;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class UtilityBelt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = new Vector3(anchor.transform.position.x, anchor.transform.position.y / 1.4f, anchor.transform.position.z);
+        gameObject.transform.position = new Vector3(anchor.transform.position.x, anchor.transform.position.y - beltDistanceFromHead, anchor.transform.position.z);
 
         float rotationSpeed = turnSpeed;
         float angleDiff = Math.Abs(anchor.transform.eulerAngles.y - gameObject.transform.eulerAngles.y);

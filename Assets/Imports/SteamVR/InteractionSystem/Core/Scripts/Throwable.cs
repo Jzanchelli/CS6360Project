@@ -41,8 +41,8 @@ namespace Valve.VR.InteractionSystem
 		public bool restoreOriginalParent = false;
 
         public bool canHolster;
-
-        public bool smallHolsterCompatible;
+        public float holsterProximity;
+        public int holsterCompatibilityIndicator;
         public int holsterSnapPosition;
 
 
@@ -313,36 +313,44 @@ namespace Valve.VR.InteractionSystem
         public bool HolsterWeapon()
         {
            
-                var holsters = GameObject.FindGameObjectsWithTag("holster");
-                foreach (var holster in holsters)
+                GameObject[] holsters = GameObject.FindGameObjectsWithTag("holster");
+                UnityEngine.Debug.Log(holsters.Length);
+            foreach (var holster in holsters)
                 {
+                    UnityEngine.Debug.Log(holster.name);
                     var distanceToHolster = Vector3.Distance(gameObject.transform.position, holster.transform.position);
-                    if (distanceToHolster < 0.2f)
+                    if (distanceToHolster < holsterProximity)
                     {
+                    //UnityEngine.Debug.Log(holster.name);
+                    //UnityEngine.Debug.Log(distanceToHolster);
                         switch (holsterSnapPosition)
                         {
                             case 0:
                                 gameObject.transform.rotation = holster.transform.GetChild(0).transform.rotation;
                                 gameObject.transform.position = holster.transform.GetChild(0).transform.position;
+                                UnityEngine.Debug.Log(0);
                                 break;
                             case 1:
                                 gameObject.transform.rotation = holster.transform.GetChild(1).transform.rotation;
                                 gameObject.transform.position = holster.transform.GetChild(1).transform.position;
+                                UnityEngine.Debug.Log(1);
                                 break;
                             case 2:
                                 gameObject.transform.rotation = holster.transform.GetChild(2).transform.rotation;
                                 gameObject.transform.position = holster.transform.GetChild(2).transform.position;
+                                UnityEngine.Debug.Log(2);
                                 break;
                             default:
                                 gameObject.transform.rotation = holster.transform.GetChild(0).transform.rotation;
                                 gameObject.transform.position = holster.transform.GetChild(0).transform.position;
+                                UnityEngine.Debug.Log(0);
                                 break;
                         }
                         gameObject.GetComponent<Rigidbody>().isKinematic = true;
                         gameObject.transform.parent = holster.transform;
                         return true;
                     }
-                    return false;
+                    
                 }
                 return false;
 
