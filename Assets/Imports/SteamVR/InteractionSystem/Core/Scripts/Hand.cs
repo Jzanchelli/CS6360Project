@@ -688,6 +688,7 @@ namespace Valve.VR.InteractionSystem
                 }
             }
 
+
             CleanUpAttachedObjectStack();
 
             if (mainRenderModel != null)

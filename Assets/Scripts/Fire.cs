@@ -26,6 +26,7 @@ public class Fire : MonoBehaviour
     public float range;
     private int remainingShots;
     private Interactable interactable;
+
     //private GameObject newBulletHit;
     // public LineRenderer ray;
 
@@ -82,5 +83,5 @@ public class Fire : MonoBehaviour
 
             }
         }
-    }
+    } 
 }
