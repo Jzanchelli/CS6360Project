@@ -2969,6 +2969,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7545667c336c236488f9c85271120db9, type: 3}
+--- !u!1 &523125484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8311419441297316770, guid: f4fac91a3b8834b44ac5e4203535fd03,
+    type: 3}
+  m_PrefabInstance: {fileID: 2745061904035829143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &523125485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523125484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9603bf04de93b46b52db4ae7b181d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input:
+    actionPath: /actions/default/in/TouchPad
+    needsReinit: 0
+  speed: 2.5
 --- !u!1001 &549878367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10093,7 +10115,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerOnHorse
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8311419442518406613, guid: f4fac91a3b8834b44ac5e4203535fd03, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f4fac91a3b8834b44ac5e4203535fd03, type: 3}
 --- !u!1001 &6584925120236735001
 PrefabInstance:
