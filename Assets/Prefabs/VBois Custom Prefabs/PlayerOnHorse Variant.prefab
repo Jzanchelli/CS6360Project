@@ -29,12 +29,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207555223}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.205, y: 1.734, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.2138062, z: 0.36050034}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_Children: []
-  m_Father: {fileID: 8232875885128425988}
-  m_RootOrder: 4
+  m_Father: {fileID: 8311419441297107930}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1207555227
 MeshFilter:
@@ -426,7 +426,7 @@ PrefabInstance:
     - target: {fileID: 6143047004031459099, guid: 76aa1200d3d025948b8267c87f4e59a5,
         type: 3}
       propertyPath: m_Name
-      value: PlayerOnHorse
+      value: PlayerOnHorse Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6143047004031676259, guid: 76aa1200d3d025948b8267c87f4e59a5,
         type: 3}
