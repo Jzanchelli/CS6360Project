@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class MenuSelect : MonoBehaviour
 {
@@ -11,12 +13,10 @@ public class MenuSelect : MonoBehaviour
     // private GameObject optionsTrigger;
     // private GameObject quitTrigger;
     private int menuSceneIndex;
-    private bool previousFramePressed;
     void Start()
     {
         //unloadMenu();
         menuSceneIndex = 0;
-        previousFramePressed = false;
     }    
     
     // Update is called once per frame
@@ -46,7 +46,8 @@ public class MenuSelect : MonoBehaviour
         // }
 
         //This works, for some reason using the same button registers it for 2 frames
-        if(OVRInput.GetDown(OVRInput.Button.Start))
+        bool menuState = SteamVR_Input.GetState("LaunchMenu",SteamVR_Input_Sources.LeftHand);
+        if(menuState)
         {
             UnityEngine.Debug.Log("Menu Pressed");
             if(!SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
@@ -54,7 +55,7 @@ public class MenuSelect : MonoBehaviour
                 LoadMenu();
             }
         }
-        if(OVRInput.GetDown(OVRInput.Button.One))
+        else
         {
             UnityEngine.Debug.Log("A Pressed");
             if(SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
@@ -66,27 +67,27 @@ public class MenuSelect : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
-        {
-            if(other.name == "Level")
-            {
-                UnityEngine.Debug.Log("Level Select Selected");
-            }
-            //This works!
-            else if(other.name == "Quit")
-            {
-                UnityEngine.Debug.Log("Quit Selected");
-                #if UNITY_EDITOR
-            	UnityEditor.EditorApplication.isPlaying = false;
-			    #else
-            	Application.Quit();
-			    #endif
-            }
-            else if(other.name == "Options")
-            {
-                UnityEngine.Debug.Log("Options Selected");
-            }
-        }
+        // if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+        // {
+        //     if(other.name == "Level")
+        //     {
+        //         UnityEngine.Debug.Log("Level Select Selected");
+        //     }
+        //     //This works!
+        //     else if(other.name == "Quit")
+        //     {
+        //         UnityEngine.Debug.Log("Quit Selected");
+        //         #if UNITY_EDITOR
+        //     	UnityEditor.EditorApplication.isPlaying = false;
+		// 	    #else
+        //     	Application.Quit();
+		// 	    #endif
+        //     }
+        //     else if(other.name == "Options")
+        //     {
+        //         UnityEngine.Debug.Log("Options Selected");
+        //     }
+        // }
     }
 
     public void LoadMenu()
