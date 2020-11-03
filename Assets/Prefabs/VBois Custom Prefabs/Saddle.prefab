@@ -1,0 +1,233 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &615425078812215777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 270705765558801243}
+  - component: {fileID: 3778070253507403006}
+  - component: {fileID: 1408097988791216180}
+  m_Layer: 0
+  m_Name: Saddle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &270705765558801243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615425078812215777}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -1.721299, y: 1.3814286, z: 0.008271762}
+  m_LocalScale: {x: 64.28571, y: 57.14286, z: 57.14286}
+  m_Children:
+  - {fileID: 270705765406896229}
+  - {fileID: 270705765957585497}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
+--- !u!33 &3778070253507403006
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615425078812215777}
+  m_Mesh: {fileID: 6416302070336371891, guid: e78c0359be7bbcc47a08d9405d6e1ade, type: 3}
+--- !u!23 &1408097988791216180
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615425078812215777}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -876546973899608171, guid: e78c0359be7bbcc47a08d9405d6e1ade, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1001 &5933849302553142229
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 270705765558801243}
+    m_Modifications:
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00763
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0075
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6788923
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.71791905
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.11524023
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.10206505
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -181.541
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 17.645996
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -92.962006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544620147715016970, guid: 2e372089331863b40ae2399d08f751eb,
+        type: 3}
+      propertyPath: m_Name
+      value: Rifle-Holster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e372089331863b40ae2399d08f751eb, type: 3}
+--- !u!4 &270705765406896229 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5879724148168283056, guid: 2e372089331863b40ae2399d08f751eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5933849302553142229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8235864480380307652
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 270705765558801243}
+    m_Modifications:
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0005555577
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.008349993
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000025000572
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.05429074
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.034142524
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7282805
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.68227154
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -82.646
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -10.967001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 14.703001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845569693137655847, guid: 63596fcd7320fdd49b4ddbda31242665,
+        type: 3}
+      propertyPath: m_Name
+      value: Shotgun-Holster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 63596fcd7320fdd49b4ddbda31242665, type: 3}
+--- !u!4 &270705765957585497 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8181376316417639069, guid: 63596fcd7320fdd49b4ddbda31242665,
+    type: 3}
+  m_PrefabInstance: {fileID: 8235864480380307652}
+  m_PrefabAsset: {fileID: 0}
