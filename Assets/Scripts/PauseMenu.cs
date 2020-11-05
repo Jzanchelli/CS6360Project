@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-public class MenuSelect : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -53,6 +53,7 @@ public class MenuSelect : MonoBehaviour
             if(!SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
             {
                 LoadMenu();
+                Time.timeScale = 0;
             }
         }
         else
@@ -61,6 +62,7 @@ public class MenuSelect : MonoBehaviour
             if(SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
             {
                 UnloadMenu();
+                Time.timeScale = 1;
             }
         }
     }
