@@ -13,83 +13,39 @@ public class PauseMenu : MonoBehaviour
     // private GameObject optionsTrigger;
     // private GameObject quitTrigger;
     private int menuSceneIndex;
+    
+    
     void Start()
     {
         //unloadMenu();
         menuSceneIndex = 0;
+        
     }    
     
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log()
-        // if (OVRInput.GetUp(OVRInput.Button.Start))
-        // {
-        //     if(!previousFramePressed)
-        //     {
-        //         previousFramePressed = true;
-        //         UnityEngine.Debug.Log("Trying to turn menu on/off");
-        //         if(!SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
-        //         {
-        //             LoadMenu();
-        //         }
-        //         else
-        //         {
-        //             UnloadMenu();
-        //         }			
-
-        //     }
-        // }
-        // else
-        // {
-        //     previousFramePressed = false;
-        // }
-
-        //This works, for some reason using the same button registers it for 2 frames
+                //This works, for some reason using the same button registers it for 2 frames
         bool menuState = SteamVR_Input.GetState("LaunchMenu",SteamVR_Input_Sources.LeftHand);
         if(menuState)
         {
-            UnityEngine.Debug.Log("Menu Pressed");
+            //UnityEngine.Debug.Log("Menu Pressed");
             if(!SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
             {
                 LoadMenu();
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
             }
         }
         else
         {
-            UnityEngine.Debug.Log("A Pressed");
+            //UnityEngine.Debug.Log("A Pressed");
             if(SceneManager.GetSceneByBuildIndex(menuSceneIndex).isLoaded)
             {
                 UnloadMenu();
-                Time.timeScale = 1;
+                //Time.timeScale = 1;
             }
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        // if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
-        // {
-        //     if(other.name == "Level")
-        //     {
-        //         UnityEngine.Debug.Log("Level Select Selected");
-        //     }
-        //     //This works!
-        //     else if(other.name == "Quit")
-        //     {
-        //         UnityEngine.Debug.Log("Quit Selected");
-        //         #if UNITY_EDITOR
-        //     	UnityEditor.EditorApplication.isPlaying = false;
-		// 	    #else
-        //     	Application.Quit();
-		// 	    #endif
-        //     }
-        //     else if(other.name == "Options")
-        //     {
-        //         UnityEngine.Debug.Log("Options Selected");
-        //     }
-        // }
+        }        
+        
     }
 
     public void LoadMenu()

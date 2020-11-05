@@ -598,7 +598,8 @@ PrefabInstance:
       propertyPath: fireAction.actionPath
       value: /actions/default/in/InteractUI
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1580748900406638593, guid: e5e74dcb03d111046ade2929b8b8670e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e5e74dcb03d111046ade2929b8b8670e, type: 3}
 --- !u!4 &98343591 stripped
 Transform:
@@ -1635,7 +1636,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun Model (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4709004870946809209, guid: 7c90e6110f3dbb442a5b9c061caf939d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7c90e6110f3dbb442a5b9c061caf939d, type: 3}
 --- !u!4 &225958341 stripped
 Transform:
@@ -4363,7 +4365,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rifle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 661590896063552661, guid: b7700045d2e66f3449b9552830e1fb12, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b7700045d2e66f3449b9552830e1fb12, type: 3}
 --- !u!1001 &847246375
 PrefabInstance:
@@ -5149,6 +5152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd7c9014d231543bfdd2bd450bd8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrabPinch:
+    actionPath: 
+    needsReinit: 0
 --- !u!1 &1016893745 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6143047004031459099, guid: 76aa1200d3d025948b8267c87f4e59a5,
@@ -5167,6 +5173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd7c9014d231543bfdd2bd450bd8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrabPinch:
+    actionPath: 
+    needsReinit: 0
 --- !u!1001 &1038338562
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class PauseMenuPosition : MonoBehaviour
 
     public Transform PauseParent;
     private Transform playerCam;
+    private Vector3 pausePos;
     void Start()
     {
         playerCam = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(3).transform;
@@ -16,7 +17,7 @@ public class PauseMenuPosition : MonoBehaviour
         Vector3 playerDirection = playerCam.transform.forward;
         Quaternion playerRotation = playerCam.transform.rotation;
         float spawnDistance = 1f;
-        Vector3 pausePos = playerPos+ playerDirection*spawnDistance;
+         pausePos = playerPos+ playerDirection*spawnDistance;
         //Quaternion pauseRot = new Quaternion(-playerRotation.x, );
 
         
@@ -37,6 +38,6 @@ public class PauseMenuPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        PauseParent.position = pausePos;
     }
 }
