@@ -5,12 +5,8 @@ using UnityEngine;
 public class PauseMenuPosition : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Transform optionsObject;
-    public Transform quitObject;
-    public Transform menuObject;
 
-    public Transform resumeObject;
-
+    public Transform PauseParent;
     private Transform playerCam;
     void Start()
     {
@@ -19,17 +15,23 @@ public class PauseMenuPosition : MonoBehaviour
         Vector3 playerPos = playerCam.position;
         Vector3 playerDirection = playerCam.transform.forward;
         Quaternion playerRotation = playerCam.transform.rotation;
-
-        float spawnDistance = 3f;
-
-        Vector3 optionsPos = playerPos+ playerDirection*spawnDistance;
-        optionsObject.position = optionsPos;
-        Vector3 quitPos = optionsPos + optionsObject.TransformDirection(new Vector3(0, 1, -1));
-        //Vector3 menuPos = 
+        float spawnDistance = 1f;
+        Vector3 pausePos = playerPos+ playerDirection*spawnDistance;
+        //Quaternion pauseRot = new Quaternion(-playerRotation.x, );
 
         
-        quitObject.position = new Vector3(playerCam.position.x+3, playerCam.position.y+3, playerCam.position.z);
-        menuObject.position = new Vector3(playerCam.position.x-3, playerCam.position.y+3, playerCam.position.z);
+
+        
+        //optionsObject.position = optionsPos;
+        //Vector3 quitPos = optionsPos + optionsObject.TransformDirection(new Vector3(0, 1, -1));
+        //Vector3 menuPos = 
+
+        PauseParent.position = new Vector3 (pausePos.x, playerPos.y, pausePos.z);
+        PauseParent.LookAt(playerCam, Vector3.up);
+
+        
+        //quitObject.position = quitPos;
+        //menuObject.position = new Vector3(playerCam.position.x-3, playerCam.position.y+3, playerCam.position.z);
     }
 
     // Update is called once per frame
