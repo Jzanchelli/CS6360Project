@@ -1138,3 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd7c9014d231543bfdd2bd450bd8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resumeTrigger: {fileID: 941086472}
+  optionsTrigger: {fileID: 1815885418}
+  quitTrigger: {fileID: 883720386}
+  menuTrigger: {fileID: 47886144}

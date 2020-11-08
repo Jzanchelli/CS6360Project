@@ -38,6 +38,6 @@ public class PauseMenuPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PauseParent.position = pausePos;
+        //PauseParent.position = pausePos;
     }
 }
