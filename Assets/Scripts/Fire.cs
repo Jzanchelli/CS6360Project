@@ -12,6 +12,10 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
+
+    public GlobalAchievements achievements;
+    public bool enableAchievements = true;
+
     //public GameObject bulletEmitter;
     public Transform gunBarrel;
     //public GameObject bulletHit;
@@ -74,6 +78,45 @@ public class Fire : MonoBehaviour
         UnityEngine.Debug.Log("shooting: Position: " + gunBarrel.position + " Rotation: " + gunBarrel.transform.forward);
         if (Physics.Raycast(gunBarrel.position, gunBarrel.transform.forward, out hit, this.range))
         {
+
+            // Check for achievements
+            if (enableAchievements)
+            {
+                if (!achievements.AchStates[(int)Achievement.hit_bottle_from_50])
+                {
+                    if (hit.distance >= 50)
+                    {
+                        StartCoroutine(achievements.TriggerAchievement(Achievement.hit_bottle_from_50));
+                    }
+                }
+
+                if (!achievements.AchStates[(int)Achievement.hit_target_25_while_riding])
+                {
+
+                    // Assume true for testing
+                    // NOTE: Update for the actual game
+                    bool isRiding = true;
+
+                    if (hit.distance >= 25 && isRiding)
+                    {
+                        StartCoroutine(achievements.TriggerAchievement(Achievement.hit_target_25_while_riding));
+                    }
+                }
+
+                if (!achievements.AchStates[(int)Achievement.hit_target_while_riding])
+                {
+                    // Assume true for testing
+                    // NOTE: Update for the actual game
+                    bool isRiding = true;
+
+                    if (isRiding)
+                    {
+                        StartCoroutine(achievements.TriggerAchievement(Achievement.hit_target_while_riding));
+                    }
+                }
+            }
+            
+
             UnityEngine.Debug.Log("destroying! ");
             if (hit.collider.gameObject.CompareTag("target"))
             {
