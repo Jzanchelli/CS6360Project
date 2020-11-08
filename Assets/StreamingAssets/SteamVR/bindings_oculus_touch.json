@@ -265,7 +265,7 @@
                      "output" : "/actions/default/in/launchmenu"
                   }
                },
-               "mode" : "toggle_button",
+               "mode" : "button",
                "path" : "/user/hand/left/input/x"
             }
          ]

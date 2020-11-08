@@ -5062,6 +5062,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1021225457195213282, guid: 76aa1200d3d025948b8267c87f4e59a5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021225457195213282, guid: 76aa1200d3d025948b8267c87f4e59a5,
+        type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6143047004031459099, guid: 76aa1200d3d025948b8267c87f4e59a5,
         type: 3}
       propertyPath: m_Name
@@ -5132,29 +5142,18 @@ PrefabInstance:
       propertyPath: beltDistanceFromHead
       value: 0.57
       objectReference: {fileID: 0}
+    - target: {fileID: 8831733870062279874, guid: 76aa1200d3d025948b8267c87f4e59a5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831733870062279874, guid: 76aa1200d3d025948b8267c87f4e59a5,
+        type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76aa1200d3d025948b8267c87f4e59a5, type: 3}
---- !u!1 &1016893743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6143047004031355351, guid: 76aa1200d3d025948b8267c87f4e59a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1016893742}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1016893744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016893743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cedd7c9014d231543bfdd2bd450bd8df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GrabPinch:
-    actionPath: 
-    needsReinit: 0
 --- !u!1 &1016893745 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6143047004031459099, guid: 76aa1200d3d025948b8267c87f4e59a5,
@@ -5173,9 +5172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedd7c9014d231543bfdd2bd450bd8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrabPinch:
-    actionPath: 
-    needsReinit: 0
 --- !u!1001 &1038338562
 PrefabInstance:
   m_ObjectHideFlags: 0
