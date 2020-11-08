@@ -16,7 +16,8 @@ public class PauseMenu : MonoBehaviour
     // public GameObject menuTrigger;
     private int menuSceneIndex;
 
-    private GameObject rightHand;
+    public GameObject rightHand;
+    public GameObject leftHand;
 
     private bool loaded;
     
@@ -40,6 +41,8 @@ public class PauseMenu : MonoBehaviour
                 //UnityEngine.Debug.Log("menustate = true");
                 if(!loaded)
                 {
+                    rightHand.GetComponent<SteamVR_LaserPointer>().enabled = true;
+                    leftHand.GetComponent<SteamVR_LaserPointer>().enabled = true;
                     LoadMenu();
                     Time.timeScale = 0;
                 }
@@ -49,7 +52,10 @@ public class PauseMenu : MonoBehaviour
                 //UnityEngine.Debug.Log("A Pressed");
                 if(loaded)
                 {
-                    
+                    rightHand.GetComponent<SteamVR_LaserPointer>().enabled = false;
+                    leftHand.GetComponent<SteamVR_LaserPointer>().enabled = false;
+                    rightHand.GetComponent<SteamVR_LaserPointer>().pointer.transform.localScale = new Vector3(0,0,0);
+                    leftHand.GetComponent<SteamVR_LaserPointer>().pointer.transform.localScale = new Vector3(0,0,0);
                     UnloadMenu();
                     Time.timeScale = 1;
                 }

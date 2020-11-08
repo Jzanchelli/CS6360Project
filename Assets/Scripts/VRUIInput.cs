@@ -2,53 +2,57 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Valve.VR;
-using Valve.VR.InteractionSystem;
 using Valve.VR.Extras;
 
 [RequireComponent(typeof(SteamVR_LaserPointer))]
 public class VRUIInput : MonoBehaviour
 {
-    public SteamVR_LaserPointer laserPointer;
+    private SteamVR_LaserPointer laserPointer;
+    //private SteamVR_TrackedController trackedController;
 
-    void Awake()
+    private void OnEnable()
     {
-        laserPointer.PointerIn += PointerInside;
-        laserPointer.PointerOut += PointerOutside;
-        laserPointer.PointerClick += PointerClick;
+        laserPointer = GetComponent<SteamVR_LaserPointer>();
+        laserPointer.PointerIn -= HandlePointerIn;
+        laserPointer.PointerIn += HandlePointerIn;
+        laserPointer.PointerOut -= HandlePointerOut;
+        laserPointer.PointerOut += HandlePointerOut;
+
+        // trackedController = GetComponent<SteamVR_TrackedController>();
+        // if (trackedController == null)
+        // {
+        //     trackedController = GetComponentInParent<SteamVR_TrackedController>();
+        // }
+        // trackedController.TriggerClicked -= HandleTriggerClicked;
+        // trackedController.TriggerClicked += HandleTriggerClicked;
     }
 
-    public void PointerClick(object sender, PointerEventArgs e)
+    // private void HandleTriggerClicked(object sender, ClickedEventArgs e)
+    // {
+    //     if (EventSystem.current.currentSelectedGameObject != null)
+    //     {
+    //         ExecuteEvents.Execute(EventSystem.current.currentSelectedGameObject, new PointerEventData(EventSystem.current), ExecuteEvents.submitHandler);
+    //     }
+    // }
+
+    private void HandlePointerIn(object sender, PointerEventArgs e)
     {
-        if (e.target.name == "Cube")
+        var button = e.target.GetComponent<Button>();
+        if (button != null)
         {
-            Debug.Log("Cube was clicked");
-        } else if (e.target.name == "Button")
-        {
-            Debug.Log("Button was clicked");
+            button.Select();
+            Debug.Log("HandlePointerIn", e.target.gameObject);
         }
     }
 
-    public void PointerInside(object sender, PointerEventArgs e)
+    private void HandlePointerOut(object sender, PointerEventArgs e)
     {
-        if (e.target.name == "Cube")
+        
+        var button = e.target.GetComponent<Button>();
+        if (button != null)
         {
-            Debug.Log("Cube was entered");
-        }
-        else if (e.target.name == "Button")
-        {
-            Debug.Log("Button was entered");
-        }
-    }
-
-    public void PointerOutside(object sender, PointerEventArgs e)
-    {
-        if (e.target.name == "Cube")
-        {
-            Debug.Log("Cube was exited");
-        }
-        else if (e.target.name == "Button")
-        {
-            Debug.Log("Button was exited");
+            EventSystem.current.SetSelectedGameObject(null);
+            Debug.Log("HandlePointerOut", e.target.gameObject);
         }
     }
 }
