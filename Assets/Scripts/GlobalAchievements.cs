@@ -26,7 +26,7 @@ public class GlobalAchievements : MonoBehaviour
     public Text AchievementDescription;
 
     // Audio
-    public AudioSource AchievementSound;
+    public static AudioSource AchievementSound;
 
     private const int N_ACHIEVEMENTS = 10;
 
@@ -66,21 +66,35 @@ public class GlobalAchievements : MonoBehaviour
 
     private void Start()
     {
-        // Here, we could load the saved achievement states so the user can't get the
-        // same achievements twice between sessions.
 
-        // This requires adding additional code to save the achievement state to a file
-        // somewhere whenever there is a change.
+    }
+
+    public void SetState(Achievement ach, bool state)
+    {
+        AchStates[(int)ach] = state;
+    }
+
+    public bool GetState(Achievement ach)
+    {
+        return AchStates[(int)ach];
     }
 
     // Type is IEnumerator so this can be called by StartCoroutine(...)
     public IEnumerator TriggerAchievement(Achievement ach)
     {
+
+        Debug.Log("Achievement Get!");
+        Debug.Log(AchTitles[(int)ach]);
+
         AchievementTitle.text = AchTitles[(int)ach];
         AchievementDescription.text = AchDescriptions[(int)ach];
 
         AchievementPanel.SetActive(true);
-        AchievementSound.Play();
+
+        if (AchievementSound != null)
+        {
+            AchievementSound.Play();
+        }
 
         // A state equal to true indicates the achievement has already been done.
         AchStates[(int)ach] = true;

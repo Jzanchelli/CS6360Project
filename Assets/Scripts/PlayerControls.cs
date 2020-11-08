@@ -10,6 +10,8 @@ public class PlayerControls : MonoBehaviour
     public float speed = 1;
     private CharacterController characterController;
 
+    public static bool enableAchievements = true;
+
     // Start is called before the first frame update
     void Start()
     {
