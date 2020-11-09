@@ -8,13 +8,16 @@ public class Menu : MonoBehaviour
 {
     private Interactable interactable;
     public SteamVR_Action_Boolean GrabPinch;
-    public GameObject levelSelect;
+    public GameObject menuCenter;
+
+    public GameObject levelSelectPrefab;
+
+    //private const string levelSelectPath= @"Menu Elements\Level Selection Menu";    
     
     // Start is called before the first frame update
     void Start()
     {
         interactable = GetComponent<Interactable>();
-        
     }
 
     // Update is called once per frame
@@ -30,8 +33,12 @@ public class Menu : MonoBehaviour
                 {
                     UnityEngine.Debug.Log("Level Select Selected");
                     hand.DetachObject(this.gameObject);
-                    levelSelect.SetActive(true);
-                    this.transform.parent.gameObject.SetActive(false);
+                    
+                   // levelSelect.SetActive(true);
+                    Destroy(menuCenter);
+                    //Resources.Load(levelSelectPath);
+                    Instantiate(levelSelectPrefab, new Vector3(0,1,1), Quaternion.Euler(0,180,0));
+                    //this.transform.parent.gameObject.SetActive(false);
                 }
                 //This works!
                 else if (this.name == "Quit")

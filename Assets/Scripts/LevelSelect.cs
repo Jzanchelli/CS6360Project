@@ -8,11 +8,14 @@ public class LevelSelect : MonoBehaviour
 {
     private Interactable interactable;
     public SteamVR_Action_Boolean GrabPinch;
-    public GameObject mainMenu;
     private SteamVR_LoadLevel instance;
     private string Level1 = "SampleScene";
     private string Level2 = "SampleScene";
     private string Level3 = "SampleScene";
+
+    public GameObject levelSelectCenter;
+
+    public GameObject mainMenuPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +36,9 @@ public class LevelSelect : MonoBehaviour
                 {
                     UnityEngine.Debug.Log("Main Menu Selected");
                     hand.DetachObject(this.gameObject);
-                    this.transform.parent.gameObject.SetActive(false);
-                    mainMenu.SetActive(true);                    
+                    //Resources.UnloadAsset(this.transform.parent.gameObject);
+                    Destroy(levelSelectCenter);
+                    Instantiate(mainMenuPrefab, new Vector3(0,1,1), Quaternion.Euler(0,180,0));                  
                 }
                 //This works!
                 else if (this.name == "Level 1")
