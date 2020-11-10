@@ -1,84 +1,73 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Valve.VR;
-using Valve.VR.InteractionSystem;
-using Valve.VR.Extras;
 
 public class PauseMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //public SteamVR_Input_Sources m_Source = SteamVR_Input_Sources.LeftHand;
+    public SteamVR_Action_Boolean m_LaunchMenu;
+    public GameObject pauseCenterPrefab;
 
-    // public GameObject resumeTrigger;
-    // public GameObject optionsTrigger;
-    // public GameObject quitTrigger;
-    // public GameObject menuTrigger;
-    private int menuSceneIndex;
-
-    public GameObject rightHand;
-    public GameObject leftHand;
-
-    private bool loaded;
-    
-    //public static SteamVR_LaserPointer rightPointer;
-    void Start()
-    {
-        loaded = false;
-        //UnloadMenu();
-        menuSceneIndex = 0;
-        //rightHand = this.gameObject.transform.Find("RightHand").gameObject;
-    }    
-    
+    public GameObject pointerPrefab;
+    private bool menuUp;    
+    private bool menuActive;
+    private Transform playerCam;
     // Update is called once per frame
+
+    private void Awake()
+    {
+        menuActive = false;
+    }
     void Update()
     {
-                    //This works, for some reason using the same button registers it for 2 frames
-            bool menuState = SteamVR_Input.GetState("LaunchMenu",SteamVR_Input_Sources.LeftHand);
-            //UnityEngine.Debug.Log(loaded);
-            if(menuState)
-            {
-                //UnityEngine.Debug.Log("menustate = true");
-                if(!loaded)
-                {
-                    rightHand.GetComponent<SteamVR_LaserPointer>().enabled = true;
-                    leftHand.GetComponent<SteamVR_LaserPointer>().enabled = true;
-                    LoadMenu();
-                    Time.timeScale = 0;
-                }
-            }
-            else
-            {
-                //UnityEngine.Debug.Log("A Pressed");
-                if(loaded)
-                {
-                    rightHand.GetComponent<SteamVR_LaserPointer>().enabled = false;
-                    leftHand.GetComponent<SteamVR_LaserPointer>().enabled = false;
-                    rightHand.GetComponent<SteamVR_LaserPointer>().pointer.transform.localScale = new Vector3(0,0,0);
-                    leftHand.GetComponent<SteamVR_LaserPointer>().pointer.transform.localScale = new Vector3(0,0,0);
-                    UnloadMenu();
-                    Time.timeScale = 1;
-                }
-            }        
-        
+        menuUp = SteamVR_Input.GetBooleanAction("LaunchMenu").state;
+
+        if(menuUp)
+        {            
+            UnityEngine.Debug.Assert(menuUp, "menu should be up" + name);
+            LoadMenu();
+        }
+        else
+        {
+            //UnityEngine.Debug.Assert(menuUp, "menu should be down" + name);
+            UnloadMenu();
+        }
     }
 
     public void LoadMenu()
     {
-        //UnityEngine.Debug.Log("Trying to load menu");        
-        SceneManager.LoadSceneAsync(menuSceneIndex, LoadSceneMode.Additive);
-        loaded = true;
+        if(!menuActive)
+        {
+            Time.timeScale = 0;
+            // pauseCenter.SetActive(true);
+            // pointer.SetActive(true);
+            playerCam = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(3).transform;
+
+            Vector3 playerPos = playerCam.position;
+            Vector3 playerDirection = playerCam.transform.forward;
+            Quaternion playerRotation = playerCam.transform.rotation;
+            float spawnDistance = 1f;
+            Vector3 pausePos = playerPos+ playerDirection*spawnDistance;
+
+
+            Instantiate(pauseCenterPrefab, pausePos, Quaternion.Euler(0,180,0));
+            pauseCenterPrefab.transform.LookAt(playerCam, Vector3.up);
+
+
+            menuActive = true;
+        }
     }
 
     public void UnloadMenu()
     {
-        //UnityEngine.Debug.Log("Trying to unload menu");
-        SceneManager.UnloadSceneAsync(menuSceneIndex);
-        Resources.UnloadAsset(this);
-        loaded = false;
-        //Resources.UnloadAsset(optionsTrigger);
-        //Resources.UnloadAsset(quitTrigger);
-        //Resources.UnloadAsset(menuTrigger);
-
+        if(menuActive)
+        {
+            Time.timeScale = 1f;
+            // pauseCenter.SetActive(false);
+            // pointer.SetActive(false);
+            Destroy(pauseCenterPrefab);
+            menuActive = false;
+        }
     }
 }

@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 6143047004025884025}
   - component: {fileID: 6112931552340598055}
   - component: {fileID: 6112931552216216971}
-  - component: {fileID: 7683284832707894712}
-  - component: {fileID: 6375505765697145758}
   m_Layer: 26
   m_Name: LeftHand
   m_TagString: Untagged
@@ -143,42 +141,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967039
   hand: {fileID: 0}
---- !u!114 &7683284832707894712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6143047004031355351}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f511c1adaa1e94ebe7ca97bbcabd17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: {fileID: 0}
-  interactWithUI:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  active: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
-  thickness: 0.002
-  clickColor: {r: 0, g: 1, b: 0, a: 1}
-  holder: {fileID: 0}
-  pointer: {fileID: 0}
-  addRigidBody: 0
-  reference: {fileID: 0}
---- !u!114 &6375505765697145758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6143047004031355351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa39ddcba6b67e24f94d56fda131cfc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6143047004031364055
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,8 +332,6 @@ GameObject:
   - component: {fileID: 6143047004025966055}
   - component: {fileID: 6112931551925518501}
   - component: {fileID: 6112931518867735981}
-  - component: {fileID: 2405652264599276690}
-  - component: {fileID: 1259044320257479179}
   m_Layer: 26
   m_Name: RightHand
   m_TagString: Untagged
@@ -501,42 +461,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967039
   hand: {fileID: 0}
---- !u!114 &2405652264599276690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6143047004031371749}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f511c1adaa1e94ebe7ca97bbcabd17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: {fileID: 0}
-  interactWithUI:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  active: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
-  thickness: 0.002
-  clickColor: {r: 0, g: 1, b: 0, a: 1}
-  holder: {fileID: 0}
-  pointer: {fileID: 0}
-  addRigidBody: 0
-  reference: {fileID: 0}
---- !u!114 &1259044320257479179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6143047004031371749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa39ddcba6b67e24f94d56fda131cfc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6143047004031389439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,9 +1123,10 @@ GameObject:
   - component: {fileID: 6143047004025900655}
   - component: {fileID: 6143047003103981935}
   - component: {fileID: 6143047003103981932}
+  - component: {fileID: 6395325004138112497}
   m_Layer: 0
   m_Name: PlayerWithHolsters
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1289,6 +1214,25 @@ MonoBehaviour:
     actionPath: /actions/default/in/TouchPad
     needsReinit: 0
   speed: 2.5
+--- !u!114 &6395325004138112497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6143047004031459099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedd7c9014d231543bfdd2bd450bd8df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LaunchMenu:
+    actionPath: 
+    needsReinit: 0
+  pauseCenterPrefab: {fileID: 4342046078678259380, guid: 400f3ff5c95b0f149bed5c410a5bce82,
+    type: 3}
+  pointerPrefab: {fileID: 4026411628280866991, guid: 496f54f38e2a34547b370f100c867221,
+    type: 3}
 --- !u!1 &6143047004031459785
 GameObject:
   m_ObjectHideFlags: 0
