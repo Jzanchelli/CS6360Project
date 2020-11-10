@@ -10,6 +10,9 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseCenterPrefab;
 
     public GameObject pointerPrefab;
+
+    private GameObject pauseCenterInstance;
+    private GameObject pointerInstance;
     private bool menuUp;    
     private bool menuActive;
     private Transform playerCam;
@@ -51,7 +54,7 @@ public class PauseMenu : MonoBehaviour
             Vector3 pausePos = playerPos+ playerDirection*spawnDistance;
 
 
-            Instantiate(pauseCenterPrefab, pausePos, Quaternion.Euler(0,180,0));
+            pauseCenterInstance = Instantiate(pauseCenterPrefab, pausePos, Quaternion.Euler(0,180,0));
             pauseCenterPrefab.transform.LookAt(playerCam, Vector3.up);
 
 
@@ -66,7 +69,7 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 1f;
             // pauseCenter.SetActive(false);
             // pointer.SetActive(false);
-            Destroy(pauseCenterPrefab);
+            Destroy(pauseCenterInstance);
             menuActive = false;
         }
     }
