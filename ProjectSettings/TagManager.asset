@@ -6,13 +6,7 @@ TagManager:
   tags:
   - target
   - holster
-<<<<<<< HEAD
   - Global Settings
-=======
-  - reins
-  - item
-  - horse
->>>>>>> Level_2
   layers:
   - Default
   - TransparentFX
