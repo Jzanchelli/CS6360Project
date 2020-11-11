@@ -6,6 +6,7 @@ TagManager:
   tags:
   - target
   - holster
+  - Global Settings
   layers:
   - Default
   - TransparentFX

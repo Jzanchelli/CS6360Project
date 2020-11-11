@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scripts/ButtonTransitioner.cs.meta
-guid: 27a4aa512b8eb044da129f7de7e49e5f
-=======
-guid: 5f6fb54580bffe74abeee0686c575e16
->>>>>>> master:Assets/Scripts/LevelSelect.cs.meta
+guid: 55631febc952c1644b3f36626bc70084
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

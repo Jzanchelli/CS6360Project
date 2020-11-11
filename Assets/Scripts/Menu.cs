@@ -31,7 +31,7 @@ public class Menu : MonoBehaviour
             {
                 if (this.name == "LevelSelect")
                 {
-                    UnityEngine.Debug.Log("Level Select Selected");
+                    //UnityEngine.Debug.Log("Level Select Selected");
                     hand.DetachObject(this.gameObject);
                     
                    // levelSelect.SetActive(true);
@@ -43,7 +43,7 @@ public class Menu : MonoBehaviour
                 //This works!
                 else if (this.name == "Quit")
                 {
-                    UnityEngine.Debug.Log("Quit Selected");
+                    //UnityEngine.Debug.Log("Quit Selected");
                     #if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
                     #else
@@ -52,8 +52,11 @@ public class Menu : MonoBehaviour
                 }
                 else if (this.name == "Options")
                 {
-                    UnityEngine.Debug.Log("Options Selected");
+                    //UnityEngine.Debug.Log("Options Selected");
                     hand.DetachObject(this.gameObject);
+                    GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().fromPause = false;
+                    GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().LoadMenu();                    
+                    //Time.timeScale = 0;
                 }
             }
         }
