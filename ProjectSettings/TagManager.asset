@@ -8,6 +8,7 @@ TagManager:
   - holster
   - reins
   - item
+  - horse
   layers:
   - Default
   - TransparentFX

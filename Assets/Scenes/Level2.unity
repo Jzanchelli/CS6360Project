@@ -27820,6 +27820,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3647574946046043966, guid: f4fac91a3b8834b44ac5e4203535fd03,
+        type: 3}
+      propertyPath: m_TagString
+      value: horse
+      objectReference: {fileID: 0}
     - target: {fileID: 3934850654604189992, guid: f4fac91a3b8834b44ac5e4203535fd03,
         type: 3}
       propertyPath: m_LocalRotation.x
