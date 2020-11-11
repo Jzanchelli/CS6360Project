@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using Valve.VR;
 
 public class PauseMenu : MonoBehaviour
@@ -21,6 +23,7 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
         menuActive = false;
+        playerCam = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(3).transform;
     }
     void Update()
     {
@@ -42,22 +45,31 @@ public class PauseMenu : MonoBehaviour
     {
         if(!menuActive)
         {
-            Time.timeScale = 0;
+            
             // pauseCenter.SetActive(true);
             // pointer.SetActive(true);
-            playerCam = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(3).transform;
+            Transform rightHand = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(2).transform;
 
             Vector3 playerPos = playerCam.position;
             Vector3 playerDirection = playerCam.transform.forward;
             Quaternion playerRotation = playerCam.transform.rotation;
-            float spawnDistance = 1f;
+            float spawnDistance = 10f;
             Vector3 pausePos = playerPos+ playerDirection*spawnDistance;
+            //Quaternion pauseRotation = Quaternion.(playerDirection, Vector3.up);
 
+            pauseCenterInstance = Instantiate(pauseCenterPrefab, Vector3.zero, Quaternion.identity);
+            pauseCenterInstance.transform.position = playerCam.position;
+            pauseCenterInstance.transform.LookAt(playerCam, Vector3.up);    
+            pauseCenterInstance.transform.Translate(Vector3.back * spawnDistance);        
 
-            pauseCenterInstance = Instantiate(pauseCenterPrefab, pausePos, Quaternion.Euler(0,180,0));
-            pauseCenterPrefab.transform.LookAt(playerCam, Vector3.up);
-
-
+            pointerInstance = Instantiate(pointerPrefab, rightHand.transform.position, rightHand.transform.rotation);
+            pointerInstance.transform.parent = rightHand;
+            pointerInstance.GetComponent<Pointer>().inputModule = GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>();
+            
+            GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().pointer = pointerInstance.GetComponent<Pointer>();
+            pauseCenterInstance.GetComponentInChildren<Canvas>().worldCamera = pointerInstance.GetComponent<Camera>();
+            //pauseCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
+            Time.timeScale = 0;
             menuActive = true;
         }
     }
@@ -70,6 +82,7 @@ public class PauseMenu : MonoBehaviour
             // pauseCenter.SetActive(false);
             // pointer.SetActive(false);
             Destroy(pauseCenterInstance);
+            Destroy(pointerInstance);
             menuActive = false;
         }
     }

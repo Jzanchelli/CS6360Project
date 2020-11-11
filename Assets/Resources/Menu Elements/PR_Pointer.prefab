@@ -196,7 +196,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultLength: 5
-  dot: {fileID: 7387732686543853183}
+  dot: {fileID: 0}
+  lineRenderer: {fileID: 0}
+  inputModule: {fileID: 0}
 --- !u!1 &7387732686543853183
 GameObject:
   m_ObjectHideFlags: 0

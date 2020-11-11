@@ -2,54 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using Valve.VR;
-using Valve.VR.InteractionSystem;
 
-public class PauseMenuItem : MonoBehaviour
+public class PauseMenuItem : MonoBehaviour, IPointerClickHandler
 {
-    private Interactable interactable;
-    public SteamVR_Action_Boolean GrabPinch;
+    [SerializeField] private GameObject resumeButton;
+    [SerializeField] private GameObject quitButton;
+    [SerializeField] private GameObject optionsButton;
+    [SerializeField] private GameObject restartButton;
 
-    public PauseMenu other;
-    // Start is called before the first frame update
+    private string currentSceneName;
+    private SteamVR_LoadLevel instance;
+
     void Start()
     {
-        interactable = GetComponent<Interactable>();
+        //currentSceneName = SceneManager.GetActiveScene().name;
+        instance = this.GetComponent<SteamVR_LoadLevel>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerClick(PointerEventData data)
     {
-        if (interactable.attachedToHand != null)
+        if(data.pointerPress.Equals(resumeButton))
         {
-            SteamVR_Input_Sources source = interactable.attachedToHand.handType;
-            if (GrabPinch[source].stateDown)
-            {
-                if (this.name == "Menu")
-                {
-                    UnityEngine.Debug.Log("Level Select Selected");
-                }
-                //This works!
-                else if (this.name == "Quit")
-                {
-                    UnityEngine.Debug.Log("Quit Selected");
-                    #if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;
-                    #else
-                    Application.Quit();
-                    #endif
-                }
-                else if (this.name == "Options")
-                {
-                    UnityEngine.Debug.Log("Options Selected");
-                }
-                else if (this.name == "Resume")
-                {
-                    UnityEngine.Debug.Log("Resume Selected");
-                    other.UnloadMenu();
-                    Time.timeScale = 1;
-                }
-            }
+            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PauseMenu>().UnloadMenu();
+        }
+        else if(data.pointerPress.Equals(quitButton))
+        {
+            //UnityEngine.Debug.Log("Quit Selected");
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
+        }
+        else if(data.pointerPress.Equals(optionsButton))
+        {
+            //TODO: Options
+        }
+        else if(data.pointerPress.Equals(restartButton))
+        {
+            currentSceneName = SceneManager.GetActiveScene().name;
+            instance.levelName = currentSceneName;
+            instance.Trigger();
         }
     }
 }

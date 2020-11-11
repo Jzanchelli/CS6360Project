@@ -10,21 +10,21 @@ public class Pointer : MonoBehaviour
 
     public Camera Camera { get; private set; } = null;
 
-    private LineRenderer lineRenderer = null;
-    private VRInputModule inputModule = null;
+    [SerializeField] private LineRenderer lineRenderer = null;
+    public VRInputModule inputModule = null;
 
     private void Awake()
     {
         Camera = GetComponent<Camera>();
         Camera.enabled = false;
-
+        dot = this.transform.GetChild(0).gameObject;
         lineRenderer = GetComponent<LineRenderer>();
     }
 
     private void Start()
     {
         // current.currentInputModule does not work
-        inputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
+        //inputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
     }
 
     private void Update()
@@ -35,6 +35,7 @@ public class Pointer : MonoBehaviour
     private void UpdateLine()
     {
         // Use default or distance
+
         
         PointerEventData data = inputModule.Data;
         RaycastHit hit = CreateRaycast();
