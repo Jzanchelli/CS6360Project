@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController2 : MonoBehaviour
 {
     int currentScore;
     // Start is called before the first frame update

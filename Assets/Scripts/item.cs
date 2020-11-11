@@ -5,7 +5,7 @@ using UnityEngine;
 public class item : MonoBehaviour
 {
     GameObject GC = null;
-    GameController GCScript = null;
+    GameController2 GCScript = null;
 
     [SerializeField]
     int value;
@@ -15,7 +15,7 @@ public class item : MonoBehaviour
         try
         {
             GC = GameObject.Find("GameController");
-            GCScript = GC.GetComponent<GameController>();
+            GCScript = GC.GetComponent<GameController2>();
         }
         catch
         {
