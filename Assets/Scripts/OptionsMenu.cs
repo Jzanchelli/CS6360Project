@@ -26,7 +26,11 @@ public class OptionsMenu : MonoBehaviour
     {
         //menuActive = false;
         playerCam = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(3).transform;
-        bottomless = false;
+        GameObject globalBottomless = GameObject.FindGameObjectWithTag("Global Settings");
+        if(globalBottomless != null)
+            bottomless = globalBottomless.GetComponent<OptionValues>().bottomlessClip;
+        else
+            bottomless = false;
     }
     void Update()
     {
@@ -72,7 +76,7 @@ public class OptionsMenu : MonoBehaviour
         GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().initializePointer();
         optionsCenterInstance.GetComponent<OptionsMenuItem>().fromPause = fromPause;
         optionsCenterInstance.GetComponentInChildren<Slider>().value = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
-        
+
         //optionsCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
         Time.timeScale = 0;
     }

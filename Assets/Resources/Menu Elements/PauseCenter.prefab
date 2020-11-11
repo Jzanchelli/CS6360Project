@@ -656,6 +656,8 @@ MonoBehaviour:
     type: 3}
   pointerPrefab: {fileID: 4026411628280866991, guid: 496f54f38e2a34547b370f100c867221,
     type: 3}
+  OptionsValuesPrefab: {fileID: 870906842297421030, guid: 27d6f11089e46d6468a87a9b20b01d42,
+    type: 3}
 --- !u!114 &6658854982878356434
 MonoBehaviour:
   m_ObjectHideFlags: 0

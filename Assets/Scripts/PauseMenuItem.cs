@@ -23,6 +23,8 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
     public GameObject pointerPrefab;
     private GameObject pointerInstance;
 
+    public GameObject OptionsValuesPrefab;
+
     private SteamVR_LoadLevel instance;
 
     private void Awake()
@@ -50,6 +52,10 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
         Time.timeScale = 1f;
         UnityEngine.Debug.Log("Quit called");
         instance.levelName = menuSceneName;
+        GameObject optionValuesInstance = Instantiate(OptionsValuesPrefab, Vector3.zero, Quaternion.identity);
+        optionValuesInstance.GetComponent<OptionValues>().bottomlessClip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
+        optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        DontDestroyOnLoad(optionValuesInstance);
         //instance.loadAsync = false;
         instance.Trigger();
         //SceneManager.LoadSceneAsync(menuSceneName);
