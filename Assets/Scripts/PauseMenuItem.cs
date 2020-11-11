@@ -32,28 +32,35 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
 
     public void QuitToMenu()
     {
+        //Resume();
+        Time.timeScale = 1f;
         UnityEngine.Debug.Log("Quit called");
         instance.levelName = menuSceneName;
         //instance.loadAsync = false;
         instance.Trigger();
+        //SceneManager.LoadSceneAsync(menuSceneName);
     }
 
     public void LaunchOptions()
     {
         //TODO: Options
+        Resume();
     }
 
     public void Restart()
     {
+        //Resume();
+        Time.timeScale = 1f;
         currentSceneName = SceneManager.GetActiveScene().name;
-        char[] alt = {'A','l','t'};
-        string sceneToLoad;
-        //UnityEngine.Debug.Log("Current Scene: " + currentSceneName);
-        if(currentSceneName.Contains("Alt"))
-            sceneToLoad = currentSceneName.TrimEnd();
-        else
-            sceneToLoad = currentSceneName + "Alt";
-        instance.levelName = sceneToLoad;
+        // char[] alt = {'A','l','t'};
+        // string sceneToLoad;
+        // //UnityEngine.Debug.Log("Current Scene: " + currentSceneName);
+        // if(currentSceneName.Contains("Alt"))
+        //     sceneToLoad = currentSceneName.TrimEnd();
+        // else
+        //     sceneToLoad = currentSceneName + "Alt";
+        // instance.levelName = sceneToLoad;
+        instance.levelName = currentSceneName;
         //SceneManager.LoadScene(currentSceneName);
         //instance.loadAsync = false;
         instance.Trigger();
