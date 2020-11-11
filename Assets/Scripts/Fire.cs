@@ -83,7 +83,7 @@ public class Fire : MonoBehaviour
                 UnityEngine.Debug.Log("destroying! ");
 
                 // Check for achievements
-                if (PlayerControls.enableAchievements)
+                if (achievements != null && PlayerControls.enableAchievements)
                 {
                     if (!achievements.GetState(Achievement.hit_bottle_from_50))
                     {
