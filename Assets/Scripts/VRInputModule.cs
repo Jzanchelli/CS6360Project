@@ -36,6 +36,8 @@ public class VRInputModule : BaseInputModule
 
             HandlePointerExitAndEnter(Data, Data.pointerCurrentRaycast.gameObject);
 
+            ExecuteEvents.Execute(Data.pointerDrag, Data, ExecuteEvents.dragHandler);
+
             // Press
             if (m_Click.GetStateDown(m_Source))
                 Press();
@@ -47,25 +49,29 @@ public class VRInputModule : BaseInputModule
 
     public void Press()
     {
-        //UnityEngine.Debug.Log("Down Press");
+        UnityEngine.Debug.Log("Down Press");
         Data.pointerPressRaycast = Data.pointerCurrentRaycast;
 
         Data.pointerPress = ExecuteEvents.GetEventHandler<IPointerClickHandler>(Data.pointerPressRaycast.gameObject);
-
+        Data.pointerDrag = ExecuteEvents.GetEventHandler<IDragHandler>(Data.pointerPressRaycast.gameObject);
+        
         ExecuteEvents.Execute(Data.pointerPress, Data, ExecuteEvents.pointerDownHandler);
+        ExecuteEvents.Execute(Data.pointerDrag, Data, ExecuteEvents.beginDragHandler);
     }
 
     public void Release()
     {
-        //UnityEngine.Debug.Log("Release");
+        UnityEngine.Debug.Log("Release");
         GameObject pointerRelease = ExecuteEvents.GetEventHandler<IPointerClickHandler>(Data.pointerCurrentRaycast.gameObject);
 
         if (Data.pointerPress == pointerRelease)
             ExecuteEvents.Execute(Data.pointerPress, Data, ExecuteEvents.pointerClickHandler);
 
         ExecuteEvents.Execute(Data.pointerPress, Data, ExecuteEvents.pointerUpHandler);
+        ExecuteEvents.Execute(Data.pointerDrag, Data, ExecuteEvents.endDragHandler);
 
         Data.pointerPress = null;
+        Data.pointerDrag = null;
 
         Data.pointerCurrentRaycast.Clear();
     }
