@@ -53,6 +53,10 @@ public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
             GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PauseMenu>().LoadMenu();
             GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().UnloadMenu();
         }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().UnloadMenu();
+        }
     }
 
     public void setPlayerSpeed()
