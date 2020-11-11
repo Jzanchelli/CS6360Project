@@ -34,10 +34,4 @@ public class PauseMenuPosition : MonoBehaviour
         //quitObject.position = quitPos;
         //menuObject.position = new Vector3(playerCam.position.x-3, playerCam.position.y+3, playerCam.position.z);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //PauseParent.position = pausePos;
-    }
 }

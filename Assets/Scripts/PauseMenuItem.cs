@@ -15,7 +15,23 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
     private string currentSceneName;
     private const string menuSceneName = "MainMenu";
 
+    private Transform playerCam;
+
+    private GameObject optionsCenterInstance;
+
+    [SerializeField]private GameObject optionsCenterPrefab;
+    public GameObject pointerPrefab;
+    private GameObject pointerInstance;
+
+    public GameObject OptionsValuesPrefab;
+
     private SteamVR_LoadLevel instance;
+
+    private void Awake()
+    {
+        //menuActive = false;
+        playerCam = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(3).transform;
+    }
 
     void Start()
     {
@@ -36,6 +52,10 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
         Time.timeScale = 1f;
         UnityEngine.Debug.Log("Quit called");
         instance.levelName = menuSceneName;
+        GameObject optionValuesInstance = Instantiate(OptionsValuesPrefab, Vector3.zero, Quaternion.identity);
+        optionValuesInstance.GetComponent<OptionValues>().bottomlessClip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
+        optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        DontDestroyOnLoad(optionValuesInstance);
         //instance.loadAsync = false;
         instance.Trigger();
         //SceneManager.LoadSceneAsync(menuSceneName);
@@ -43,8 +63,11 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
 
     public void LaunchOptions()
     {
-        //TODO: Options
         Resume();
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().fromPause = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().LoadMenu();
+        //pauseCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
+        Time.timeScale = 0;
     }
 
     public void Restart()

@@ -474,6 +474,8 @@ MonoBehaviour:
   levelSelectCenter: {fileID: 1221113042193531529}
   mainMenuPrefab: {fileID: 1257169944074607753, guid: 4c28b231983f8154297b8c05bc1d09a0,
     type: 3}
+  OptionsValuesPrefab: {fileID: 870906842297421030, guid: 27d6f11089e46d6468a87a9b20b01d42,
+    type: 3}
 --- !u!1 &1221113042461317815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,6 +1222,8 @@ MonoBehaviour:
   levelSelectCenter: {fileID: 1221113042193531529}
   mainMenuPrefab: {fileID: 1257169944074607753, guid: 4c28b231983f8154297b8c05bc1d09a0,
     type: 3}
+  OptionsValuesPrefab: {fileID: 870906842297421030, guid: 27d6f11089e46d6468a87a9b20b01d42,
+    type: 3}
 --- !u!1 &1221113043427012706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,6 +1639,8 @@ MonoBehaviour:
   levelSelectCenter: {fileID: 1221113042193531529}
   mainMenuPrefab: {fileID: 1257169944074607753, guid: 4c28b231983f8154297b8c05bc1d09a0,
     type: 3}
+  OptionsValuesPrefab: {fileID: 870906842297421030, guid: 27d6f11089e46d6468a87a9b20b01d42,
+    type: 3}
 --- !u!1 &1221113043856071279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,6 +1922,8 @@ MonoBehaviour:
     needsReinit: 0
   levelSelectCenter: {fileID: 1221113042193531529}
   mainMenuPrefab: {fileID: 1257169944074607753, guid: 4c28b231983f8154297b8c05bc1d09a0,
+    type: 3}
+  OptionsValuesPrefab: {fileID: 870906842297421030, guid: 27d6f11089e46d6468a87a9b20b01d42,
     type: 3}
 --- !u!1 &1221113043942610593
 GameObject:

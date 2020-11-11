@@ -27,6 +27,8 @@ public class Fire : MonoBehaviour
     private int remainingShots;
     private Interactable interactable;
 
+    public bool bottomlessClip = false;
+
     //private GameObject newBulletHit;
     // public LineRenderer ray;
 
@@ -41,6 +43,7 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bottomlessClip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
         if(interactable != null)
         if (interactable.attachedToHand != null)
         {
@@ -49,7 +52,10 @@ public class Fire : MonoBehaviour
             {
                 if (remainingShots > 0)
                 {
-                    this.remainingShots--;
+                    if (!bottomlessClip)
+                    {
+                        this.remainingShots--;
+                    }
                     this.audioSource.clip = shotAudio;
                     audioSource.Play();
                     RaycastGun();

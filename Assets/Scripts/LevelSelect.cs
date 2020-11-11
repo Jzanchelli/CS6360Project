@@ -16,6 +16,7 @@ public class LevelSelect : MonoBehaviour
     public GameObject levelSelectCenter;
 
     public GameObject mainMenuPrefab;
+    public GameObject OptionsValuesPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,13 @@ public class LevelSelect : MonoBehaviour
     }
 
     // Update is called once per frame
+    void saveOptions()
+    {
+        GameObject optionValuesInstance = Instantiate(OptionsValuesPrefab, Vector3.zero, Quaternion.identity);
+        optionValuesInstance.GetComponent<OptionValues>().bottomlessClip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
+        optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        DontDestroyOnLoad(optionValuesInstance);
+    }
     void Update()
     {
         if (interactable.attachedToHand != null)
@@ -45,18 +53,21 @@ public class LevelSelect : MonoBehaviour
                 {
                     UnityEngine.Debug.Log("Level 1 Selected");  
                     instance.levelName = Level1; 
+                    saveOptions();
                     instance.Trigger();     
                 }
                 else if (this.name == "Level 2")
                 {
                     UnityEngine.Debug.Log("Level 2 Selected");  
-                    instance.levelName = Level2;      
+                    instance.levelName = Level2;  
+                    saveOptions();
                     instance.Trigger();          
                 }
                 else if (this.name == "Level 3")
                 {
                     UnityEngine.Debug.Log("Level 3 Selected");  
-                    instance.levelName = Level3;   
+                    instance.levelName = Level3;  
+                    saveOptions();
                     instance.Trigger();               
                 }
             }
