@@ -5,7 +5,11 @@
       "app_key": "application.generated.unity.frontierdeputy.exe",
       "launch_type": "url",
       "url": "steam://launch/",
+<<<<<<< HEAD
       "action_manifest_path": "C:\\dev\\Class Projects\\5360\\CS6360Project\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+=======
+      "action_manifest_path": "C:\\Users\\Lucas\\Documents\\GitHub\\CS6360Project\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+>>>>>>> Level_2
       "strings": {
         "en_us": {
           "name": "Frontier Deputy [Testing]"
