@@ -15,7 +15,21 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
     private string currentSceneName;
     private const string menuSceneName = "MainMenu";
 
+    private Transform playerCam;
+
+    private GameObject optionsCenterInstance;
+
+    [SerializeField]private GameObject optionsCenterPrefab;
+    public GameObject pointerPrefab;
+    private GameObject pointerInstance;
+
     private SteamVR_LoadLevel instance;
+
+    private void Awake()
+    {
+        //menuActive = false;
+        playerCam = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(3).transform;
+    }
 
     void Start()
     {
@@ -43,8 +57,11 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
 
     public void LaunchOptions()
     {
-        //TODO: Options
         Resume();
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().fromPause = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().LoadMenu();
+        //pauseCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
+        Time.timeScale = 0;
     }
 
     public void Restart()

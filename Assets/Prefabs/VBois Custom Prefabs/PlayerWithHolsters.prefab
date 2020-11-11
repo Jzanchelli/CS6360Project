@@ -1010,6 +1010,7 @@ GameObject:
   - component: {fileID: 465486640855336128}
   - component: {fileID: 465486640855336131}
   - component: {fileID: 861598359541403742}
+  - component: {fileID: 1864251036362032451}
   m_Layer: 0
   m_Name: PlayerWithHolsters
   m_TagString: Player
@@ -1116,6 +1117,22 @@ MonoBehaviour:
     actionPath: /actions/default/in/LaunchMenu
     needsReinit: 0
   pauseCenterPrefab: {fileID: 4342046078678259380, guid: 400f3ff5c95b0f149bed5c410a5bce82,
+    type: 3}
+  pointerPrefab: {fileID: 4026411628280866991, guid: 496f54f38e2a34547b370f100c867221,
+    type: 3}
+--- !u!114 &1864251036362032451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465486642007222964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209729fea52bcce4bb8352d2e67d33f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionsCenterPrefab: {fileID: 4342046078678259380, guid: 80d58da5048e7aa43b4a25ee6e387956,
     type: 3}
   pointerPrefab: {fileID: 4026411628280866991, guid: 496f54f38e2a34547b370f100c867221,
     type: 3}
