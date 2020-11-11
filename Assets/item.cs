@@ -4,18 +4,39 @@ using UnityEngine;
 
 public class item : MonoBehaviour
 {
+    GameObject GC = null;
+    GameController GCScript = null;
+
+    [SerializeField]
+    int value;
     // Start is called before the first frame update
     void Start()
     {
-        
+        try
+        {
+            GC = GameObject.Find("GameController");
+            GCScript = GC.GetComponent<GameController>();
+        }
+        catch
+        {
+
+        }
     }
     [SerializeField]
     GameObject controller;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "PlayerOnHorse")
+        {
+            GCScript.ItemRanInto(value);
+            Destroy(gameObject);
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
         transform.Rotate(0, 50 * Time.deltaTime, 0);
-        controller.GetComponent<Controller>.
     }
 }
