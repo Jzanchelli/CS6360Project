@@ -9,9 +9,11 @@ public class LevelSelect : MonoBehaviour
     private Interactable interactable;
     public SteamVR_Action_Boolean GrabPinch;
     private SteamVR_LoadLevel instance;
-    private string Level1 = "SampleScene";
-    private string Level2 = "SampleScene";
+    private string Level1 = "Level_1";
+    private string Level2 = "Level2";
     private string Level3 = "SampleScene";
+
+    private string OpenWorld = "OpenWorld";
 
     public GameObject levelSelectCenter;
 
@@ -42,7 +44,7 @@ public class LevelSelect : MonoBehaviour
             {
                 if (this.name == "Back")
                 {
-                    UnityEngine.Debug.Log("Main Menu Selected");
+                   // UnityEngine.Debug.Log("Main Menu Selected");
                     hand.DetachObject(this.gameObject);
                     //Resources.UnloadAsset(this.transform.parent.gameObject);
                     Destroy(levelSelectCenter);
@@ -51,22 +53,29 @@ public class LevelSelect : MonoBehaviour
                 //This works!
                 else if (this.name == "Level 1")
                 {
-                    UnityEngine.Debug.Log("Level 1 Selected");  
+                    //UnityEngine.Debug.Log("Level 1 Selected");  
                     instance.levelName = Level1; 
                     saveOptions();
                     instance.Trigger();     
                 }
                 else if (this.name == "Level 2")
                 {
-                    UnityEngine.Debug.Log("Level 2 Selected");  
+                    //UnityEngine.Debug.Log("Level 2 Selected");  
                     instance.levelName = Level2;  
                     saveOptions();
                     instance.Trigger();          
                 }
                 else if (this.name == "Level 3")
                 {
-                    UnityEngine.Debug.Log("Level 3 Selected");  
+                    //UnityEngine.Debug.Log("Level 3 Selected");  
                     instance.levelName = Level3;  
+                    saveOptions();
+                    instance.Trigger();               
+                }
+                else if (this.name == "OpenWorld")
+                {
+                    //UnityEngine.Debug.Log("Level 3 Selected");  
+                    instance.levelName = OpenWorld;  
                     saveOptions();
                     instance.Trigger();               
                 }
