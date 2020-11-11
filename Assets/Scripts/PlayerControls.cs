@@ -13,9 +13,18 @@ public class PlayerControls : MonoBehaviour
     public static bool enableAchievements = true;
 
     // Start is called before the first frame update
-    void Start()
+    public void Awake()
     {
+        GameObject globalSpeed = GameObject.FindGameObjectWithTag("Global Settings");
+        if(globalSpeed != null)
+            speed = globalSpeed.GetComponent<OptionValues>().playerSpeed;
+    }
+    void Start()
+    {        
         characterController = GetComponent<CharacterController>();
+        GameObject globalOptions = GameObject.FindGameObjectWithTag("Global Settings");
+        if(globalOptions != null)
+            Destroy(globalOptions);
     }
 
     // Update is called once per frame

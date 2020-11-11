@@ -30,12 +30,27 @@ public class Fire : MonoBehaviour
     private int remainingShots;
     private Interactable interactable;
 
+    public bool bottomlessClip = false;
+
     //private GameObject newBulletHit;
     // public LineRenderer ray;
 
     // Start is called before the first frame update
+
+    GameObject GC = null;
+    GameController GCScript = null;
     void Start()
     {
+        //Just incase a scene does not have a game controller.
+        try
+        {
+            GC = GameObject.Find("GameController");
+            GCScript = GC.GetComponent<GameController>();
+        } catch
+        {
+            //nothing
+        }
+
         this.remainingShots = numberOfShots;
         interactable = GetComponent<Interactable>();
         //ray = gameObject.GetComponent<LineRenderer>();
@@ -44,6 +59,7 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bottomlessClip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
         if(interactable != null)
         if (interactable.attachedToHand != null)
         {
@@ -52,7 +68,10 @@ public class Fire : MonoBehaviour
             {
                 if (remainingShots > 0)
                 {
-                    this.remainingShots--;
+                    if (!bottomlessClip)
+                    {
+                        this.remainingShots--;
+                    }
                     this.audioSource.clip = shotAudio;
                     audioSource.Play();
                     RaycastGun();
@@ -112,9 +131,14 @@ public class Fire : MonoBehaviour
                     }
                 }
 
+                if (GCScript != null)
+                {
+                    UnityEngine.Debug.Log("We are in BULLET TARGET GCSCRIPT PART");
+                    GCScript.TargetShot();
+                }
                 Destroy(hit.collider.gameObject);
 
             }
         }
-    } 
+    }
 }
