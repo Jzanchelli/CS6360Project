@@ -481,8 +481,9 @@ MonoBehaviour:
   GrabPinch:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
-  menuCenter: {fileID: 0}
-  levelSelectPrefab: {fileID: 0}
+  menuCenter: {fileID: 1257169944074607753}
+  levelSelectPrefab: {fileID: 1221113042193531529, guid: f8083b2782a4dee4c99ba147cdcdbe60,
+    type: 3}
 --- !u!1 &1257169943098419393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,8 +1254,9 @@ MonoBehaviour:
   GrabPinch:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
-  menuCenter: {fileID: 0}
-  levelSelectPrefab: {fileID: 0}
+  menuCenter: {fileID: 1257169944074607753}
+  levelSelectPrefab: {fileID: 1221113042193531529, guid: f8083b2782a4dee4c99ba147cdcdbe60,
+    type: 3}
 --- !u!1 &1257169944813454111
 GameObject:
   m_ObjectHideFlags: 0

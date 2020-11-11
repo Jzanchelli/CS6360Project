@@ -34,7 +34,7 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
     {
         UnityEngine.Debug.Log("Quit called");
         instance.levelName = menuSceneName;
-        instance.loadAsync = false;
+        //instance.loadAsync = false;
         instance.Trigger();
     }
 
@@ -46,14 +46,16 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
     public void Restart()
     {
         currentSceneName = SceneManager.GetActiveScene().name;
-        UnityEngine.Debug.Log("Current Scene: " + currentSceneName);
-        instance.levelName = "EmptyScene";
+        char[] alt = {'A','l','t'};
+        string sceneToLoad;
+        //UnityEngine.Debug.Log("Current Scene: " + currentSceneName);
+        if(currentSceneName.Contains("Alt"))
+            sceneToLoad = currentSceneName.TrimEnd();
+        else
+            sceneToLoad = currentSceneName + "Alt";
+        instance.levelName = sceneToLoad;
         //SceneManager.LoadScene(currentSceneName);
-        instance.loadAsync = false;
-        instance.Trigger();
-        instance.levelName = currentSceneName;
-        //SceneManager.LoadScene(currentSceneName);
-        instance.loadAsync = false;
+        //instance.loadAsync = false;
         instance.Trigger();
 
     }
