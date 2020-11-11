@@ -169,15 +169,6 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/interactui"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "click" : {
                      "output" : "/actions/default/in/grabpinch"
                   }
                },
@@ -258,6 +249,24 @@
                },
                "mode" : "joystick",
                "path" : "/user/hand/left/input/joystick"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/launchmenu"
+                  }
+               },
+               "mode" : "toggle_button",
+               "path" : "/user/hand/left/input/x"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/interactui"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trigger"
             }
          ]
       },
@@ -293,7 +302,7 @@
    "category" : "steamvr_input",
    "controller_type" : "oculus_touch",
    "description" : "",
-   "name" : "Saved Frontier Deputy [Testing] configuration for Oculus Touch",
+   "name" : "My Frontier Deputy [Testing] configuration for Oculus Touch",
    "options" : {},
    "simulated_actions" : []
 }

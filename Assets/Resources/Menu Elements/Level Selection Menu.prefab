@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 1221113042407521399}
   - component: {fileID: 1221113042407521396}
   - component: {fileID: 1221113042407521397}
-  - component: {fileID: 1221113042407521675}
+  - component: {fileID: 9202257425666636513}
   m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
@@ -456,7 +456,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &1221113042407521675
+--- !u!114 &9202257425666636513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221113042407521395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6fb54580bffe74abeee0686c575e16, type: 3}
+  m_Script: {fileID: 11500000, guid: 27a4aa512b8eb044da129f7de7e49e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GrabPinch:
@@ -953,8 +953,8 @@ GameObject:
   - component: {fileID: 1221113043091888057}
   - component: {fileID: 1221113043091888038}
   - component: {fileID: 1221113043091888039}
-  - component: {fileID: 1221113043091888061}
   - component: {fileID: 1221113043091888060}
+  - component: {fileID: 2731650801976771649}
   m_Layer: 0
   m_Name: Level 3
   m_TagString: Untagged
@@ -1163,23 +1163,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &1221113043091888061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221113043091888037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6fb54580bffe74abeee0686c575e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GrabPinch:
-    actionPath: /actions/default/in/GrabPinch
-    needsReinit: 0
-  levelSelectCenter: {fileID: 0}
-  mainMenuPrefab: {fileID: 0}
 --- !u!114 &1221113043091888060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,6 +1202,24 @@ MonoBehaviour:
   loadingScreenFadeInTime: 1
   loadingScreenFadeOutTime: 0.25
   autoTriggerOnEnable: 0
+--- !u!114 &2731650801976771649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221113043091888037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a4aa512b8eb044da129f7de7e49e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrabPinch:
+    actionPath: /actions/default/in/GrabPinch
+    needsReinit: 0
+  levelSelectCenter: {fileID: 1221113042193531529}
+  mainMenuPrefab: {fileID: 1257169944074607753, guid: 4c28b231983f8154297b8c05bc1d09a0,
+    type: 3}
 --- !u!1 &1221113043427012706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,8 +1368,8 @@ GameObject:
   - component: {fileID: 1221113043714409535}
   - component: {fileID: 1221113043714409532}
   - component: {fileID: 1221113043714409533}
-  - component: {fileID: 1221113043714409523}
   - component: {fileID: 1221113043714409522}
+  - component: {fileID: 322116110959041077}
   m_Layer: 0
   m_Name: Level 1
   m_TagString: Untagged
@@ -1577,23 +1578,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &1221113043714409523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221113043714409531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6fb54580bffe74abeee0686c575e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GrabPinch:
-    actionPath: /actions/default/in/GrabPinch
-    needsReinit: 0
-  levelSelectCenter: {fileID: 0}
-  mainMenuPrefab: {fileID: 0}
 --- !u!114 &1221113043714409522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,6 +1617,24 @@ MonoBehaviour:
   loadingScreenFadeInTime: 1
   loadingScreenFadeOutTime: 0.25
   autoTriggerOnEnable: 0
+--- !u!114 &322116110959041077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221113043714409531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a4aa512b8eb044da129f7de7e49e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrabPinch:
+    actionPath: /actions/default/in/GrabPinch
+    needsReinit: 0
+  levelSelectCenter: {fileID: 1221113042193531529}
+  mainMenuPrefab: {fileID: 1257169944074607753, guid: 4c28b231983f8154297b8c05bc1d09a0,
+    type: 3}
 --- !u!1 &1221113043856071279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,8 +1650,8 @@ GameObject:
   - component: {fileID: 1221113043856071267}
   - component: {fileID: 1221113043856071264}
   - component: {fileID: 1221113043856071265}
-  - component: {fileID: 1221113043856071271}
   - component: {fileID: 1221113043856071270}
+  - component: {fileID: 6341704405957879013}
   m_Layer: 0
   m_Name: Level 2
   m_TagString: Untagged
@@ -1858,23 +1860,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &1221113043856071271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221113043856071279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6fb54580bffe74abeee0686c575e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GrabPinch:
-    actionPath: /actions/default/in/GrabPinch
-    needsReinit: 0
-  levelSelectCenter: {fileID: 0}
-  mainMenuPrefab: {fileID: 0}
 --- !u!114 &1221113043856071270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,6 +1899,24 @@ MonoBehaviour:
   loadingScreenFadeInTime: 1
   loadingScreenFadeOutTime: 0.25
   autoTriggerOnEnable: 0
+--- !u!114 &6341704405957879013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221113043856071279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a4aa512b8eb044da129f7de7e49e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrabPinch:
+    actionPath: /actions/default/in/GrabPinch
+    needsReinit: 0
+  levelSelectCenter: {fileID: 1221113042193531529}
+  mainMenuPrefab: {fileID: 1257169944074607753, guid: 4c28b231983f8154297b8c05bc1d09a0,
+    type: 3}
 --- !u!1 &1221113043942610593
 GameObject:
   m_ObjectHideFlags: 0
