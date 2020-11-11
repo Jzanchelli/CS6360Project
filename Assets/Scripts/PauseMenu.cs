@@ -16,6 +16,8 @@ public class PauseMenu : MonoBehaviour
     private GameObject pauseCenterInstance;
     private GameObject pointerInstance;
     private bool menuUp;    
+
+    private bool menuDown;
     private bool menuActive;
     private Transform playerCam;
     // Update is called once per frame
@@ -27,14 +29,15 @@ public class PauseMenu : MonoBehaviour
     }
     void Update()
     {
-        menuUp = SteamVR_Input.GetBooleanAction("LaunchMenu").state;
+        menuUp = SteamVR_Input.GetBooleanAction("LaunchMenu").lastStateDown;
+        menuDown = SteamVR_Input.GetBooleanAction("LaunchMenu").lastStateUp;
 
         if(menuUp)
         {            
-            UnityEngine.Debug.Assert(menuUp, "menu should be up" + name);
+            //UnityEngine.Debug.Assert(menuUp, "menu should be up" + name);
             LoadMenu();
         }
-        else
+        else if(menuDown)
         {
             //UnityEngine.Debug.Assert(menuUp, "menu should be down" + name);
             UnloadMenu();
@@ -43,7 +46,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        if(!menuActive)
+        //if(!menuActive)
         {
             
             // pauseCenter.SetActive(true);
@@ -68,6 +71,7 @@ public class PauseMenu : MonoBehaviour
             
             GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().pointer = pointerInstance.GetComponent<Pointer>();
             pauseCenterInstance.GetComponentInChildren<Canvas>().worldCamera = pointerInstance.GetComponent<Camera>();
+            GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().initializePointer();
             //pauseCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
             Time.timeScale = 0;
             menuActive = true;
@@ -76,13 +80,16 @@ public class PauseMenu : MonoBehaviour
 
     public void UnloadMenu()
     {
-        if(menuActive)
+        //UnityEngine.Debug.Log("Menu Active:" + menuActive + "Running UnloadMenu");
+        //if(menuActive)
         {
             Time.timeScale = 1f;
             // pauseCenter.SetActive(false);
             // pointer.SetActive(false);
             Destroy(pauseCenterInstance);
+            //UnityEngine.Debug.Log("destroyed pauseCenterInstance");
             Destroy(pointerInstance);
+            //UnityEngine.Debug.Log("destroyed pointerInstance");
             menuActive = false;
         }
     }

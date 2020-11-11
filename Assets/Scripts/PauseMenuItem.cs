@@ -26,6 +26,7 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
 
     public void Resume()
     {
+        //UnityEngine.Debug.Log("Calling Item Resume");
         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PauseMenu>().UnloadMenu();
     }
 
@@ -46,9 +47,15 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
     {
         currentSceneName = SceneManager.GetActiveScene().name;
         UnityEngine.Debug.Log("Current Scene: " + currentSceneName);
-        instance.levelName = currentSceneName;
+        instance.levelName = "EmptyScene";
+        //SceneManager.LoadScene(currentSceneName);
         instance.loadAsync = false;
         instance.Trigger();
+        instance.levelName = currentSceneName;
+        //SceneManager.LoadScene(currentSceneName);
+        instance.loadAsync = false;
+        instance.Trigger();
+
     }
     // public void OnPointerClick(PointerEventData data)
     // {

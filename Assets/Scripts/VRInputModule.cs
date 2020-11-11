@@ -16,25 +16,33 @@ public class VRInputModule : BaseInputModule
     {
         //UnityEngine.Debug.Log("Start Ran");
         //this.inputOverride = this;
+        
+        //this.GetComponent<EventSystem>().
+    }
+
+    public void initializePointer()
+    {
         Data = new PointerEventData(eventSystem);
         Data.position = new Vector2(pointer.Camera.pixelWidth / 2, pointer.Camera.pixelHeight / 2);
-        //this.GetComponent<EventSystem>().
     }
 
     public override void Process()
     {
-        //UnityEngine.Debug.Log("Processing");
-        eventSystem.RaycastAll(Data, m_RaycastResultCache);
-        Data.pointerCurrentRaycast = FindFirstRaycast(m_RaycastResultCache);
+        if(pointer != null)
+        {
+            //UnityEngine.Debug.Log("Processing");
+            eventSystem.RaycastAll(Data, m_RaycastResultCache);
+            Data.pointerCurrentRaycast = FindFirstRaycast(m_RaycastResultCache);
 
-        HandlePointerExitAndEnter(Data, Data.pointerCurrentRaycast.gameObject);
+            HandlePointerExitAndEnter(Data, Data.pointerCurrentRaycast.gameObject);
 
-        // Press
-        if (m_Click.GetStateDown(m_Source))
-            Press();
-        // Release
-        if (m_Click.GetStateUp(m_Source))
-            Release();
+            // Press
+            if (m_Click.GetStateDown(m_Source))
+                Press();
+            // Release
+            if (m_Click.GetStateUp(m_Source))
+                Release();
+        }
     }
 
     public void Press()
