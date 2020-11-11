@@ -33,8 +33,21 @@ public class Fire : MonoBehaviour
     // public LineRenderer ray;
 
     // Start is called before the first frame update
+
+    GameObject GC = null;
+    GameController GCScript = null;
     void Start()
     {
+        //Just incase a scene does not have a game controller.
+        try
+        {
+            GC = GameObject.Find("GameController");
+            GCScript = GC.GetComponent<GameController>();
+        } catch
+        {
+            //nothing
+        }
+
         this.remainingShots = numberOfShots;
         interactable = GetComponent<Interactable>();
         //ray = gameObject.GetComponent<LineRenderer>();
@@ -85,7 +98,11 @@ public class Fire : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("target"))
             {
                 UnityEngine.Debug.Log("destroying! ");
-
+                if (GCScript != null)
+                {
+                    UnityEngine.Debug.Log("We are in BULLET TARGET GCSCRIPT PART");
+                    GCScript.TargetShot();
+                }
                 Destroy(hit.collider.gameObject);
 
             }
