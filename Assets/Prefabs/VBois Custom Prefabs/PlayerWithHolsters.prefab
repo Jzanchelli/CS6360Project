@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LaunchMenu:
-    actionPath: 
+    actionPath: /actions/default/in/LaunchMenu
     needsReinit: 0
   pauseCenterPrefab: {fileID: 4342046078678259380, guid: 400f3ff5c95b0f149bed5c410a5bce82,
     type: 3}

@@ -14,7 +14,7 @@ public class VRInputModule : BaseInputModule
     
     protected override void Start()
     {
-        UnityEngine.Debug.Log("Start Ran");
+        //UnityEngine.Debug.Log("Start Ran");
         //this.inputOverride = this;
         Data = new PointerEventData(eventSystem);
         Data.position = new Vector2(pointer.Camera.pixelWidth / 2, pointer.Camera.pixelHeight / 2);
@@ -23,7 +23,7 @@ public class VRInputModule : BaseInputModule
 
     public override void Process()
     {
-        UnityEngine.Debug.Log("Processing");
+        //UnityEngine.Debug.Log("Processing");
         eventSystem.RaycastAll(Data, m_RaycastResultCache);
         Data.pointerCurrentRaycast = FindFirstRaycast(m_RaycastResultCache);
 
@@ -39,7 +39,7 @@ public class VRInputModule : BaseInputModule
 
     public void Press()
     {
-        UnityEngine.Debug.Log("Down Press");
+        //UnityEngine.Debug.Log("Down Press");
         Data.pointerPressRaycast = Data.pointerCurrentRaycast;
 
         Data.pointerPress = ExecuteEvents.GetEventHandler<IPointerClickHandler>(Data.pointerPressRaycast.gameObject);
@@ -49,7 +49,7 @@ public class VRInputModule : BaseInputModule
 
     public void Release()
     {
-        UnityEngine.Debug.Log("Release");
+        //UnityEngine.Debug.Log("Release");
         GameObject pointerRelease = ExecuteEvents.GetEventHandler<IPointerClickHandler>(Data.pointerCurrentRaycast.gameObject);
 
         if (Data.pointerPress == pointerRelease)

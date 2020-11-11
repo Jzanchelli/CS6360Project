@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Valve.VR;
 
-public class PauseMenuItem : MonoBehaviour, IPointerClickHandler
+public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
 {
     [SerializeField] private GameObject resumeButton;
     [SerializeField] private GameObject quitButton;
@@ -13,38 +13,66 @@ public class PauseMenuItem : MonoBehaviour, IPointerClickHandler
     [SerializeField] private GameObject restartButton;
 
     private string currentSceneName;
+    private const string menuSceneName = "MainMenu";
+
     private SteamVR_LoadLevel instance;
 
     void Start()
     {
         //currentSceneName = SceneManager.GetActiveScene().name;
         instance = this.GetComponent<SteamVR_LoadLevel>();
+        //resumeButton.GetComponent<Button>()
     }
 
-    public void OnPointerClick(PointerEventData data)
+    public void Resume()
     {
-        if(data.pointerPress.Equals(resumeButton))
-        {
-            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PauseMenu>().UnloadMenu();
-        }
-        else if(data.pointerPress.Equals(quitButton))
-        {
-            //UnityEngine.Debug.Log("Quit Selected");
-            #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-            #else
-            Application.Quit();
-            #endif
-        }
-        else if(data.pointerPress.Equals(optionsButton))
-        {
-            //TODO: Options
-        }
-        else if(data.pointerPress.Equals(restartButton))
-        {
-            currentSceneName = SceneManager.GetActiveScene().name;
-            instance.levelName = currentSceneName;
-            instance.Trigger();
-        }
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PauseMenu>().UnloadMenu();
     }
+
+    public void QuitToMenu()
+    {
+        UnityEngine.Debug.Log("Quit called");
+        instance.levelName = menuSceneName;
+        instance.loadAsync = false;
+        instance.Trigger();
+    }
+
+    public void LaunchOptions()
+    {
+        //TODO: Options
+    }
+
+    public void Restart()
+    {
+        currentSceneName = SceneManager.GetActiveScene().name;
+        UnityEngine.Debug.Log("Current Scene: " + currentSceneName);
+        instance.levelName = currentSceneName;
+        instance.loadAsync = false;
+        instance.Trigger();
+    }
+    // public void OnPointerClick(PointerEventData data)
+    // {
+    //     UnityEngine.Debug.Log("Click called");
+    //     if(data.pointerPress.Equals(resumeButton))
+    //     {
+    //         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PauseMenu>().UnloadMenu();
+    //     }
+    //     else if(data.pointerPress.Equals(quitButton))
+    //     {
+    //         //UnityEngine.Debug.Log("Quit Selected");
+    //         instance.levelName = menuSceneName;
+    //         instance.Trigger();
+            
+    //     }
+    //     else if(data.pointerPress.Equals(optionsButton))
+    //     {
+    //         //TODO: Options
+    //     }
+    //     else if(data.pointerPress.Equals(restartButton))
+    //     {
+    //         currentSceneName = SceneManager.GetActiveScene().name;
+    //         instance.levelName = currentSceneName;
+    //         instance.Trigger();
+    //     }
+    // }
 }
