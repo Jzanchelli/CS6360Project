@@ -50,9 +50,12 @@ public class Fire : MonoBehaviour
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;
             if (fireAction[source].stateDown)
             {
-                if (remainingShots > 0 || bottomlessClip)
+                if (remainingShots > 0)
                 {
-                    this.remainingShots--;
+                    if (!bottomlessClip)
+                    {
+                        this.remainingShots--;
+                    }
                     this.audioSource.clip = shotAudio;
                     audioSource.Play();
                     RaycastGun();
