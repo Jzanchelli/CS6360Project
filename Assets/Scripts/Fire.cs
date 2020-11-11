@@ -44,6 +44,7 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(interactable != null)
         if (interactable.attachedToHand != null)
         {
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;
