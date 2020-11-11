@@ -4365,8 +4365,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rifle
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 661590896063552661, guid: b7700045d2e66f3449b9552830e1fb12, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7700045d2e66f3449b9552830e1fb12, type: 3}
 --- !u!1001 &847246375
 PrefabInstance:
