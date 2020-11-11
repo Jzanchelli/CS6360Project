@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Valve.VR;
 
 public class OptionsMenu : MonoBehaviour
@@ -17,10 +18,15 @@ public class OptionsMenu : MonoBehaviour
     // Update is called once per frame
     public bool fromPause = false;
 
+    public bool bottomless;
+
+    //public float playerSpeedScale = 1f;
+
     private void Awake()
     {
         //menuActive = false;
         playerCam = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(3).transform;
+        bottomless = false;
     }
     void Update()
     {
@@ -65,6 +71,8 @@ public class OptionsMenu : MonoBehaviour
         optionsCenterInstance.GetComponentInChildren<Canvas>().worldCamera = pointerInstance.GetComponent<Camera>();
         GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().initializePointer();
         optionsCenterInstance.GetComponent<OptionsMenuItem>().fromPause = fromPause;
+        optionsCenterInstance.GetComponentInChildren<Slider>().value = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        
         //optionsCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
         Time.timeScale = 0;
     }

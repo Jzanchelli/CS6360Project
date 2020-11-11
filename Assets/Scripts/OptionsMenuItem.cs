@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using TMPro;
 using Valve.VR;
 
 public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
@@ -15,6 +17,7 @@ public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
     private GameObject pauseCenterInstance;
 
     [SerializeField]private GameObject pauseCenterPrefab;
+    [SerializeField]private TextMeshProUGUI scaleDisplay;
     public GameObject pointerPrefab;
     private GameObject pointerInstance;
 
@@ -26,6 +29,8 @@ public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
     {
         //menuActive = false;
         playerCam = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(3).transform;
+        //display = scaleDisplay.GetComponentInChildren<TextMeshProUGUI>();
+        //bottomless = false;
     }
 
     void Start()
@@ -50,34 +55,31 @@ public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
         }
     }
 
-    public void QuitToMenu()
+    public void setPlayerSpeed()
     {
-        //Resume();
-        Time.timeScale = 1f;
-        UnityEngine.Debug.Log("Quit called");
-        instance.levelName = menuSceneName;
-        //instance.loadAsync = false;
-        instance.Trigger();
-        //SceneManager.LoadSceneAsync(menuSceneName);
+        float scalar = this.GetComponentInChildren<Slider>().value * 2;  
+        //UnityEngine.Debug.Log(scaleDisplay.name);      
+        //UnityEngine.Debug.Log(display.name);
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed = scalar;
+        //GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().playerSpeedScale = scalar;
+        //UnityEngine.Debug.Log("Scalar:" + scalar);
+        //scaleDisplay = this.gameObject.transform.GetChild(0).GetChild(3).GetChild(4)
+        
+        scaleDisplay.SetText("Value: "+scalar + "x");
+        //UnityEngine.Debug.Log("Text set");
+        
     }
 
-    public void Restart()
+    public void ToggleBottomless()
     {
-        //Resume();
-        Time.timeScale = 1f;
-        currentSceneName = SceneManager.GetActiveScene().name;
-        // char[] alt = {'A','l','t'};
-        // string sceneToLoad;
-        // //UnityEngine.Debug.Log("Current Scene: " + currentSceneName);
-        // if(currentSceneName.Contains("Alt"))
-        //     sceneToLoad = currentSceneName.TrimEnd();
-        // else
-        //     sceneToLoad = currentSceneName + "Alt";
-        // instance.levelName = sceneToLoad;
-        instance.levelName = currentSceneName;
-        //SceneManager.LoadScene(currentSceneName);
-        //instance.loadAsync = false;
-        instance.Trigger();
+        //UnityEngine.Debug.Log("Bottomless toggled" );
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless = !GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
+    }
 
+    public void ResetOptions()
+    {
+        this.GetComponentInChildren<Slider>().value = 0.5f;
+        setPlayerSpeed();
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless = false;
     }
 }
