@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
     }
     IEnumerator OneSecond()
     {
-        for (int i = 0; shootingrangetime >= i; i++)
+        for (int i = 1; shootingrangetime >= i; i++)
         {
             yield return new WaitForSeconds(1);
             currentTime += 1;
