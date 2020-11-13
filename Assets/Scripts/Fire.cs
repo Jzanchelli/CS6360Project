@@ -136,8 +136,22 @@ public class Fire : MonoBehaviour
                     UnityEngine.Debug.Log("We are in BULLET TARGET GCSCRIPT PART");
                     GCScript.TargetShot();
                 }
-                Destroy(hit.collider.gameObject);
 
+                //get the target action and call the target PerformAction function.
+                bool destroy = true;
+                try
+                {
+                    TargetAction tAction = hit.collider.gameObject.GetComponent<TargetAction>();
+                    destroy = tAction.PerformAction();
+                }
+                catch
+                {
+
+                }
+                if (destroy)
+                {
+                    Destroy(hit.collider.gameObject);
+                }
             }
         }
     }

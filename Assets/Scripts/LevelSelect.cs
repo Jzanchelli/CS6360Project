@@ -9,9 +9,9 @@ public class LevelSelect : MonoBehaviour
     private Interactable interactable;
     public SteamVR_Action_Boolean GrabPinch;
     private SteamVR_LoadLevel instance;
-    private string Level1 = "SampleScene";
-    private string Level2 = "SampleScene";
-    private string Level3 = "SampleScene";
+    private string Level1 = "Level_1";
+    private string Level2 = "Level2";
+    private string Level3 = "Level4";
 
     public GameObject levelSelectCenter;
 
