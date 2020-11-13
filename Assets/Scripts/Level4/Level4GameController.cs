@@ -23,6 +23,7 @@ public class Level4GameController : MonoBehaviour
     private GameObject target2;
     private bool isDisqualified;
     private bool isStart;
+    private bool gameStart;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Level4GameController : MonoBehaviour
         this.subLevel = 0;
         this.isDisqualified = false;
         this.isStart = false;
+        this.gameStart = false;
 
     }
 
@@ -42,6 +44,7 @@ public class Level4GameController : MonoBehaviour
         if(targetContainer1.transform.childCount ==0 && targetContainer2.transform.childCount ==0 && targetContainer3.transform.childCount == 0)
         {
             this.isStart = false;
+            this.gameStart = false;
             text.text = "Time: " + time.Seconds + "." + time.Milliseconds;
         }
         if (isDisqualified)
@@ -62,22 +65,53 @@ public class Level4GameController : MonoBehaviour
 
     public void StartLevel()
     {
-        switch (subLevel)
+        if (!this.gameStart)
         {
-            case 0:
-                SubLevel1();
-                break;
-            case 1:
-                SubLevel2();
-                break;
-            case 2:
-                SubLevel3();
-                break;
-            case 3:
-                SubLevel4();
-                break;
-            default:
-                break;
+            switch (subLevel)
+            {
+                case 0:
+                    this.gameStart = true;
+                    SubLevel1();
+                    break;
+                case 1:
+                    this.gameStart = true;
+                    SubLevel2();
+                    break;
+                case 2:
+                    this.gameStart = true;
+                    SubLevel3();
+                    break;
+                case 3:
+                    this.gameStart = true;
+                    SubLevel4();
+                    break;
+                case 4:
+                    this.gameStart = true;
+                    SubLevel5();
+                    break;
+                case 5:
+                    this.gameStart = true;
+                    SubLevel6();
+                    break;
+                case 6:
+                    this.gameStart = true;
+                    SubLevel7();
+                    break;
+                case 7:
+                    this.gameStart = true;
+                    SubLevel8();
+                    break;
+                case 8:
+                    this.gameStart = true;
+                    SubLevel9();
+                    break;
+                case 9:
+                    this.gameStart = true;
+                    SubLevel10();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -124,7 +158,10 @@ public class Level4GameController : MonoBehaviour
 
     public void NextLevel()
     {
-        subLevel++;
+        if (subLevel < 10)
+        {
+            subLevel++;
+        }
     }
 
     bool weaponsHolstered()
@@ -132,7 +169,14 @@ public class Level4GameController : MonoBehaviour
         GameObject[] weapons = GameObject.FindGameObjectsWithTag("weapon");
         for (int i = 0; i < weapons.Length; i++)
         {
-            if(weapons[i].transform.parent.tag != "holster")
+            if(weapons[i].transform.parent!= null)
+            {
+                if (weapons[i].transform.parent.tag != "holster")
+                {
+                    return false;
+                }
+            }
+            else
             {
                 return false;
             }
@@ -191,6 +235,81 @@ public class Level4GameController : MonoBehaviour
         tmovement.SetSpeed(0);
         target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
         target2.transform.localScale = new Vector3(4f, 4f, 0.2514884f);
+        target2.transform.SetParent(targetContainer2.transform);
+        tmovement = target2.transform.GetChild(0).GetComponent<TargetMovement>();
+        tmovement.SetSpeed(0);
+        AudioProgression();
+    }
+
+    void SubLevel5()
+    {
+        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
+        target1.transform.localScale = new Vector3(3f, 3f, 0.2514884f);
+        target1.transform.SetParent(targetContainer1.transform);
+        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
+        tmovement.SetSpeed(0);
+        AudioProgression();
+    }
+
+    void SubLevel6()
+    {
+        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
+        target1.transform.localScale = new Vector3(3f, 3f, 0.2514884f);
+        target1.transform.SetParent(targetContainer3.transform);
+        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
+        tmovement.SetSpeed(0);
+        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
+        target2.transform.localScale = new Vector3(3f, 3f, 0.2514884f);
+        target2.transform.SetParent(targetContainer2.transform);
+        tmovement = target2.transform.GetChild(0).GetComponent<TargetMovement>();
+        tmovement.SetSpeed(0);
+        AudioProgression();
+    }
+
+    void SubLevel7()
+    {
+        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
+        target1.transform.localScale = new Vector3(2f, 2f, 0.2514884f);
+        target1.transform.SetParent(targetContainer1.transform);
+        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
+        tmovement.SetSpeed(0);
+        AudioProgression();
+    }
+
+    void SubLevel8()
+    {
+        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
+        target1.transform.localScale = new Vector3(2f, 2f, 0.2514884f);
+        target1.transform.SetParent(targetContainer3.transform);
+        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
+        tmovement.SetSpeed(0);
+        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
+        target2.transform.localScale = new Vector3(2f, 2f, 0.2514884f);
+        target2.transform.SetParent(targetContainer2.transform);
+        tmovement = target2.transform.GetChild(0).GetComponent<TargetMovement>();
+        tmovement.SetSpeed(0);
+        AudioProgression();
+    }
+
+    void SubLevel9()
+    {
+        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
+        target1.transform.localScale = new Vector3(1f, 1f, 0.2514884f);
+        target1.transform.SetParent(targetContainer1.transform);
+        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
+        tmovement.SetSpeed(0);
+        AudioProgression();
+    }
+
+    void SubLevel10()
+    {
+        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
+        target1.transform.localScale = new Vector3(1f, 1f, 0.2514884f);
+        target1.transform.SetParent(targetContainer3.transform);
+        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
+        tmovement.SetSpeed(0);
+        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
+        target2.transform.localScale = new Vector3(1f, 1f, 0.2514884f);
         target2.transform.SetParent(targetContainer2.transform);
         tmovement = target2.transform.GetChild(0).GetComponent<TargetMovement>();
         tmovement.SetSpeed(0);
