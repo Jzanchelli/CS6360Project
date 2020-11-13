@@ -11,7 +11,7 @@ public class LevelSelect : MonoBehaviour
     private SteamVR_LoadLevel instance;
     private string Level1 = "Level_1";
     private string Level2 = "Level2";
-    private string Level3 = "Level4";
+    private string Level3 = "Level_4";
 
     public GameObject levelSelectCenter;
 
