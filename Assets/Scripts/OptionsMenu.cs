@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 using Valve.VR;
 
 public class OptionsMenu : MonoBehaviour
@@ -32,6 +33,13 @@ public class OptionsMenu : MonoBehaviour
         else
             bottomless = false;
     }
+
+    // private void Start()
+    // {
+    //     float playerSpeed = GameObject.FindWithTag("Player").GetComponent<PlayerControls>().speed;
+    //     if(playerSpeed == 1f)
+    //         this.GetComponentInChildren<Slider>().value = 0.5f;
+    // }
     void Update()
     {
         // menuUp = SteamVR_Input.GetBooleanAction("LaunchMenu").lastStateDown;
@@ -75,8 +83,9 @@ public class OptionsMenu : MonoBehaviour
         optionsCenterInstance.GetComponentInChildren<Canvas>().worldCamera = pointerInstance.GetComponent<Camera>();
         GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().initializePointer();
         optionsCenterInstance.GetComponent<OptionsMenuItem>().fromPause = fromPause;
-        optionsCenterInstance.GetComponentInChildren<Slider>().value = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
-
+        float currentSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        optionsCenterInstance.GetComponentInChildren<Slider>().value = currentSpeed;
+        optionsCenterInstance.transform.GetChild(0).GetChild(3).GetChild(4).GetComponent<TextMeshProUGUI>().SetText("Value: "+currentSpeed + "x");
         //optionsCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
         Time.timeScale = 0;
     }
