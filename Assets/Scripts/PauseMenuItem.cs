@@ -50,7 +50,7 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
     {
         //Resume();
         Time.timeScale = 1f;
-        UnityEngine.Debug.Log("Quit called");
+        //UnityEngine.Debug.Log("Quit called");
         instance.levelName = menuSceneName;
         GameObject optionValuesInstance = Instantiate(OptionsValuesPrefab, Vector3.zero, Quaternion.identity);
         optionValuesInstance.GetComponent<OptionValues>().bottomlessClip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
@@ -75,6 +75,10 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
         //Resume();
         Time.timeScale = 1f;
         currentSceneName = SceneManager.GetActiveScene().name;
+        GameObject optionValuesInstance = Instantiate(OptionsValuesPrefab, Vector3.zero, Quaternion.identity);
+        optionValuesInstance.GetComponent<OptionValues>().bottomlessClip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
+        optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        DontDestroyOnLoad(optionValuesInstance);
         // char[] alt = {'A','l','t'};
         // string sceneToLoad;
         // //UnityEngine.Debug.Log("Current Scene: " + currentSceneName);

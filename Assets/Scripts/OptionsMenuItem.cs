@@ -61,12 +61,12 @@ public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
 
     public void setPlayerSpeed()
     {
-        float scalar = this.GetComponentInChildren<Slider>().value * 2;  
+        float scalar = this.GetComponentInChildren<Slider>().value;  
         //UnityEngine.Debug.Log(scaleDisplay.name);      
         //UnityEngine.Debug.Log(display.name);
         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed = scalar;
         //GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().playerSpeedScale = scalar;
-        //UnityEngine.Debug.Log("Scalar:" + scalar);
+        //UnityEngine.Debug.Log("Scalar:" + scalar + "Changed by: " + name);
         //scaleDisplay = this.gameObject.transform.GetChild(0).GetChild(3).GetChild(4)
         
         scaleDisplay.SetText("Value: "+scalar + "x");
@@ -82,7 +82,7 @@ public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
 
     public void ResetOptions()
     {
-        this.GetComponentInChildren<Slider>().value = 0.5f;
+        this.GetComponentInChildren<Slider>().value = 1f;
         setPlayerSpeed();
         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless = false;
     }

@@ -18,6 +18,11 @@ public class PlayerControls : MonoBehaviour
         GameObject globalSpeed = GameObject.FindGameObjectWithTag("Global Settings");
         if(globalSpeed != null)
             speed = globalSpeed.GetComponent<OptionValues>().playerSpeed;
+        else
+        {
+            speed = 1f;            
+        }
+        //UnityEngine.Debug.Log("Set Speed to: " + speed);
     }
     void Start()
     {        
