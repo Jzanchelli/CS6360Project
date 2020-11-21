@@ -47,4 +47,9 @@ public class TargetMovement : MonoBehaviour
     {
         nextPos = nextPos != posA ? posA : posB;
     }
+
+    public void SetSpeed(float speed)
+    {
+        this.speed = speed;
+    }
 }
