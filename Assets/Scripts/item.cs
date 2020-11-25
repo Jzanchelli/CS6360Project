@@ -27,11 +27,11 @@ public class item : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "PlayerOnHorse")
-        {
+        //if (collision.gameObject.name == "PlayerOnHorse")
+        //{
             GCScript.ItemRanInto(value);
             Destroy(gameObject);
-        }
+        //}
     }
 
     // Update is called once per frame
