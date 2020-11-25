@@ -31,6 +31,9 @@ public class Fire : MonoBehaviour
     private Interactable interactable;
     private bool canShoot = true;
     public bool bottomlessClip = false;
+    public bool shotSpread = false;
+    public double maxSpreadAngle;
+    public double numberOfPellets;
 
     //private GameObject newBulletHit;
     // public LineRenderer ray;
@@ -75,6 +78,15 @@ public class Fire : MonoBehaviour
                     this.audioSource.clip = shotAudio;
                     audioSource.Play();
                     RaycastGun();
+                    if (shotSpread) 
+                    {
+                        for (int i = 0; i < this.numberOfPellets; i++)
+                        {
+                           // UnityEngine.Debug.Log(i);
+                            RaycastPellet(i);
+                        }
+                    }
+                    
                 }
                 else if (remainingShots == 0)
                 {
@@ -106,6 +118,74 @@ public class Fire : MonoBehaviour
         RaycastHit hit;
         UnityEngine.Debug.Log("shooting: Position: " + gunBarrel.position + " Rotation: " + gunBarrel.transform.forward);
         if (Physics.Raycast(gunBarrel.position, gunBarrel.transform.forward, out hit, this.range))
+        {
+
+            if (hit.collider.gameObject.CompareTag("target"))
+            {
+                UnityEngine.Debug.Log("destroying! ");
+
+                // Check for achievements
+                if (achievements != null && PlayerControls.enableAchievements)
+                {
+                    if (!achievements.GetState(Achievement.hit_bottle_from_50))
+                    {
+                        if (hit.distance >= 50)
+                            StartCoroutine(achievements.TriggerAchievement(Achievement.hit_bottle_from_50));
+                    }
+
+                    if (!achievements.GetState(Achievement.hit_target_25_while_riding))
+                    {
+
+                        bool isRiding = false;
+
+                        if (hit.distance >= 25 && isRiding)
+                            StartCoroutine(achievements.TriggerAchievement(Achievement.hit_target_25_while_riding));
+                    }
+
+                    if (!achievements.GetState(Achievement.hit_target_while_riding))
+                    {
+                        // Assume true for testing
+                        // NOTE: Update for the actual game
+                        bool isRiding = true;
+
+                        if (isRiding)
+                            StartCoroutine(achievements.TriggerAchievement(Achievement.hit_target_while_riding));
+                    }
+                }
+
+                if (GCScript != null)
+                {
+                    UnityEngine.Debug.Log("We are in BULLET TARGET GCSCRIPT PART");
+                    GCScript.TargetShot();
+                }
+
+                //get the target action and call the target PerformAction function.
+                bool destroy = true;
+                try
+                {
+                    TargetAction tAction = hit.collider.gameObject.GetComponent<TargetAction>();
+                    destroy = tAction.PerformAction();
+                }
+                catch
+                {
+
+                }
+                if (destroy)
+                {
+                    Destroy(hit.collider.gameObject);
+                }
+            }
+        }
+    }
+
+    private void RaycastPellet(int seed)
+    {
+        System.Random rand = new System.Random(seed);
+        float spread = Convert.ToSingle((rand.NextDouble()*this.maxSpreadAngle*2)-this.maxSpreadAngle);
+        RaycastHit hit;
+        //UnityEngine.Debug.DrawRay(gunBarrel.position, Quaternion.Euler(spread, spread, 0) * gunBarrel.transform.forward * this.range, Color.yellow);
+        //UnityEngine.Debug.Log("shooting Pellet: Position: " + gunBarrel.position + " Rotation: " + Quaternion.Euler(spread, spread, 0) * gunBarrel.transform.forward);
+        if (Physics.Raycast(gunBarrel.position, Quaternion.Euler(spread, spread, 0)*gunBarrel.transform.forward, out hit, this.range))
         {
 
             if (hit.collider.gameObject.CompareTag("target"))

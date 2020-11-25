@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158c071a3a6664249a9b81fb7f90961e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  achievements: {fileID: 0}
   gunBarrel: {fileID: 5024009367211280403}
   fireAction:
     actionPath: /actions/default/in/InteractUI
@@ -257,7 +258,11 @@ MonoBehaviour:
   dryFireAudio: {fileID: 8300000, guid: 16181d92e2d089d41bf4b48a7c4b2569, type: 3}
   audioSource: {fileID: 5024009367128234562}
   numberOfShots: 1
-  range: 200
+  range: 120
+  bottomlessClip: 0
+  shotSpread: 1
+  maxSpreadAngle: 2.6
+  numberOfPellets: 8
 --- !u!114 &351671226024195292
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1570,6 +1570,31 @@ PrefabInstance:
       propertyPath: fireAction.actionPath
       value: /actions/default/in/InteractUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4709004870946809206, guid: 7c90e6110f3dbb442a5b9c061caf939d,
+        type: 3}
+      propertyPath: shotSpread
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709004870946809206, guid: 7c90e6110f3dbb442a5b9c061caf939d,
+        type: 3}
+      propertyPath: maxSpreadAngle
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709004870946809206, guid: 7c90e6110f3dbb442a5b9c061caf939d,
+        type: 3}
+      propertyPath: range
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709004870946809206, guid: 7c90e6110f3dbb442a5b9c061caf939d,
+        type: 3}
+      propertyPath: reloadAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: ef5097e26d27e0146944247ea0414bca, type: 3}
+    - target: {fileID: 4709004870946809206, guid: 7c90e6110f3dbb442a5b9c061caf939d,
+        type: 3}
+      propertyPath: numberOfPellets
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4709004870946809208, guid: 7c90e6110f3dbb442a5b9c061caf939d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10104,6 +10129,26 @@ PrefabInstance:
       propertyPath: holsterCompatibilityIndicator
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5024009367128234563, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: shotSpread
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024009367128234563, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: maxSpreadAngle
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024009367128234563, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: reloadAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: ef5097e26d27e0146944247ea0414bca, type: 3}
+    - target: {fileID: 5024009367128234563, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: numberOfPellets
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5024009367128234573, guid: d0f4c6a04f933be48b80b1fe9fbac458,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10163,6 +10208,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024009367211280403, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024009367211280403, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024009367211280403, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024009367211280403, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024009367211280403, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5024009367211280403, guid: d0f4c6a04f933be48b80b1fe9fbac458,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0f4c6a04f933be48b80b1fe9fbac458, type: 3}
