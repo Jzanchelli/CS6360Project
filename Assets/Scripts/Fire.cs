@@ -29,7 +29,7 @@ public class Fire : MonoBehaviour
     public float range;
     private int remainingShots;
     private Interactable interactable;
-
+    private bool canShoot = true;
     public bool bottomlessClip = false;
 
     //private GameObject newBulletHit;
@@ -64,7 +64,7 @@ public class Fire : MonoBehaviour
         if (interactable.attachedToHand != null)
         {
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;
-            if (fireAction[source].stateDown)
+            if (fireAction[source].stateDown && canShoot)
             {
                 if (remainingShots > 0)
                 {
@@ -82,13 +82,23 @@ public class Fire : MonoBehaviour
                     audioSource.Play();
                 }
             }
-            else if (remainingShots == 0 && reloadAction[source].stateDown)
+            else if (remainingShots == 0 && reloadAction[source].stateDown && canShoot)
             {
                 this.remainingShots = this.numberOfShots;
-                this.audioSource.clip = this.reloadAudio;
-                audioSource.Play();
-            }
+                    this.canShoot = false;
+                    StartCoroutine(playReloadAudio());
+                    //this.audioSource.clip = this.reloadAudio;
+                    //audioSource.Play();
+                }
         }
+    }
+
+    IEnumerator playReloadAudio()
+    {
+        audioSource.PlayOneShot(this.reloadAudio);
+
+        yield return new WaitForSeconds(this.reloadAudio.length);
+        this.canShoot = true;
     }
 
     private void RaycastGun()
