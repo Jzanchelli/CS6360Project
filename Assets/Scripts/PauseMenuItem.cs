@@ -63,9 +63,10 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
 
     public void LaunchOptions()
     {
+        Vector3 pauseCenter = this.gameObject.transform.position;
         Resume();
         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().fromPause = true;
-        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().LoadMenu();
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().LoadMenu(pauseCenter);
         //pauseCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
         Time.timeScale = 0;
     }
