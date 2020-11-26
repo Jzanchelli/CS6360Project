@@ -8,6 +8,11 @@ TagManager:
   - holster
   - Global Settings
   - weapon
+  - projectile
+  - FxTemporaire
+  - item
+  - horse
+  - reins
   layers:
   - Default
   - TransparentFX
