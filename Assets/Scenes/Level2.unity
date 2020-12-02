@@ -13791,31 +13791,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4650002, y: 1.3775, z: 1.305}
   m_Center: {x: 0, y: 0.6875, z: 0}
---- !u!1 &1118193269 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2007858775438810547, guid: f4fac91a3b8834b44ac5e4203535fd03,
-    type: 3}
-  m_PrefabInstance: {fileID: 2745061904035829143}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1118193271
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1118193269}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 80d416313d3fa934ab02865571b2bff2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1118233435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 5b0eadc2bdcb76740a40d9270b7cf83d,
@@ -27974,7 +27949,7 @@ PrefabInstance:
     - target: {fileID: 2336760055218511477, guid: f4fac91a3b8834b44ac5e4203535fd03,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -262.11
+      value: -261.874
       objectReference: {fileID: 0}
     - target: {fileID: 2336760055218511477, guid: f4fac91a3b8834b44ac5e4203535fd03,
         type: 3}
@@ -28020,6 +27995,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792508100400775427, guid: f4fac91a3b8834b44ac5e4203535fd03,
+        type: 3}
+      propertyPath: m_TagString
+      value: horse
+      objectReference: {fileID: 0}
+    - target: {fileID: 3281765127526439865, guid: f4fac91a3b8834b44ac5e4203535fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3281765127526439865, guid: f4fac91a3b8834b44ac5e4203535fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.659
+      objectReference: {fileID: 0}
+    - target: {fileID: 3281765127526439865, guid: f4fac91a3b8834b44ac5e4203535fd03,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3351205764001173207, guid: f4fac91a3b8834b44ac5e4203535fd03,
         type: 3}
