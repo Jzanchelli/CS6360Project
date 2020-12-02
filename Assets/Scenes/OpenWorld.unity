@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -4908,7 +4908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 484704, guid: c65030ca80f1346418f19548bc54e6c7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 484704, guid: c65030ca80f1346418f19548bc54e6c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8252,16 +8252,14 @@ Transform:
   - {fileID: 1965986027}
   - {fileID: 263848646}
   - {fileID: 458588501}
-  - {fileID: 467938169}
   - {fileID: 922272047}
-  - {fileID: 1659417397}
   - {fileID: 20497640}
   - {fileID: 1344029110}
   - {fileID: 1920385559}
   - {fileID: 622468518}
   - {fileID: 1062742139}
+  - {fileID: 467938169}
   - {fileID: 122723047}
-  - {fileID: 1787019367}
   - {fileID: 1248210465}
   - {fileID: 860729323}
   - {fileID: 2109570185}
@@ -8286,6 +8284,7 @@ Transform:
   - {fileID: 1136506885}
   - {fileID: 931863392}
   - {fileID: 1503155345}
+  - {fileID: 1659417397}
   - {fileID: 183983950}
   - {fileID: 919343070}
   - {fileID: 1072340518}
@@ -8293,10 +8292,9 @@ Transform:
   - {fileID: 2092327671}
   - {fileID: 178552614}
   - {fileID: 1117331457}
-  - {fileID: 1647496821}
   - {fileID: 1311234301}
+  - {fileID: 1787019367}
   - {fileID: 983772088}
-  - {fileID: 1830698665}
   - {fileID: 617268861}
   - {fileID: 368999236}
   - {fileID: 191853929}
@@ -8318,7 +8316,9 @@ Transform:
   - {fileID: 424379310}
   - {fileID: 809168646}
   - {fileID: 699963445}
+  - {fileID: 1830698665}
   - {fileID: 736639574}
+  - {fileID: 1647496821}
   - {fileID: 238674376}
   - {fileID: 536224034}
   - {fileID: 2042725333}
@@ -8389,15 +8389,15 @@ Transform:
   - {fileID: 505554865}
   - {fileID: 1691061667}
   - {fileID: 1633667671}
+  - {fileID: 945975200}
   - {fileID: 1820422497}
+  - {fileID: 925240097}
   - {fileID: 725736440}
   - {fileID: 104210666}
   - {fileID: 286147091}
   - {fileID: 1671091768}
   - {fileID: 862636768}
   - {fileID: 1942775695}
-  - {fileID: 945975200}
-  - {fileID: 925240097}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13148,7 +13148,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -13170,7 +13170,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0729, z: 1.1086}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 119.50699, y: -168.476, z: -159.45}
 --- !u!1 &710628266
 GameObject:
@@ -25500,7 +25500,7 @@ PrefabInstance:
     - target: {fileID: 4836193657610014756, guid: abd2c5dcfde7a9249b254664d8cc92b9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4836193657610014756, guid: abd2c5dcfde7a9249b254664d8cc92b9,
         type: 3}
@@ -30136,6 +30136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -283.722
+      objectReference: {fileID: 0}
+    - target: {fileID: 465486642006776524, guid: 76aa1200d3d025948b8267c87f4e59a5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6143047004031459099, guid: 76aa1200d3d025948b8267c87f4e59a5,
         type: 3}
