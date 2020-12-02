@@ -5,31 +5,34 @@ using TMPro;
 
 public class Level4bGameController : MonoBehaviour
 {
+    private int subSubLevel;
     private int subLevel;
-    public AudioSource audioSource;
-    public AudioClip holsterWeaponAudio;
-    public AudioClip shooterReadyAudio;
-    public AudioClip drawAudio;
     public GameObject target;
-    public float[] subLevel1TargetPerimeter;
-    public float[] subLevel2TargetPerimeter;
-    public float[] subLevel3TargetPerimeter;
-    public float[] subLevel4TargetPerimeter;
-    public float[] subLevel5TargetPerimeter;
+    public GameObject subLevel1TargetAreaCenter;
+    public float subLevel1PerimiterWidth;
+    public float subLevel2PerimiterHeight;
+    public GameObject subLevel2TargetAreaCenter;
+    public GameObject subLevel3TargetAreaCenter;
+    public GameObject subLevel4TargetAreaCenter;
+    public GameObject subLevel5TargetAreaCenter;
     public GameObject player;
-    public TextMeshPro text;
+    public TextMeshPro timeText;
+    public TextMeshPro scoreText;
     private System.TimeSpan time;
     private System.DateTime startTime;
     private IEnumerator coroutine;
     private bool isDisqualified;
     private bool isStart;
     private bool gameStart;
+    private int score;
     private int remainingTargets;
-
+    private GameObject[] targets;
     // Start is called before the first frame update
     void Start()
     {
+        this.score = 0;
         this.subLevel = 0;
+        this.subSubLevel = 0;
         this.isDisqualified = false;
         this.isStart = false;
         this.gameStart = false;
@@ -39,58 +42,63 @@ public class Level4bGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //timeText.text = "Time: " + time.Seconds + "." + time.Milliseconds;
+        scoreText.text = "Score: " + score;
         /*if (targetContainer1.transform.childCount == 0 && targetContainer2.transform.childCount == 0 && targetContainer3.transform.childCount == 0)
         {
             this.isStart = false;
             this.gameStart = false;
-            text.text = "Time: " + time.Seconds + "." + time.Milliseconds;
+            timeText.text = "Time: " + time.Seconds + "." + time.Milliseconds;
         }*/
-        if (isDisqualified)
-        {
-            text.text = "Early Shot";
-        }
-        else
-        {
+       
             if (isStart)
             {
                 time = System.DateTime.Now - startTime;
-                text.text = "Time: " + time.Seconds + "." + time.Milliseconds;
+                timeText.text = "Time: " + time.Seconds + "." + time.Milliseconds;
             }
-        }
+        
     }
 
     public void getTime()
     {
         this.isStart = false;
         this.gameStart = false;
-        text.text = "Time: " + time.Seconds + "." + time.Milliseconds;
+        timeText.text = "Time: " + time.Seconds + "." + time.Milliseconds;
     }
 
     public void StartLevel()
     {
+        this.isStart = true;
+        this.score = 0;
+        this.startTime = System.DateTime.Now;
         if (!this.gameStart)
         {
-            switch (subLevel)
+            switch (subSubLevel)
             {
                 case 0:
                     this.gameStart = true;
-                    //SubLevel1(5);
+                    this.remainingTargets = 5;
+                    this.spawnTargets();
                     break;
                 case 1:
                     this.gameStart = true;
-                    //SubLevel1(10);
+                    this.remainingTargets = 10;
+                    this.spawnTargets();
                     break;
                 case 2:
                     this.gameStart = true;
-                    //SubLevel1(15);
+                    this.remainingTargets = 15;
+                    this.spawnTargets();
                     break;
                 case 3:
                     this.gameStart = true;
-                    //SubLevel1(20);
+                    this.remainingTargets = 20;
+                    this.spawnTargets();
                     break;
                 case 4:
                     this.gameStart = true;
-                    //SubLevel1(30);
+                    this.remainingTargets = 30;
+                    this.spawnTargets();
                     break;
                 /*case 5:
                     this.gameStart = true;
@@ -130,32 +138,46 @@ public class Level4bGameController : MonoBehaviour
 
     public void PreviousLevel()
     {
-        if (subLevel > 0)
+        if (subSubLevel > 0)
         {
-            subLevel--;
+            subSubLevel--;
         }
     }
 
     public void NextLevel()
     {
-        if (subLevel < 10)
+        if (subSubLevel < 10)
         {
-            subLevel++;
+            subSubLevel++;
         }
     }
 
-    void TargetHit()
+    public void TargetHit()
     {
+        this.remainingTargets--;
+        score++;
+        if (this.remainingTargets > 0)
+        {
+            spawnTargets();
+        }
+        else
+        {
+            this.isStart = false;
+        }
+        
 
     }
 
 
-    public void spawnTargets(int level)
+    public void spawnTargets()
     {
-        switch (level)
+        UnityEngine.Debug.Log("Creating Targets");
+        switch (subSubLevel)
         {
-            case 1:
-                
+            case 0:
+                UnityEngine.Debug.Log("Creating Targets");
+                GameObject tempTarget = Instantiate(target, subLevel1TargetAreaCenter.transform.position, Quaternion.identity);
+                tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
                 break;
             default:
                 break;
