@@ -13,6 +13,7 @@ TagManager:
   - item
   - horse
   - reins
+  - barrel
   layers:
   - Default
   - TransparentFX
