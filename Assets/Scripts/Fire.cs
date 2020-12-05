@@ -14,17 +14,14 @@ public class Fire : MonoBehaviour
 {
 
     public GlobalAchievements achievements;
-
-    //public GameObject bulletEmitter;
     public Transform gunBarrel;
-    //public GameObject bulletHit;
-    //public float bulletSpeed;
     public SteamVR_Action_Boolean fireAction;
     public SteamVR_Action_Boolean reloadAction;
     public AudioClip shotAudio;
     public AudioClip reloadAudio;
     public AudioClip dryFireAudio;
     public AudioSource audioSource;
+    public ParticleSystem muzzleFlash;
     public int numberOfShots;
     public float range;
     private int remainingShots;
@@ -75,14 +72,13 @@ public class Fire : MonoBehaviour
                     {
                         this.remainingShots--;
                     }
-                    this.audioSource.clip = shotAudio;
-                    audioSource.Play();
+                    StartCoroutine(playFireAudio());
+                    muzzleFlash.Play();
                     RaycastGun();
                     if (shotSpread) 
                     {
                         for (int i = 0; i < this.numberOfPellets; i++)
                         {
-                           // UnityEngine.Debug.Log(i);
                             RaycastPellet(i);
                         }
                     }
@@ -90,8 +86,7 @@ public class Fire : MonoBehaviour
                 }
                 else if (remainingShots == 0)
                 {
-                    this.audioSource.clip = dryFireAudio;
-                    audioSource.Play();
+                    StartCoroutine(playDryFireAudio());
                 }
             }
             else if (remainingShots == 0 && reloadAction[source].stateDown && canShoot)
@@ -99,10 +94,20 @@ public class Fire : MonoBehaviour
                 this.remainingShots = this.numberOfShots;
                     this.canShoot = false;
                     StartCoroutine(playReloadAudio());
-                    //this.audioSource.clip = this.reloadAudio;
-                    //audioSource.Play();
                 }
         }
+    }
+
+    IEnumerator playDryFireAudio()
+    {
+        audioSource.PlayOneShot(dryFireAudio);
+        yield return new WaitForSeconds(this.dryFireAudio.length);
+    }
+
+    IEnumerator playFireAudio()
+    {
+        audioSource.PlayOneShot(shotAudio);
+        yield return new WaitForSeconds(this.shotAudio.length);
     }
 
     IEnumerator playReloadAudio()

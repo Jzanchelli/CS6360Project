@@ -13,7 +13,7 @@ public class Level4bStartLevelTargetAction : MonoBehaviour, TargetAction
     {
         //gameControllerScript = gameController.GetComponent<Level4bGameController>();
         UnityEngine.Debug.Log("performing target action");
-        gameControllerScript.StartLevel();
+        StartCoroutine(gameControllerScript.StartLevel());
         audioSource.clip = this.glassShatterClip;
         audioSource.Play();
         StartCoroutine("WaitToMoveOn");

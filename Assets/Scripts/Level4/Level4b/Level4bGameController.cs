@@ -33,14 +33,17 @@ public class Level4bGameController : MonoBehaviour
     public TextMeshPro distanceText;
     public TextMeshPro levelText;
     public TextMeshPro subLevelText;
+    public Light goLight;
 
     private System.TimeSpan time;
     private System.DateTime startTime;
     private System.DateTime targetTime;
 
+    private Color greenGoLight;
+    private Color whiteGoLight;
     private GameObject tempTarget;
     private Vector3 targetPosition;
-    private double distance;
+    private float distance;
     private IEnumerator coroutine;
     private bool isDisqualified;
     private bool isStart;
@@ -51,7 +54,9 @@ public class Level4bGameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        greenGoLight = Color.green;
+        whiteGoLight = Color.white;
+        this.goLight.enabled = false;
         this.score = 0;
         this.levelSelect = 0;
         this.subLevel = 0;
@@ -108,18 +113,28 @@ public class Level4bGameController : MonoBehaviour
 
     public void getDistance()
     {
-        UnityEngine.Debug.Log(targetPosition);
         float xret = targetPosition.x - player.transform.position.x;
         float yret = targetPosition.y - player.transform.position.y;
         float zret = targetPosition.z - player.transform.position.z;
         UnityEngine.Debug.Log(xret + ","+yret+","+zret);
         distance = Mathf.Sqrt(xret * xret + yret * yret + zret * zret);
-        UnityEngine.Debug.Log(distance);
-        distanceText.text = "Distance: " + distance;
+        distanceText.text = "Distance: " + Mathf.Round(distance*100)/100;
     }
 
-    public void StartLevel()
+    public IEnumerator StartLevel()
     {
+        this.goLight.enabled = true;
+        this.goLight.color = whiteGoLight;
+        yield return new WaitForSeconds(0.5f);
+        this.goLight.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        this.goLight.enabled = true;
+        this.goLight.color = whiteGoLight;
+        yield return new WaitForSeconds(0.5f);
+        this.goLight.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        this.goLight.enabled = true;
+        this.goLight.color = greenGoLight;
         this.audioSource.mute = true;
         this.isStart = true;
         this.score = 0;
@@ -318,7 +333,7 @@ public class Level4bGameController : MonoBehaviour
 
     public void NextLevel()
     {
-        if (this.levelSelect < 15)
+        if (this.levelSelect < 30)
         {
             this.levelSelect++;
             subLevel = this.levelSelect / 6;
@@ -364,7 +379,7 @@ public class Level4bGameController : MonoBehaviour
                 {
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel1TargetAreaCenter.transform.position.x + Random.value * this.subLevel1PerimeterWidth * 2 - this.subLevel1PerimeterWidth, subLevel1TargetAreaCenter.transform.position.y, subLevel1TargetAreaCenter.transform.position.z + Random.value * this.subLevel1PerimeterHeight * 2 - this.subLevel1PerimeterHeight);
-                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0,-90,0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
                 }
                 else if (tempTargetSelect==1)
@@ -387,7 +402,7 @@ public class Level4bGameController : MonoBehaviour
                 {
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel2TargetAreaCenter.transform.position.x + Random.value * this.subLevel2PerimeterWidth * 2 - this.subLevel2PerimeterWidth, subLevel2TargetAreaCenter.transform.position.y, subLevel2TargetAreaCenter.transform.position.z + Random.value * this.subLevel2PerimeterHeight * 2 - this.subLevel2PerimeterHeight);
-                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0, -90, 0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
                 }
                 else if (tempTargetSelect==1)
@@ -410,7 +425,7 @@ public class Level4bGameController : MonoBehaviour
                 {
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel3TargetAreaCenter.transform.position.x + Random.value * this.subLevel3PerimeterWidth * 2 - this.subLevel3PerimeterWidth, subLevel3TargetAreaCenter.transform.position.y, subLevel3TargetAreaCenter.transform.position.z + Random.value * this.subLevel3PerimeterHeight * 2 - this.subLevel3PerimeterHeight);
-                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0, -90, 0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
                 }
                 else if (tempTargetSelect==1)
@@ -433,7 +448,7 @@ public class Level4bGameController : MonoBehaviour
                 {
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel4TargetAreaCenter.transform.position.x + Random.value * this.subLevel4PerimeterWidth * 2 - this.subLevel4PerimeterWidth, subLevel4TargetAreaCenter.transform.position.y, subLevel4TargetAreaCenter.transform.position.z + Random.value * this.subLevel4PerimeterHeight * 2 - this.subLevel4PerimeterHeight);
-                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0, -90, 0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
                 }
                 else if (tempTargetSelect==1)
@@ -456,7 +471,7 @@ public class Level4bGameController : MonoBehaviour
                 {
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel5TargetAreaCenter.transform.position.x + Random.value * this.subLevel5PerimeterWidth * 2 - this.subLevel5PerimeterWidth, subLevel5TargetAreaCenter.transform.position.y, subLevel5TargetAreaCenter.transform.position.z + Random.value * this.subLevel5PerimeterHeight * 2 - this.subLevel5PerimeterHeight);
-                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0, -90, 0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
                 }
                 else if (tempTargetSelect==1)
