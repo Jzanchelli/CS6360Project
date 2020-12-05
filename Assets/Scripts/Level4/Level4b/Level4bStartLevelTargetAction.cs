@@ -13,6 +13,7 @@ public class Level4bStartLevelTargetAction : MonoBehaviour, TargetAction
     {
         //gameControllerScript = gameController.GetComponent<Level4bGameController>();
         UnityEngine.Debug.Log("performing target action");
+        gameControllerScript.StartLevel();
         audioSource.clip = this.glassShatterClip;
         audioSource.Play();
         StartCoroutine("WaitToMoveOn");
@@ -28,6 +29,6 @@ public class Level4bStartLevelTargetAction : MonoBehaviour, TargetAction
         // audioSource.clip = this.glassShatterClip;
         //audioSource.Play();
         yield return new WaitForSeconds(2);
-        gameControllerScript.StartLevel();
+        //gameControllerScript.StartLevel();
     }
 }

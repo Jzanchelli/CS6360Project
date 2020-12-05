@@ -7,7 +7,10 @@ public class Level4bGameController : MonoBehaviour
 {
     private int subSubLevel;
     private int subLevel;
-    public GameObject target;
+    private int levelSelect;
+    public GameObject targetPrefab1;
+    public GameObject targetPrefab2;
+    public GameObject targetPrefab3;
     public GameObject subLevel1TargetAreaCenter;
     public float subLevel1PerimeterWidth;
     public float subLevel1PerimeterHeight;
@@ -28,9 +31,14 @@ public class Level4bGameController : MonoBehaviour
     public TextMeshPro timeText;
     public TextMeshPro scoreText;
     public TextMeshPro distanceText;
+    public TextMeshPro levelText;
+    public TextMeshPro subLevelText;
+
     private System.TimeSpan time;
     private System.DateTime startTime;
     private System.DateTime targetTime;
+
+    private GameObject tempTarget;
     private Vector3 targetPosition;
     private double distance;
     private IEnumerator coroutine;
@@ -43,12 +51,16 @@ public class Level4bGameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         this.score = 0;
+        this.levelSelect = 0;
         this.subLevel = 0;
         this.subSubLevel = 0;
         this.isDisqualified = false;
         this.isStart = false;
         this.gameStart = false;
+        levelText.text = System.Convert.ToString((subSubLevel / 3) + 1);
+        subLevelText.text = System.Convert.ToString((subSubLevel % 3) + 1);
 
     }
 
@@ -77,6 +89,23 @@ public class Level4bGameController : MonoBehaviour
         targetTime =  System.DateTime.Now;
     }
 
+    public void getScore(int TargetMultiplier)
+    {
+        int distanceMultiplier = (System.Convert.ToInt32(distance) / 100)+1;
+        int timeMultiplier=1;
+        System.TimeSpan tempTime = System.DateTime.Now - targetTime;
+        if (tempTime.TotalSeconds < 15)
+        {
+            timeMultiplier = 3;
+        }
+        else if (tempTime.TotalSeconds < 30)
+        {
+            timeMultiplier = 2;
+        }
+        
+        this.score += distanceMultiplier * timeMultiplier*TargetMultiplier;
+    }
+
     public void getDistance()
     {
         UnityEngine.Debug.Log(targetPosition);
@@ -101,92 +130,152 @@ public class Level4bGameController : MonoBehaviour
             {
                 case 0:
                     this.gameStart = true;
-                    this.subLevel = 0;
                     this.remainingTargets = 5;
                     this.spawnTargets();
                     break;
                 case 1:
                     this.gameStart = true;
-                    this.subLevel = 0;
-                    this.remainingTargets = 10;
+                    this.remainingTargets = 5;
                     this.spawnTargets();
                     break;
                 case 2:
                     this.gameStart = true;
-                    this.subLevel = 0;
-                    this.remainingTargets = 20;
+                    this.remainingTargets = 5;
                     this.spawnTargets();
                     break;
                 case 3:
                     this.gameStart = true;
-                    this.subLevel = 1;
-                    this.remainingTargets = 5;
+                    this.remainingTargets = 10;
                     this.spawnTargets();
                     break;
                 case 4:
                     this.gameStart = true;
-                    this.subLevel = 1;
                     this.remainingTargets = 10;
                     this.spawnTargets();
                     break;
                 case 5:
                     this.gameStart = true;
-                    this.subLevel = 1;
-                    this.remainingTargets = 20;
+                    this.remainingTargets = 10;
                     this.spawnTargets();
                     break;
                 case 6:
                     this.gameStart = true;
-                    this.subLevel = 2;
                     this.remainingTargets = 5;
                     this.spawnTargets();
                     break;
                 case 7:
                     this.gameStart = true;
-                    this.subLevel = 2;
-                    this.remainingTargets = 10;
+                    this.remainingTargets = 5;
                     this.spawnTargets();
                     break;
                 case 8:
                     this.gameStart = true;
-                    this.subLevel = 2;
-                    this.remainingTargets = 20;
+                    this.remainingTargets = 5;
                     this.spawnTargets();
                     break;
                 case 9:
                     this.gameStart = true;
-                    this.subLevel = 3;
-                    this.remainingTargets = 5;
+                    this.remainingTargets = 10;
                     this.spawnTargets();
                     break;
                 case 10:
                     this.gameStart = true;
-                    this.subLevel = 3;
                     this.remainingTargets = 10;
                     this.spawnTargets();
                     break;
                 case 11:
                     this.gameStart = true;
-                    this.subLevel = 3;
-                    this.remainingTargets = 20;
+                    this.remainingTargets = 10;
                     this.spawnTargets();
                     break;
                 case 12:
                     this.gameStart = true;
-                    this.subLevel = 4;
                     this.remainingTargets = 5;
                     this.spawnTargets();
                     break;
                 case 13:
                     this.gameStart = true;
-                    this.subLevel = 4;
-                    this.remainingTargets = 10;
+                    this.remainingTargets = 5;
                     this.spawnTargets();
                     break;
                 case 14:
                     this.gameStart = true;
-                    this.subLevel = 4;
-                    this.remainingTargets = 20;
+                    this.remainingTargets = 5;
+                    this.spawnTargets();
+                    break;
+                case 15:
+                    this.gameStart = true;
+                    this.remainingTargets = 10;
+                    this.spawnTargets();
+                    break;
+                case 16:
+                    this.gameStart = true;
+                    this.remainingTargets = 10;
+                    this.spawnTargets();
+                    break;
+                case 17:
+                    this.gameStart = true;
+                    this.remainingTargets = 10;
+                    this.spawnTargets();
+                    break;
+                case 18:
+                    this.gameStart = true;
+                    this.remainingTargets = 5;
+                    this.spawnTargets();
+                    break;
+                case 19:
+                    this.gameStart = true;
+                    this.remainingTargets = 5;
+                    this.spawnTargets();
+                    break;
+                case 20:
+                    this.gameStart = true;
+                    this.remainingTargets = 5;
+                    this.spawnTargets();
+                    break;
+                case 21:
+                    this.gameStart = true;
+                    this.remainingTargets = 10;
+                    this.spawnTargets();
+                    break;
+                case 22:
+                    this.gameStart = true;
+                    this.remainingTargets = 10;
+                    this.spawnTargets();
+                    break;
+                case 23:
+                    this.gameStart = true;
+                    this.remainingTargets = 10;
+                    this.spawnTargets();
+                    break;
+                case 24:
+                    this.gameStart = true;
+                    this.remainingTargets = 5;
+                    this.spawnTargets();
+                    break;
+                case 25:
+                    this.gameStart = true;
+                    this.remainingTargets = 5;
+                    this.spawnTargets();
+                    break;
+                case 26:
+                    this.gameStart = true;
+                    this.remainingTargets = 5;
+                    this.spawnTargets();
+                    break;
+                case 27:
+                    this.gameStart = true;
+                    this.remainingTargets = 10;
+                    this.spawnTargets();
+                    break;
+                case 28:
+                    this.gameStart = true;
+                    this.remainingTargets = 10;
+                    this.spawnTargets();
+                    break;
+                case 29:
+                    this.gameStart = true;
+                    this.remainingTargets = 10;
                     this.spawnTargets();
                     break;
                 /*case 5:
@@ -215,38 +304,37 @@ public class Level4bGameController : MonoBehaviour
         }
     }
 
-    /*public bool CheckAndClearSubLevel1TargetContainers(int index)
-    {
-        if (this.subLevel1TargetContainers[index].transform.childCount == 0)
-        {
-            Destroy(this.subLevel1TargetContainers[index].transform.GetChild(0).gameObject);
-            return true;
-        }
-        return false;
-    }*/
-
     public void PreviousLevel()
     {
-        if (subSubLevel > 0)
+        if (this.levelSelect > 0)
         {
-            subSubLevel--;
+            this.levelSelect--;
+            subLevel = this.levelSelect / 6;
+            subSubLevel = this.levelSelect % 6;
+            levelText.text = System.Convert.ToString(this.subLevel+1);
+            subLevelText.text = System.Convert.ToString(this.subSubLevel+1);
         }
     }
 
     public void NextLevel()
     {
-        if (subSubLevel < 10)
+        if (this.levelSelect < 15)
         {
-            subSubLevel++;
+            this.levelSelect++;
+            subLevel = this.levelSelect / 6;
+            subSubLevel = this.levelSelect % 6;
+            levelText.text = System.Convert.ToString(this.subLevel + 1);
+            subLevelText.text = System.Convert.ToString(this.subSubLevel + 1);
         }
     }
 
     public void TargetHit()
     {
         this.remainingTargets--;
+        Destroy(tempTarget);
         getDistance();
+        getScore((subSubLevel%3)+1);
         getTime();
-        score++;
 
         if (this.remainingTargets > 0)
         {
@@ -266,183 +354,131 @@ public class Level4bGameController : MonoBehaviour
     public void spawnTargets()
     {
         UnityEngine.Debug.Log("Creating Targets");
-        GameObject tempTarget;
+        
+        int tempTargetSelect = this.subSubLevel % 3;
         switch (subLevel)
         {
 
             case 0:
-                UnityEngine.Debug.Log("Creating Targets");
-                targetPosition = new Vector3(subLevel1TargetAreaCenter.transform.position.x + Random.value * this.subLevel1PerimeterHeight * 2 - this.subLevel1PerimeterHeight, subLevel1TargetAreaCenter.transform.position.y, subLevel1TargetAreaCenter.transform.position.z + Random.value * this.subLevel1PerimeterWidth * 2 - this.subLevel1PerimeterWidth);
-                tempTarget = Instantiate(target, targetPosition, Quaternion.identity);
-                tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                if (tempTargetSelect==0)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel1TargetAreaCenter.transform.position.x + Random.value * this.subLevel1PerimeterWidth * 2 - this.subLevel1PerimeterWidth, subLevel1TargetAreaCenter.transform.position.y, subLevel1TargetAreaCenter.transform.position.z + Random.value * this.subLevel1PerimeterHeight * 2 - this.subLevel1PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==1)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel1TargetAreaCenter.transform.position.x + Random.value * this.subLevel1PerimeterWidth * 2 - this.subLevel1PerimeterWidth, subLevel1TargetAreaCenter.transform.position.y, subLevel1TargetAreaCenter.transform.position.z + Random.value * this.subLevel1PerimeterHeight * 2 - this.subLevel1PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==2)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel1TargetAreaCenter.transform.position.x + Random.value * this.subLevel1PerimeterWidth * 2 - this.subLevel1PerimeterWidth, subLevel1TargetAreaCenter.transform.position.y, subLevel1TargetAreaCenter.transform.position.z + Random.value * this.subLevel1PerimeterHeight * 2 - this.subLevel1PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
                 break;
             case 1:
-                UnityEngine.Debug.Log("Creating Targets");
-                targetPosition = new Vector3(subLevel2TargetAreaCenter.transform.position.x + Random.value * this.subLevel2PerimeterHeight * 2 - this.subLevel2PerimeterHeight, subLevel2TargetAreaCenter.transform.position.y, subLevel2TargetAreaCenter.transform.position.z + Random.value * this.subLevel2PerimeterWidth * 2 - this.subLevel2PerimeterWidth);
-                tempTarget = Instantiate(target, targetPosition, Quaternion.identity);
-                tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                if (tempTargetSelect==0)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel2TargetAreaCenter.transform.position.x + Random.value * this.subLevel2PerimeterWidth * 2 - this.subLevel2PerimeterWidth, subLevel2TargetAreaCenter.transform.position.y, subLevel2TargetAreaCenter.transform.position.z + Random.value * this.subLevel2PerimeterHeight * 2 - this.subLevel2PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==1)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel2TargetAreaCenter.transform.position.x + Random.value * this.subLevel2PerimeterWidth * 2 - this.subLevel2PerimeterWidth, subLevel2TargetAreaCenter.transform.position.y, subLevel2TargetAreaCenter.transform.position.z + Random.value * this.subLevel2PerimeterHeight * 2 - this.subLevel2PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==2)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel2TargetAreaCenter.transform.position.x + Random.value * this.subLevel2PerimeterWidth * 2 - this.subLevel2PerimeterWidth, subLevel2TargetAreaCenter.transform.position.y, subLevel2TargetAreaCenter.transform.position.z + Random.value * this.subLevel2PerimeterHeight * 2 - this.subLevel2PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
                 break;
             case 2:
-                UnityEngine.Debug.Log("Creating Targets");
-                targetPosition = new Vector3(subLevel3TargetAreaCenter.transform.position.x + Random.value * this.subLevel3PerimeterHeight * 2 - this.subLevel3PerimeterHeight, subLevel3TargetAreaCenter.transform.position.y, subLevel3TargetAreaCenter.transform.position.z + Random.value * this.subLevel3PerimeterWidth * 2 - this.subLevel3PerimeterWidth);
-                tempTarget = Instantiate(target, targetPosition, Quaternion.identity);
-                tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                if (tempTargetSelect==0)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel3TargetAreaCenter.transform.position.x + Random.value * this.subLevel3PerimeterWidth * 2 - this.subLevel3PerimeterWidth, subLevel3TargetAreaCenter.transform.position.y, subLevel3TargetAreaCenter.transform.position.z + Random.value * this.subLevel3PerimeterHeight * 2 - this.subLevel3PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==1)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel3TargetAreaCenter.transform.position.x + Random.value * this.subLevel3PerimeterWidth * 2 - this.subLevel3PerimeterWidth, subLevel3TargetAreaCenter.transform.position.y, subLevel3TargetAreaCenter.transform.position.z + Random.value * this.subLevel3PerimeterHeight * 2 - this.subLevel3PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==2)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel3TargetAreaCenter.transform.position.x + Random.value * this.subLevel3PerimeterWidth * 2 - this.subLevel3PerimeterWidth, subLevel3TargetAreaCenter.transform.position.y, subLevel3TargetAreaCenter.transform.position.z + Random.value * this.subLevel3PerimeterHeight * 2 - this.subLevel3PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
                 break;
             case 3:
-                UnityEngine.Debug.Log("Creating Targets");
-                targetPosition = new Vector3(subLevel4TargetAreaCenter.transform.position.x + Random.value * this.subLevel4PerimeterHeight * 2 - this.subLevel4PerimeterHeight, subLevel4TargetAreaCenter.transform.position.y, subLevel4TargetAreaCenter.transform.position.z + Random.value * this.subLevel4PerimeterWidth * 2 - this.subLevel4PerimeterWidth);
-                tempTarget = Instantiate(target, targetPosition, Quaternion.identity);
-                tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                if (tempTargetSelect==0)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel4TargetAreaCenter.transform.position.x + Random.value * this.subLevel4PerimeterWidth * 2 - this.subLevel4PerimeterWidth, subLevel4TargetAreaCenter.transform.position.y, subLevel4TargetAreaCenter.transform.position.z + Random.value * this.subLevel4PerimeterHeight * 2 - this.subLevel4PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==1)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel4TargetAreaCenter.transform.position.x + Random.value * this.subLevel4PerimeterWidth * 2 - this.subLevel4PerimeterWidth, subLevel4TargetAreaCenter.transform.position.y, subLevel4TargetAreaCenter.transform.position.z + Random.value * this.subLevel4PerimeterHeight * 2 - this.subLevel4PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==2)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel4TargetAreaCenter.transform.position.x + Random.value * this.subLevel4PerimeterWidth * 2 - this.subLevel4PerimeterWidth, subLevel4TargetAreaCenter.transform.position.y, subLevel4TargetAreaCenter.transform.position.z + Random.value * this.subLevel4PerimeterHeight * 2 - this.subLevel4PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
                 break;
             case 4:
-                UnityEngine.Debug.Log("Creating Targets");
-                targetPosition = new Vector3(subLevel5TargetAreaCenter.transform.position.x + Random.value * this.subLevel5PerimeterHeight * 2 - this.subLevel5PerimeterHeight, subLevel5TargetAreaCenter.transform.position.y, subLevel5TargetAreaCenter.transform.position.z + Random.value * this.subLevel5PerimeterWidth * 2 - this.subLevel5PerimeterWidth);
-                tempTarget = Instantiate(target, targetPosition, Quaternion.identity);
-                tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                if (tempTargetSelect==0)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel5TargetAreaCenter.transform.position.x + Random.value * this.subLevel5PerimeterWidth * 2 - this.subLevel5PerimeterWidth, subLevel5TargetAreaCenter.transform.position.y, subLevel5TargetAreaCenter.transform.position.z + Random.value * this.subLevel5PerimeterHeight * 2 - this.subLevel5PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==1)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel5TargetAreaCenter.transform.position.x + Random.value * this.subLevel5PerimeterWidth * 2 - this.subLevel5PerimeterWidth, subLevel5TargetAreaCenter.transform.position.y, subLevel5TargetAreaCenter.transform.position.z + Random.value * this.subLevel5PerimeterHeight * 2 - this.subLevel5PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                }
+                else if (tempTargetSelect==2)
+                {
+                    UnityEngine.Debug.Log("Creating Targets");
+                    targetPosition = new Vector3(subLevel5TargetAreaCenter.transform.position.x + Random.value * this.subLevel5PerimeterWidth * 2 - this.subLevel5PerimeterWidth, subLevel5TargetAreaCenter.transform.position.y, subLevel5TargetAreaCenter.transform.position.z + Random.value * this.subLevel5PerimeterHeight * 2 - this.subLevel5PerimeterHeight);
+                    tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
+                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                }
                 break;
             default:
                 break;
         }
     }
 
-
-    /*void SubLevel1(int targets)
-    {
-        this.remainingTargets = targets;
-        
-        while (hitTargets < 10)
-        {
-            int index = Random.Range(0, targets);
-            target = Instantiate(target, subLevel1TargetContainers[index].transform.position, Quaternion.identity);
-            target.transform.localScale = new Vector3(1f, 1f, 1f);
-            target.transform.SetParent(subLevel1TargetContainers[index].transform);
-            while (SubLevel1TargetContainers[index].transform.childCount>0)
-            {
-
-            }
-        }
-        int index = Random.Range(0, targets);
-        target = Instantiate(target, subLevel1TargetContainers[index].transform.position, Quaternion.identity);
-        target.transform.localScale = new Vector3(1f, 1f, 1f);
-        target.transform.SetParent(subLevel1TargetContainers[index].transform);
-    }*/
-
-
-
-    /*void SubLevel3()
-    {
-        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
-        target1.transform.localScale = new Vector3(4f, 4f, 0.2514884f);
-        target1.transform.SetParent(targetContainer1.transform);
-        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        AudioProgression();
-    }
-
-    void SubLevel2()
-    {
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
-        target1.transform.localScale = new Vector3(5f, 5f, 0.2514884f);
-        target1.transform.SetParent(targetContainer3.transform);
-        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
-        target2.transform.localScale = new Vector3(5f, 5f, 0.2514884f);
-        target2.transform.SetParent(targetContainer2.transform);
-        tmovement = target2.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        AudioProgression();
-    }
-
-    void SubLevel4()
-    {
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
-        target1.transform.localScale = new Vector3(4f, 4f, 0.2514884f);
-        target1.transform.SetParent(targetContainer3.transform);
-        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
-        target2.transform.localScale = new Vector3(4f, 4f, 0.2514884f);
-        target2.transform.SetParent(targetContainer2.transform);
-        tmovement = target2.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        AudioProgression();
-    }
-
-    void SubLevel5()
-    {
-        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
-        target1.transform.localScale = new Vector3(3f, 3f, 0.2514884f);
-        target1.transform.SetParent(targetContainer1.transform);
-        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        AudioProgression();
-    }
-
-    void SubLevel6()
-    {
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
-        target1.transform.localScale = new Vector3(3f, 3f, 0.2514884f);
-        target1.transform.SetParent(targetContainer3.transform);
-        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
-        target2.transform.localScale = new Vector3(3f, 3f, 0.2514884f);
-        target2.transform.SetParent(targetContainer2.transform);
-        tmovement = target2.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        AudioProgression();
-    }
-
-    void SubLevel7()
-    {
-        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
-        target1.transform.localScale = new Vector3(2f, 2f, 0.2514884f);
-        target1.transform.SetParent(targetContainer1.transform);
-        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        AudioProgression();
-    }
-
-    void SubLevel8()
-    {
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
-        target1.transform.localScale = new Vector3(2f, 2f, 0.2514884f);
-        target1.transform.SetParent(targetContainer3.transform);
-        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
-        target2.transform.localScale = new Vector3(2f, 2f, 0.2514884f);
-        target2.transform.SetParent(targetContainer2.transform);
-        tmovement = target2.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        AudioProgression();
-    }
-
-    void SubLevel9()
-    {
-        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
-        target1.transform.localScale = new Vector3(1f, 1f, 0.2514884f);
-        target1.transform.SetParent(targetContainer1.transform);
-        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        AudioProgression();
-    }
-
-    void SubLevel10()
-    {
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
-        target1.transform.localScale = new Vector3(1f, 1f, 0.2514884f);
-        target1.transform.SetParent(targetContainer3.transform);
-        TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
-        target2.transform.localScale = new Vector3(1f, 1f, 0.2514884f);
-        target2.transform.SetParent(targetContainer2.transform);
-        tmovement = target2.transform.GetChild(0).GetComponent<TargetMovement>();
-        tmovement.SetSpeed(0);
-        AudioProgression();
-    }*/
 
     void stopTime()
     {
