@@ -33,8 +33,12 @@ public class Level4bGameController : MonoBehaviour
     public TextMeshPro distanceText;
     public TextMeshPro levelText;
     public TextMeshPro subLevelText;
+
+    public TextMeshPro[] TopScores;
+
     public Light goLight;
 
+    private List<dreamloLeaderBoard.Score> highScores;
     private System.TimeSpan time;
     private System.DateTime startTime;
     private System.DateTime targetTime;
@@ -51,9 +55,13 @@ public class Level4bGameController : MonoBehaviour
     private int score;
     private int remainingTargets;
     private GameObject[] targets;
+    
+    public dreamloLeaderBoard dl;
     // Start is called before the first frame update
     void Start()
     {
+        dl.privateCode = "7Fz75i73mU-DG2k3Sksw5geKQTBM_1qkCYPxBHklv_-A";
+        dl.publicCode = "5fca6169eb36fd27143b8b60";
         greenGoLight = Color.green;
         whiteGoLight = Color.white;
         this.goLight.enabled = false;
@@ -66,35 +74,32 @@ public class Level4bGameController : MonoBehaviour
         this.gameStart = false;
         levelText.text = System.Convert.ToString((subSubLevel / 3) + 1);
         subLevelText.text = System.Convert.ToString((subSubLevel % 3) + 1);
-
+        dl.GetScores();
+        //GetHighScores();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //timeText.text = "Time: " + time.Seconds + "." + time.Milliseconds;
+        
         scoreText.text = "Score: " + score;
-        /*if (targetContainer1.transform.childCount == 0 && targetContainer2.transform.childCount == 0 && targetContainer3.transform.childCount == 0)
-        {
-            this.isStart = false;
-            this.gameStart = false;
-            timeText.text = "Time: " + time.Seconds + "." + time.Milliseconds;
-        }*/
-       
-            if (isStart)
+        
+
+        if (isStart)
             {
                 time = System.DateTime.Now - startTime;
                 timeText.text = "Time: " + time.Minutes + ":" + time.Seconds + "." + time.Milliseconds;
             }
-        
+        GetHighScores();
+
     }
 
-    public void getTime()
+    public void GetTime()
     {
         targetTime =  System.DateTime.Now;
     }
 
-    public void getScore(int TargetMultiplier)
+    public void GetScore(int TargetMultiplier)
     {
         int distanceMultiplier = (System.Convert.ToInt32(distance) / 100)+1;
         int timeMultiplier=1;
@@ -111,7 +116,51 @@ public class Level4bGameController : MonoBehaviour
         this.score += distanceMultiplier * timeMultiplier*TargetMultiplier;
     }
 
-    public void getDistance()
+    public void GetHighScores()
+    {
+        UnityEngine.Debug.Log("inGetHighScores");
+        //dl.GetScores();
+        List<dreamloLeaderBoard.Score> scores = dl.ToListHighToLow();
+        //UnityEngine.Debug.Log(scores.Count);
+        int count = 0;
+        string[] tempStringArr;
+        foreach (dreamloLeaderBoard.Score s in scores)
+        {
+            //UnityEngine.Debug.Log(s.shortText);
+            if (s.shortText.Contains("SL"))
+            {
+                UnityEngine.Debug.Log("inSL");
+                tempStringArr = s.shortText.Split(',');
+                UnityEngine.Debug.Log(tempStringArr.Length);
+                if (tempStringArr.Length > 3)
+                {
+                    //UnityEngine.Debug.Log(tempStringArr[1]);
+                    //bool scoreBottmlessClipIndicator = System.Convert.ToBoolean(System.Convert.ToInt32(tempStringArr[1]));
+                    bool bottomlessClip = player.GetComponentInChildren<OptionsMenu>().bottomless;
+                    UnityEngine.Debug.Log(bottomlessClip);
+                    UnityEngine.Debug.Log(tempStringArr[1]);
+                    if ((!bottomlessClip && tempStringArr[1].Equals("False")) || (bottomlessClip && tempStringArr[1].Equals("True")))
+                    {
+                        int hours = s.seconds / 36000;
+                        int minutes = s.seconds / 60;
+                        int seconds = s.seconds % 60;
+                        UnityEngine.Debug.Log(tempStringArr[1]);
+                        this.TopScores[count].text = s.playerName + "  " + s.score + "  " + hours + ":" + minutes + ":" + seconds;
+                        count++;
+                        if(count > 5)
+                        {
+                            break;
+                        }
+                    }
+                }
+                
+                
+               
+            }
+        }
+    }
+
+    public void GetDistance()
     {
         float xret = targetPosition.x - player.transform.position.x;
         float yret = targetPosition.y - player.transform.position.y;
@@ -123,6 +172,7 @@ public class Level4bGameController : MonoBehaviour
 
     public IEnumerator StartLevel()
     {
+        dl.GetScores();
         this.goLight.enabled = true;
         this.goLight.color = whiteGoLight;
         yield return new WaitForSeconds(0.5f);
@@ -146,152 +196,152 @@ public class Level4bGameController : MonoBehaviour
                 case 0:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 1:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 2:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 3:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 4:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 5:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 6:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 7:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 8:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 9:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 10:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 11:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 12:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 13:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 14:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 15:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 16:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 17:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 18:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 19:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 20:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 21:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 22:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 23:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 24:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 25:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 26:
                     this.gameStart = true;
                     this.remainingTargets = 5;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 27:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 28:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 case 29:
                     this.gameStart = true;
                     this.remainingTargets = 10;
-                    this.spawnTargets();
+                    this.SpawnTargets();
                     break;
                 /*case 5:
                     this.gameStart = true;
@@ -347,26 +397,30 @@ public class Level4bGameController : MonoBehaviour
     {
         this.remainingTargets--;
         Destroy(tempTarget);
-        getDistance();
-        getScore((subSubLevel%3)+1);
-        getTime();
+        GetDistance();
+        GetScore((subSubLevel%3)+1);
+        GetTime();
+        dl.GetScores();
 
         if (this.remainingTargets > 0)
         {
-            spawnTargets();
+            SpawnTargets();
         }
         else
         {
+            bool bottomlessClip = player.GetComponentInChildren<OptionsMenu>().bottomless;
+            dl.AddScore("SL," + bottomlessClip.ToString() + "," + subLevel + "," + subSubLevel+","+"Cowboy 1", this.score, time.Seconds, "SL," + bottomlessClip.ToString() + "," + subLevel + "," + subSubLevel);
             this.isStart = false;
             this.gameStart = false;
             this.audioSource.mute = false;
+            this.GetHighScores();
         }
         
 
     }
 
 
-    public void spawnTargets()
+    public void SpawnTargets()
     {
         UnityEngine.Debug.Log("Creating Targets");
         
