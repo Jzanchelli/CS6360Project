@@ -824,7 +824,7 @@ MonoBehaviour:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
   shotAudio: {fileID: 8300000, guid: 510702a23b813e444ac1af5f1bac184a, type: 3}
-  reloadAudio: {fileID: 8300000, guid: 56f37a7b0cd3daf45b14f5f66607beec, type: 3}
+  reloadAudio: {fileID: 8300000, guid: 9b0658cdb34612d48870321668983c36, type: 3}
   dryFireAudio: {fileID: 8300000, guid: 16181d92e2d089d41bf4b48a7c4b2569, type: 3}
   audioSource: {fileID: 6181983819325735664}
   muzzleFlash: {fileID: 8676970043737908183}
