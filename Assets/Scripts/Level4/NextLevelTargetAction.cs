@@ -11,6 +11,7 @@ public class NextLevelTargetAction : MonoBehaviour, TargetAction
     public bool PerformAction()
     {
         UnityEngine.Debug.Log("performing target action");
+        gameController.NextLevel();
         audioSource.clip = this.glassShatterClip;
         audioSource.Play();
         StartCoroutine("WaitToMoveOn");
@@ -25,7 +26,6 @@ public class NextLevelTargetAction : MonoBehaviour, TargetAction
         // audioSource.clip = this.glassShatterClip;
         //audioSource.Play();
         yield return new WaitForSeconds(2);
-        gameController.NextLevel();
     }
 
 
