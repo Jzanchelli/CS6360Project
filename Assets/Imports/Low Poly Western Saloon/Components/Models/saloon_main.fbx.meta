@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 7b23fcb368491cf4ca8fcd85d12bb784
+timeCreated: 1489328559
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: balcony
+    100002: bar
+    100004: bar_shelf
+    100006: beam_1
+    100008: beam_2
+    100010: beam_3
+    100012: curtains
+    100014: platform_1
+    100016: platform_2
+    100018: platform_3
+    100020: platform_4
+    100022: railing_1
+    100024: railing_2
+    100026: railing_3
+    100028: roof_1
+    100030: roof_2
+    100032: saloon_door_1
+    100034: saloon_door_2
+    100036: //RootNode
+    100038: saloon_main
+    100040: sign
+    100042: stairs
+    400000: balcony
+    400002: bar
+    400004: bar_shelf
+    400006: beam_1
+    400008: beam_2
+    400010: beam_3
+    400012: curtains
+    400014: platform_1
+    400016: platform_2
+    400018: platform_3
+    400020: platform_4
+    400022: railing_1
+    400024: railing_2
+    400026: railing_3
+    400028: roof_1
+    400030: roof_2
+    400032: saloon_door_1
+    400034: saloon_door_2
+    400036: //RootNode
+    400038: saloon_main
+    400040: sign
+    400042: stairs
+    2300000: balcony
+    2300002: bar
+    2300004: bar_shelf
+    2300006: beam_1
+    2300008: beam_2
+    2300010: beam_3
+    2300012: curtains
+    2300014: platform_1
+    2300016: platform_2
+    2300018: platform_3
+    2300020: platform_4
+    2300022: railing_1
+    2300024: railing_2
+    2300026: railing_3
+    2300028: roof_1
+    2300030: roof_2
+    2300032: saloon_door_1
+    2300034: saloon_door_2
+    2300036: saloon_main
+    2300038: sign
+    2300040: stairs
+    3300000: balcony
+    3300002: bar
+    3300004: bar_shelf
+    3300006: beam_1
+    3300008: beam_2
+    3300010: beam_3
+    3300012: curtains
+    3300014: platform_1
+    3300016: platform_2
+    3300018: platform_3
+    3300020: platform_4
+    3300022: railing_1
+    3300024: railing_2
+    3300026: railing_3
+    3300028: roof_1
+    3300030: roof_2
+    3300032: saloon_door_1
+    3300034: saloon_door_2
+    3300036: saloon_main
+    3300038: sign
+    3300040: stairs
+    4300000: curtains
+    4300002: beam_3
+    4300004: beam_2
+    4300006: beam_1
+    4300008: bar_shelf
+    4300010: bar
+    4300012: railing_2
+    4300014: roof_2
+    4300016: saloon_door_2
+    4300018: sign
+    4300020: saloon_main
+    4300022: roof_1
+    4300024: platform_3
+    4300026: platform_4
+    4300028: railing_3
+    4300030: railing_1
+    4300032: platform_1
+    4300034: stairs
+    4300036: platform_2
+    4300038: balcony
+    4300040: saloon_door_1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
