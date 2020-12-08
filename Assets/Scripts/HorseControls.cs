@@ -46,13 +46,14 @@ public class HorseControls : MonoBehaviour
     private IEnumerator UpdatePlayer(float angle)
     {
         Player player = Player.instance;
-        
+        if(reinsDiff.z > 1.0f){
+            reinsDiff.z = 1.0f;
+        }
         Vector3 playerFeetOffset = player.trackingOriginTransform.position - player.feetPositionGuess;
         player.trackingOriginTransform.position -= playerFeetOffset;
         player.transform.Rotate(Vector3.up, angle);
         playerFeetOffset = Quaternion.Euler(0.0f, angle, 0.0f) * playerFeetOffset;
         player.trackingOriginTransform.position += playerFeetOffset;
-
         horse = GameObject.FindGameObjectWithTag("horse");
         Vector3 direction = horse.transform.TransformDirection(new Vector3(reinsDiff.z *4, 0, 0));
         characterController.Move(speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up) - new Vector3(0, 9.81f, 0) * Time.deltaTime);

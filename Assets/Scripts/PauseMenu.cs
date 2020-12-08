@@ -46,19 +46,53 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        //UnityEngine.Debug.Log("Loading Menu");
         Transform rightHand = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(2).transform;
 
+        // Vector3 playerPos = playerCam.position;
+        // //UnityEngine.Debug.Log("position:" + playerCam.position); 
+        // //UnityEngine.Debug.Log(playerCam.name); 
+        // Vector3 playerDirection = playerCam.transform.forward;
+        // Quaternion playerRotation = playerCam.transform.rotation;
+        // float spawnDistance = 3f;
+        // Vector3 pausePos = playerPos+ playerDirection*spawnDistance;
+        // //Quaternion pauseRotation = Quaternion.(playerDirection, Vector3.up);
+
+        pauseCenterInstance = Instantiate(pauseCenterPrefab, Vector3.zero, Quaternion.identity);
+        // UnityEngine.Debug.Log("position:" + playerCam.position); 
+        // //pauseCenterInstance.transform.position = ;
+        // pauseCenterInstance.transform.LookAt(playerCam, Vector3.up);    
+        // pauseCenterInstance.transform.Translate(Vector3.back * spawnDistance);     
+        // UnityEngine.Debug.Log("menu position:" + pauseCenterInstance.transform.position);
+        //UnityEngine.Debug.Log("Instantiated");   
         Vector3 playerPos = playerCam.position;
         Vector3 playerDirection = playerCam.transform.forward;
         Quaternion playerRotation = playerCam.transform.rotation;
-        float spawnDistance = 10f;
+        float spawnDistance = 3f;
         Vector3 pausePos = playerPos+ playerDirection*spawnDistance;
-        //Quaternion pauseRotation = Quaternion.(playerDirection, Vector3.up);
+        
+        pauseCenterInstance.transform.position = new Vector3 (pausePos.x, playerPos.y, pausePos.z);
+        pauseCenterInstance.transform.LookAt(playerCam, Vector3.up);
 
-        pauseCenterInstance = Instantiate(pauseCenterPrefab, Vector3.zero, Quaternion.identity);
-        pauseCenterInstance.transform.position = playerCam.position;
-        pauseCenterInstance.transform.LookAt(playerCam, Vector3.up);    
-        pauseCenterInstance.transform.Translate(Vector3.back * spawnDistance);        
+        pointerInstance = Instantiate(pointerPrefab, rightHand.transform.position, rightHand.transform.rotation);
+        pointerInstance.transform.parent = rightHand;
+        pointerInstance.GetComponent<Pointer>().inputModule = GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>();
+        
+        GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().pointer = pointerInstance.GetComponent<Pointer>();
+        pauseCenterInstance.GetComponentInChildren<Canvas>().worldCamera = pointerInstance.GetComponent<Camera>();
+        GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().initializePointer();
+        //pauseCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
+        Time.timeScale = 0;
+    }
+
+    public void LoadMenu(Vector3 optionsMenuCenter, Quaternion optionsMenuRotation)
+    {
+        
+        Transform rightHand = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(2).transform;
+
+        
+
+        pauseCenterInstance = Instantiate(pauseCenterPrefab, optionsMenuCenter, optionsMenuRotation);                
 
         pointerInstance = Instantiate(pointerPrefab, rightHand.transform.position, rightHand.transform.rotation);
         pointerInstance.transform.parent = rightHand;

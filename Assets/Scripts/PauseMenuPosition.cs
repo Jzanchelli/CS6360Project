@@ -16,7 +16,7 @@ public class PauseMenuPosition : MonoBehaviour
         Vector3 playerPos = playerCam.position;
         Vector3 playerDirection = playerCam.transform.forward;
         Quaternion playerRotation = playerCam.transform.rotation;
-        float spawnDistance = 1f;
+        float spawnDistance = 3f;
          pausePos = playerPos+ playerDirection*spawnDistance;
         //Quaternion pauseRot = new Quaternion(-playerRotation.x, );
 
