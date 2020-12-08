@@ -255,7 +255,7 @@ MonoBehaviour:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
   shotAudio: {fileID: 8300000, guid: a493a0069ef65934d9a7bcf639745c95, type: 3}
-  reloadAudio: {fileID: 0}
+  reloadAudio: {fileID: 8300000, guid: b8a824af4e1f0d84b9b73bdabc915028, type: 3}
   dryFireAudio: {fileID: 8300000, guid: 16181d92e2d089d41bf4b48a7c4b2569, type: 3}
   audioSource: {fileID: 5024009367128234562}
   muzzleFlash: {fileID: 8943117523749310706}
@@ -497,11 +497,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011227296186, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.174
+      value: 0.213
       objectReference: {fileID: 0}
     - target: {fileID: 4000011227296186, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.22
+      value: 1.433
       objectReference: {fileID: 0}
     - target: {fileID: 4000011227296186, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
       propertyPath: m_LocalRotation.x
