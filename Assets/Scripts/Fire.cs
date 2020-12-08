@@ -124,7 +124,12 @@ public class Fire : MonoBehaviour
         UnityEngine.Debug.Log("shooting: Position: " + gunBarrel.position + " Rotation: " + gunBarrel.transform.forward);
         if (Physics.Raycast(gunBarrel.position, gunBarrel.transform.forward, out hit, this.range))
         {
+            if (hit.collider.gameObject.CompareTag("barrel"))
+            {
+                ExplodingBarrel eb = hit.collider.gameObject.GetComponent<ExplodingBarrel>();
+                eb.Explode();
 
+            }
             if (hit.collider.gameObject.CompareTag("target"))
             {
                 UnityEngine.Debug.Log("destroying! ");
@@ -160,7 +165,6 @@ public class Fire : MonoBehaviour
 
                 if (GCScript != null)
                 {
-                    UnityEngine.Debug.Log("We are in BULLET TARGET GCSCRIPT PART");
                     GCScript.TargetShot();
                 }
 
