@@ -3,7 +3,11 @@ guid: cedd7c9014d231543bfdd2bd450bd8df
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pauseCenterPrefab: {fileID: 4342046078678259380, guid: 400f3ff5c95b0f149bed5c410a5bce82,
+      type: 3}
+  - pointerPrefab: {fileID: 4026411628280866991, guid: 496f54f38e2a34547b370f100c867221,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

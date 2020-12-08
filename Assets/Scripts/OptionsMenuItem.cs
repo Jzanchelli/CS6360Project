@@ -50,8 +50,11 @@ public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
         UnityEngine.Debug.Log("Returning. FromPause: " + fromPause);
         if(fromPause)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PauseMenu>().LoadMenu();
+            Vector3 menuCenter = this.gameObject.transform.position;
+            Quaternion menuCenterRotation = this.gameObject.transform.rotation;
             GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().UnloadMenu();
+            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PauseMenu>().LoadMenu(menuCenter, menuCenterRotation);
+            
         }
         else
         {
