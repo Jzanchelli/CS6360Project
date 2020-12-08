@@ -81,15 +81,13 @@ public class Level4bGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         scoreText.text = "Score: " + score;
-        
 
         if (isStart)
-            {
-                time = System.DateTime.Now - startTime;
-                timeText.text = "Time: " + time.Minutes + ":" + time.Seconds + "." + time.Milliseconds;
-            }
+        {
+            time = System.DateTime.Now - startTime;
+            timeText.text = "Time: " + time.Minutes + ":" + time.Seconds + "." + time.Milliseconds;
+        }
         GetHighScores();
 
     }
@@ -182,201 +180,210 @@ public class Level4bGameController : MonoBehaviour
 
     public IEnumerator StartLevel()
     {
-        dl.GetScores();
-        this.goLight.enabled = true;
-        this.goLight.color = whiteGoLight;
-        yield return new WaitForSeconds(0.5f);
-        this.goLight.enabled = false;
-        yield return new WaitForSeconds(0.5f);
-        this.goLight.enabled = true;
-        this.goLight.color = whiteGoLight;
-        yield return new WaitForSeconds(0.5f);
-        this.goLight.enabled = false;
-        yield return new WaitForSeconds(0.5f);
-        this.goLight.enabled = true;
-        this.goLight.color = greenGoLight;
-        this.audioSource.mute = true;
-        this.isStart = true;
-        this.score = 0;
-        this.startTime = System.DateTime.Now;
-        if (!this.gameStart)
+        if (this.gameStart)
         {
-            switch (subSubLevel)
+            this.gameStart = false;
+            this.isStart = false;
+        }
+        else
+        {
+            dl.GetScores();
+            this.goLight.enabled = true;
+            this.goLight.color = whiteGoLight;
+            yield return new WaitForSeconds(0.5f);
+            this.goLight.enabled = false;
+            yield return new WaitForSeconds(0.5f);
+            this.goLight.enabled = true;
+            this.goLight.color = whiteGoLight;
+            yield return new WaitForSeconds(0.5f);
+            this.goLight.enabled = false;
+            yield return new WaitForSeconds(0.5f);
+            this.goLight.enabled = true;
+            this.goLight.color = greenGoLight;
+            this.audioSource.mute = true;
+            this.isStart = true;
+            this.score = 0;
+            this.startTime = System.DateTime.Now;
+            if (!this.gameStart)
             {
-                case 0:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 1:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 2:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 3:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 4:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 5:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 6:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 7:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 8:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 9:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 10:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 11:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 12:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 13:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 14:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 15:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 16:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 17:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 18:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 19:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 20:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 21:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 22:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 23:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 24:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 25:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 26:
-                    this.gameStart = true;
-                    this.remainingTargets = 5;
-                    this.SpawnTargets();
-                    break;
-                case 27:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 28:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                case 29:
-                    this.gameStart = true;
-                    this.remainingTargets = 10;
-                    this.SpawnTargets();
-                    break;
-                /*case 5:
-                    this.gameStart = true;
-                    SubLevel6();
-                    break;
-                case 6:
-                    this.gameStart = true;
-                    SubLevel7();
-                    break;
-                case 7:
-                    this.gameStart = true;
-                    SubLevel8();
-                    break;
-                case 8:
-                    this.gameStart = true;
-                    SubLevel9();
-                    break;
-                case 9:
-                    this.gameStart = true;
-                    SubLevel10();
-                    break;*/
-                default:
-                    break;
+                switch (subSubLevel)
+                {
+                    case 0:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 1:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 2:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 3:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 4:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 5:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 6:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 7:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 8:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 9:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 10:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 11:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 12:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 13:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 14:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 15:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 16:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 17:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 18:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 19:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 20:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 21:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 22:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 23:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 24:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 25:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 26:
+                        this.gameStart = true;
+                        this.remainingTargets = 5;
+                        this.SpawnTargets();
+                        break;
+                    case 27:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 28:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    case 29:
+                        this.gameStart = true;
+                        this.remainingTargets = 10;
+                        this.SpawnTargets();
+                        break;
+                    /*case 5:
+                        this.gameStart = true;
+                        SubLevel6();
+                        break;
+                    case 6:
+                        this.gameStart = true;
+                        SubLevel7();
+                        break;
+                    case 7:
+                        this.gameStart = true;
+                        SubLevel8();
+                        break;
+                    case 8:
+                        this.gameStart = true;
+                        SubLevel9();
+                        break;
+                    case 9:
+                        this.gameStart = true;
+                        SubLevel10();
+                        break;*/
+                    default:
+                        break;
+                }
             }
         }
+        
     }
 
     public void PreviousLevel()
