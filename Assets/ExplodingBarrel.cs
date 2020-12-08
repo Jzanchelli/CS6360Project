@@ -7,7 +7,7 @@ using UnityEngine;
 public class ExplodingBarrel : MonoBehaviour
 {
     public float radius = 5f;
-
+    public AudioSource audioSource;
     GameObject GC = null;
     GameController GCScript = null;
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class ExplodingBarrel : MonoBehaviour
         {
             if (hit.tag == "target")
             {
-                Debug.Log("Exploding Barrel hit a target!");
+                audioSource.Play();
                 GCScript.TargetShot();
                 Destroy(hit.gameObject);
             }
