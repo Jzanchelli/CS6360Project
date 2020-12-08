@@ -64,9 +64,10 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
     public void LaunchOptions()
     {
         Vector3 pauseCenter = this.gameObject.transform.position;
+        Quaternion pauseCenterRotation = this.gameObject.transform.rotation;
         Resume();
         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().fromPause = true;
-        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().LoadMenu(pauseCenter);
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().LoadMenu(pauseCenter, pauseCenterRotation);
         //pauseCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
         Time.timeScale = 0;
     }
@@ -94,29 +95,5 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
         instance.Trigger();
 
     }
-    // public void OnPointerClick(PointerEventData data)
-    // {
-    //     UnityEngine.Debug.Log("Click called");
-    //     if(data.pointerPress.Equals(resumeButton))
-    //     {
-    //         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PauseMenu>().UnloadMenu();
-    //     }
-    //     else if(data.pointerPress.Equals(quitButton))
-    //     {
-    //         //UnityEngine.Debug.Log("Quit Selected");
-    //         instance.levelName = menuSceneName;
-    //         instance.Trigger();
-            
-    //     }
-    //     else if(data.pointerPress.Equals(optionsButton))
-    //     {
-    //         //TODO: Options
-    //     }
-    //     else if(data.pointerPress.Equals(restartButton))
-    //     {
-    //         currentSceneName = SceneManager.GetActiveScene().name;
-    //         instance.levelName = currentSceneName;
-    //         instance.Trigger();
-    //     }
-    // }
+    
 }
