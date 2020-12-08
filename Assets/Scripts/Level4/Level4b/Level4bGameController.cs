@@ -124,6 +124,10 @@ public class Level4bGameController : MonoBehaviour
         //UnityEngine.Debug.Log(scores.Count);
         int count = 0;
         string[] tempStringArr;
+        for(int i = 0;i<TopScores.Length;i++)
+        {
+            TopScores[i].text = (i + 1) + ". ";
+        }
         foreach (dreamloLeaderBoard.Score s in scores)
         {
             //UnityEngine.Debug.Log(s.shortText);
@@ -144,9 +148,15 @@ public class Level4bGameController : MonoBehaviour
                         int hours = s.seconds / 36000;
                         int minutes = s.seconds / 60;
                         int seconds = s.seconds % 60;
-                        UnityEngine.Debug.Log(tempStringArr[1]);
-                        this.TopScores[count].text = s.playerName + "  " + s.score + "  " + hours + ":" + minutes + ":" + seconds;
-                        count++;
+                        string[] tempNameArr = s.playerName.Split(',');
+                        //UnityEngine.Debug.Log(tempStringArr[1]);
+                        if (tempNameArr.Length > 4)
+                        {
+                            //this.TopScores[count].text = (count+1) + ". " + tempNameArr[4] + "  Score: " + s.score + "  Time: " + hours + ":" + minutes + ":" + seconds +  "  Level: " + tempStringArr[2] + "  SubLevel: " + tempStringArr[3];
+                            this.TopScores[count].text = (count + 1) + ".   Score: " + s.score + "  Time: " + hours + ":" + minutes + ":" + seconds + "  Level: " + tempStringArr[2] + "  SubLevel: " + tempStringArr[3];
+                            count++;
+                        }
+                        
                         if(count > 5)
                         {
                             break;
@@ -409,7 +419,7 @@ public class Level4bGameController : MonoBehaviour
         else
         {
             bool bottomlessClip = player.GetComponentInChildren<OptionsMenu>().bottomless;
-            dl.AddScore("SL," + bottomlessClip.ToString() + "," + subLevel + "," + subSubLevel+","+"Cowboy 1", this.score, time.Seconds, "SL," + bottomlessClip.ToString() + "," + subLevel + "," + subSubLevel);
+            dl.AddScore("SL," + bottomlessClip.ToString() + "," + subLevel + "," + subSubLevel+","+"Cowboy 1", this.score, time.Seconds, "SL," + bottomlessClip.ToString() + "," + (subLevel+1) + "," + (subSubLevel+1));
             this.isStart = false;
             this.gameStart = false;
             this.audioSource.mute = false;
