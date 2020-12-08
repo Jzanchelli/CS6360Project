@@ -16,6 +16,7 @@ public class Level4GameController : MonoBehaviour
     public GameObject targetContainer3;
     public GameObject player;
     public TextMeshPro text;
+    public TextMeshPro levelText;
     private System.TimeSpan time;
     private System.DateTime startTime;
     private IEnumerator coroutine;
@@ -67,6 +68,7 @@ public class Level4GameController : MonoBehaviour
     {
         if (!this.gameStart)
         {
+            UnityEngine.Debug.Log(subLevel);
             switch (subLevel)
             {
                 case 0:
@@ -153,14 +155,16 @@ public class Level4GameController : MonoBehaviour
         if (subLevel > 0)
         {
             subLevel--;
+            levelText.text = (subLevel+1).ToString();
         }
     }
 
     public void NextLevel()
     {
-        if (subLevel < 10)
+        if (subLevel <9)
         {
             subLevel++;
+            levelText.text = (subLevel + 1).ToString();
         }
     }
 
@@ -354,7 +358,6 @@ public class Level4GameController : MonoBehaviour
             this.isStart = false;
         }
         this.audioSource.PlayOneShot(this.drawAudio);
-        text.text = "hey";
         this.isStart = true;
         this.startTime = System.DateTime.Now;
         
