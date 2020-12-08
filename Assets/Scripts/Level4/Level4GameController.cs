@@ -15,6 +15,7 @@ public class Level4GameController : MonoBehaviour
     public GameObject targetContainer2;
     public GameObject targetContainer3;
     public GameObject player;
+    public GameObject utilityBelt;
     public TextMeshPro text;
     public TextMeshPro levelText;
     public dreamloLeaderBoard dl;
@@ -260,6 +261,28 @@ public class Level4GameController : MonoBehaviour
 
     bool weaponsHolstered()
     {
+        //transform.Find("LeftShoulder/Arm/Hand/Finger");
+        GameObject[] gameObjects;
+        foreach (Transform tran in this.player.transform.Find("SteamVRObjects/LeftHand"))
+        {
+            if (tran.gameObject.CompareTag("weapon"))
+            {
+                UnityEngine.Debug.Log("weapons attached to player'");
+                return false;
+            }
+        }
+        foreach (Transform tran in this.player.transform.Find("SteamVRObjects/RightHand"))
+        {
+            if (tran.gameObject.CompareTag("weapon"))
+            {
+                UnityEngine.Debug.Log("weapons attached to player'");
+                return false;
+            }
+        }
+       
+            UnityEngine.Debug.Log("weapons not attached to player'");
+            return true;
+        /*
         GameObject[] weapons = GameObject.FindGameObjectsWithTag("weapon");
         for (int i = 0; i < weapons.Length; i++)
         {
@@ -275,7 +298,7 @@ public class Level4GameController : MonoBehaviour
                 return false;
             }
         }
-        return true;
+        return true;*/
     }
 
     void AudioProgression()
@@ -288,7 +311,7 @@ public class Level4GameController : MonoBehaviour
     void SubLevel1()
     {
         this.targetCount = 1;
-        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer1.transform.position, targetContainer1.transform.rotation);
         target1.transform.localScale = new Vector3(5f, 5f, 0.2514884f);
         target1.transform.SetParent(targetContainer1.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
@@ -300,7 +323,7 @@ public class Level4GameController : MonoBehaviour
     void SubLevel3()
     {
         this.targetCount = 1;
-        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer1.transform.position, targetContainer1.transform.rotation);
         target1.transform.localScale = new Vector3(4f, 4f, 0.2514884f);
         target1.transform.SetParent(targetContainer1.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
@@ -312,13 +335,13 @@ public class Level4GameController : MonoBehaviour
     void SubLevel2()
     {
         this.targetCount = 2;
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer3.transform.position, targetContainer3.transform.rotation);
         target1.transform.localScale = new Vector3(5f, 5f, 0.2514884f);
         target1.transform.SetParent(targetContainer3.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
         TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
         tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
+        target2 = Instantiate(target, targetContainer2.transform.position, targetContainer2.transform.rotation);
         target2.transform.localScale = new Vector3(5f, 5f, 0.2514884f);
         target2.transform.SetParent(targetContainer2.transform);
         target2.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
@@ -330,13 +353,13 @@ public class Level4GameController : MonoBehaviour
     void SubLevel4()
     {
         this.targetCount = 2;
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer3.transform.position, targetContainer3.transform.rotation);
         target1.transform.localScale = new Vector3(4f, 4f, 0.2514884f);
         target1.transform.SetParent(targetContainer3.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
         TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
         tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
+        target2 = Instantiate(target, targetContainer2.transform.position, targetContainer2.transform.rotation);
         target2.transform.localScale = new Vector3(4f, 4f, 0.2514884f);
         target2.transform.SetParent(targetContainer2.transform);
         target2.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
@@ -348,7 +371,7 @@ public class Level4GameController : MonoBehaviour
     void SubLevel5()
     {
         this.targetCount = 1;
-        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer1.transform.position, targetContainer1.transform.rotation);
         target1.transform.localScale = new Vector3(3f, 3f, 0.2514884f);
         target1.transform.SetParent(targetContainer1.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
@@ -360,13 +383,13 @@ public class Level4GameController : MonoBehaviour
     void SubLevel6()
     {
         this.targetCount = 2;
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer3.transform.position, targetContainer3.transform.rotation);
         target1.transform.localScale = new Vector3(3f, 3f, 0.2514884f);
         target1.transform.SetParent(targetContainer3.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
         TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
         tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
+        target2 = Instantiate(target, targetContainer2.transform.position, targetContainer2.transform.rotation);
         target2.transform.localScale = new Vector3(3f, 3f, 0.2514884f);
         target2.transform.SetParent(targetContainer2.transform);
         target2.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
@@ -378,7 +401,7 @@ public class Level4GameController : MonoBehaviour
     void SubLevel7()
     {
         this.targetCount = 1;
-        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer1.transform.position, targetContainer1.transform.rotation);
         target1.transform.localScale = new Vector3(2f, 2f, 0.2514884f);
         target1.transform.SetParent(targetContainer1.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
@@ -390,13 +413,13 @@ public class Level4GameController : MonoBehaviour
     void SubLevel8()
     {
         this.targetCount = 2;
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer3.transform.position, targetContainer3.transform.rotation);
         target1.transform.localScale = new Vector3(2f, 2f, 0.2514884f);
         target1.transform.SetParent(targetContainer3.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
         TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
         tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
+        target2 = Instantiate(target, targetContainer2.transform.position, targetContainer2.transform.rotation);
         target2.transform.localScale = new Vector3(2f, 2f, 0.2514884f);
         target2.transform.SetParent(targetContainer2.transform);
         target2.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
@@ -408,7 +431,7 @@ public class Level4GameController : MonoBehaviour
     void SubLevel9()
     {
         this.targetCount = 1;
-        target1 = Instantiate(target, targetContainer1.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer1.transform.position, targetContainer1.transform.rotation);
         target1.transform.localScale = new Vector3(1f, 1f, 0.2514884f);
         target1.transform.SetParent(targetContainer1.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
@@ -420,13 +443,13 @@ public class Level4GameController : MonoBehaviour
     void SubLevel10()
     {
         this.targetCount = 2;
-        target1 = Instantiate(target, targetContainer3.transform.position, Quaternion.identity);
+        target1 = Instantiate(target, targetContainer3.transform.position, targetContainer3.transform.rotation);
         target1.transform.localScale = new Vector3(1f, 1f, 0.2514884f);
         target1.transform.SetParent(targetContainer3.transform);
         target1.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
         TargetMovement tmovement = target1.transform.GetChild(0).GetComponent<TargetMovement>();
         tmovement.SetSpeed(0);
-        target2 = Instantiate(target, targetContainer2.transform.position, Quaternion.identity);
+        target2 = Instantiate(target, targetContainer2.transform.position, targetContainer2.transform.rotation);
         target2.transform.localScale = new Vector3(1f, 1f, 0.2514884f);
         target2.transform.SetParent(targetContainer2.transform);
         target2.transform.GetChild(0).GetComponent<Level4TargetAction>().gameController = this;
