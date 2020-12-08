@@ -400,7 +400,7 @@ public class Level4bGameController : MonoBehaviour
 
     public void NextLevel()
     {
-        if (this.levelSelect < 30)
+        if (this.levelSelect < 29)
         {
             this.levelSelect++;
             subLevel = this.levelSelect / 6;
@@ -415,7 +415,14 @@ public class Level4bGameController : MonoBehaviour
         this.remainingTargets--;
         Destroy(tempTarget);
         GetDistance();
-        GetScore((subSubLevel%3)+1);
+        if(subSubLevel == 1 || subSubLevel == 4)
+        {
+            GetScore(2);
+        }
+        else
+        {
+            GetScore(1);
+        }
         GetTime();
         dl.GetScores();
 
@@ -465,7 +472,7 @@ public class Level4bGameController : MonoBehaviour
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel1TargetAreaCenter.transform.position.x + Random.value * this.subLevel1PerimeterWidth * 2 - this.subLevel1PerimeterWidth, subLevel1TargetAreaCenter.transform.position.y, subLevel1TargetAreaCenter.transform.position.z + Random.value * this.subLevel1PerimeterHeight * 2 - this.subLevel1PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
-                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bExplodingBarrelTargetAction>().gameController = this;
                 }
                 break;
             case 1:
@@ -488,7 +495,7 @@ public class Level4bGameController : MonoBehaviour
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel2TargetAreaCenter.transform.position.x + Random.value * this.subLevel2PerimeterWidth * 2 - this.subLevel2PerimeterWidth, subLevel2TargetAreaCenter.transform.position.y, subLevel2TargetAreaCenter.transform.position.z + Random.value * this.subLevel2PerimeterHeight * 2 - this.subLevel2PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
-                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bExplodingBarrelTargetAction>().gameController = this;
                 }
                 break;
             case 2:
@@ -511,7 +518,7 @@ public class Level4bGameController : MonoBehaviour
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel3TargetAreaCenter.transform.position.x + Random.value * this.subLevel3PerimeterWidth * 2 - this.subLevel3PerimeterWidth, subLevel3TargetAreaCenter.transform.position.y, subLevel3TargetAreaCenter.transform.position.z + Random.value * this.subLevel3PerimeterHeight * 2 - this.subLevel3PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
-                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bExplodingBarrelTargetAction>().gameController = this;
                 }
                 break;
             case 3:
@@ -534,7 +541,7 @@ public class Level4bGameController : MonoBehaviour
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel4TargetAreaCenter.transform.position.x + Random.value * this.subLevel4PerimeterWidth * 2 - this.subLevel4PerimeterWidth, subLevel4TargetAreaCenter.transform.position.y, subLevel4TargetAreaCenter.transform.position.z + Random.value * this.subLevel4PerimeterHeight * 2 - this.subLevel4PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
-                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bExplodingBarrelTargetAction>().gameController = this;
                 }
                 break;
             case 4:
@@ -557,7 +564,7 @@ public class Level4bGameController : MonoBehaviour
                     UnityEngine.Debug.Log("Creating Targets");
                     targetPosition = new Vector3(subLevel5TargetAreaCenter.transform.position.x + Random.value * this.subLevel5PerimeterWidth * 2 - this.subLevel5PerimeterWidth, subLevel5TargetAreaCenter.transform.position.y, subLevel5TargetAreaCenter.transform.position.z + Random.value * this.subLevel5PerimeterHeight * 2 - this.subLevel5PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab3, targetPosition, Quaternion.identity);
-                    tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bExplodingBarrelTargetAction>().gameController = this;
                 }
                 break;
             default:
