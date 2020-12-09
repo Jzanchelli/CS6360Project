@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public GlobalAchievements achievements;
 
     public int shootingrangetime = 20;
     private int currentTime = 0;
@@ -42,9 +43,12 @@ public class GameController : MonoBehaviour
         //Change texts to match targets and time remaining
         timeremainingtext.text = "Time Remaining: " + (shootingrangetime - GetTime());
         targetsShotText.text = "Targets Shot: " + GetTargetsShot();
-        if (GetTime() > shootingrangetime)
+        if (GetTime() >= shootingrangetime)
         {
-            //Change scenes right here!
+            // Check for achievement
+            if (targetsShot >= 10){
+                StartCoroutine(achievements.TriggerAchievement(Achievement.level_one_score));
+            }
         }
     }
     IEnumerator OneSecond()

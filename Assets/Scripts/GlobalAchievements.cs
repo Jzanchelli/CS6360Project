@@ -12,7 +12,7 @@ public enum Achievement
     hit_target_25_while_riding,
     get_to_second_town,
     level_one_100_accuracy,
-    level_one_score_1000,
+    level_one_score,
     level_two_time_gold,
     level_two_time_silver,
     level_two_time_bronze
@@ -26,7 +26,7 @@ public class GlobalAchievements : MonoBehaviour
     public Text AchievementDescription;
 
     // Audio
-    public static AudioSource AchievementSound;
+    public AudioSource AchievementSound;
 
     private const int N_ACHIEVEMENTS = 10;
 
@@ -58,7 +58,7 @@ public class GlobalAchievements : MonoBehaviour
         "Hit a target from 25 units or more away while riding your horse.",
         "Travel to the second town.",
         "Complete level 1 with 100% accuracy.",
-        "Complete level 1 with a score of 1000 or more.",
+        "Hit at least 10 targets on level 1.",
         "Obtain a gold medal on level 2.",
         "Obtain a silver medal on level 2.",
         "Obtain a bronze medal on level 2.",
@@ -82,30 +82,32 @@ public class GlobalAchievements : MonoBehaviour
     // Type is IEnumerator so this can be called by StartCoroutine(...)
     public IEnumerator TriggerAchievement(Achievement ach)
     {
+        if (!GetState(ach)){
+            Debug.Log("Achievement Get!");
+            Debug.Log(AchTitles[(int)ach]);
 
-        Debug.Log("Achievement Get!");
-        Debug.Log(AchTitles[(int)ach]);
+            AchievementTitle.text = AchTitles[(int)ach];
+            AchievementDescription.text = AchDescriptions[(int)ach];
 
-        AchievementTitle.text = AchTitles[(int)ach];
-        AchievementDescription.text = AchDescriptions[(int)ach];
+            AchievementPanel.SetActive(true);
 
-        AchievementPanel.SetActive(true);
+            if (AchievementSound != null)
+            {
+                AchievementSound.Play();
+            }
 
-        if (AchievementSound != null)
-        {
-            AchievementSound.Play();
+            // A state equal to true indicates the achievement has already been done.
+            AchStates[(int)ach] = true;
+
+            // Leave the UI up for 5 seconds.
+            yield return new WaitForSeconds(5);
+
+            // Reset UI
+            AchievementTitle.text = "";
+            AchievementDescription.text = "";
+            AchievementPanel.SetActive(false);
         }
-
-        // A state equal to true indicates the achievement has already been done.
-        AchStates[(int)ach] = true;
-
-        // Leave the UI up for 5 seconds.
-        yield return new WaitForSeconds(5);
-
-        // Reset UI
-        AchievementTitle.text = "";
-        AchievementDescription.text = "";
-        AchievementPanel.SetActive(false);
+        
     }
 
 }
