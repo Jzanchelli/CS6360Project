@@ -27,11 +27,11 @@ public class GameController2 : MonoBehaviour
         score.text = currentScore.ToString() + " pts";
 
         // Check for achievement
-        if (currentScore >= 200){
+        if (currentScore >= 250){
             StartCoroutine(achievements.TriggerAchievement(Achievement.level_two_gold));
-        } else if (currentScore >= 100){
+        } else if (currentScore >= 150){
             StartCoroutine(achievements.TriggerAchievement(Achievement.level_two_silver));
-        } else if (currentScore >= 50){
+        } else if (currentScore >= 25){
             StartCoroutine(achievements.TriggerAchievement(Achievement.level_two_bronze));
         }
 
