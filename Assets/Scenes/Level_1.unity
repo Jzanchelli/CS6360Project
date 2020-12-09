@@ -12181,7 +12181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf9f3c0224b22b48bb67dc5829bc3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  achievements: {fileID: 0}
+  achievements: {fileID: 2142119303}
   shootingrangetime: 20
   timeremainingtext: {fileID: 1811367365}
   targetsShotText: {fileID: 2025054143}
@@ -17239,6 +17239,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73eea6be6aa1fea4cb78360e84592225, type: 3}
+--- !u!114 &2142119303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2277857114244454635, guid: 73eea6be6aa1fea4cb78360e84592225,
+    type: 3}
+  m_PrefabInstance: {fileID: 2142119302}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1362d9a5ed6b224581e2f1b788cba69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2143464573
 PrefabInstance:
   m_ObjectHideFlags: 0
