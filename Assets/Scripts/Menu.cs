@@ -10,6 +10,8 @@ public class Menu : MonoBehaviour
     public SteamVR_Action_Boolean GrabPinch;
     public GameObject menuCenter;
 
+    //public List<GameObject> toDestroy;
+
     public GameObject levelSelectPrefab;
 
     //private const string levelSelectPath= @"Menu Elements\Level Selection Menu";    
@@ -18,6 +20,7 @@ public class Menu : MonoBehaviour
     void Start()
     {
         interactable = GetComponent<Interactable>();
+        //toDestroy.add(this)
     }
 
     // Update is called once per frame
@@ -25,6 +28,10 @@ public class Menu : MonoBehaviour
     {
         if (interactable.attachedToHand != null)
         {
+            // if(!this.transform.parent.gameObject.GetComponent<MenuCenter>().toDestroy.Contains(this.gameObject))
+            // {
+            //     this.transform.parent.gameObject.GetComponent<MenuCenter>().toDestroy.Add(this.gameObject);
+            // }
             SteamVR_Input_Sources source = interactable.attachedToHand.handType;
             Hand hand = interactable.attachedToHand;
             if (GrabPinch[source].stateDown)
@@ -37,7 +44,7 @@ public class Menu : MonoBehaviour
                    // levelSelect.SetActive(true);
                     Destroy(menuCenter);
                     //Resources.Load(levelSelectPath);
-                    Instantiate(levelSelectPrefab, new Vector3(0,1,1), Quaternion.Euler(0,180,0));
+                    Instantiate(levelSelectPrefab, new Vector3(-2.955297f, 0.671f, -12.256f), Quaternion.identity);
                     //this.transform.parent.gameObject.SetActive(false);
                 }
                 //This works!

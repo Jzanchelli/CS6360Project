@@ -48,7 +48,7 @@ public class LevelSelect : MonoBehaviour
                     hand.DetachObject(this.gameObject);
                     //Resources.UnloadAsset(this.transform.parent.gameObject);
                     Destroy(levelSelectCenter);
-                    Instantiate(mainMenuPrefab, new Vector3(0,1,1), Quaternion.Euler(0,180,0));                  
+                    Instantiate(mainMenuPrefab, new Vector3(-2.955297f, 0.671f, -12.256f), Quaternion.identity);                  
                 }
                 //This works!
                 else if (this.name == "Level 1")
