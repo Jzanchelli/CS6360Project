@@ -55,6 +55,7 @@ public class LevelSelect : MonoBehaviour
                 {
                     //UnityEngine.Debug.Log("Level 1 Selected");  
                     instance.levelName = Level1; 
+                    hand.DetachObject(this.gameObject);
                     saveOptions();
                     instance.Trigger();     
                 }
@@ -62,6 +63,7 @@ public class LevelSelect : MonoBehaviour
                 {
                     //UnityEngine.Debug.Log("Level 2 Selected");  
                     instance.levelName = Level2;  
+                    hand.DetachObject(this.gameObject);
                     saveOptions();
                     instance.Trigger();          
                 }
@@ -69,6 +71,7 @@ public class LevelSelect : MonoBehaviour
                 {
                     //UnityEngine.Debug.Log("Level 3 Selected");  
                     instance.levelName = Level3;  
+                    hand.DetachObject(this.gameObject);
                     saveOptions();
                     instance.Trigger();               
                 }
@@ -76,6 +79,7 @@ public class LevelSelect : MonoBehaviour
                 {
                     //UnityEngine.Debug.Log("Level 3 Selected");  
                     instance.levelName = OpenWorld;  
+                    hand.DetachObject(this.gameObject);
                     saveOptions();
                     instance.Trigger();               
                 }
