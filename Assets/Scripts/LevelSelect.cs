@@ -47,6 +47,7 @@ public class LevelSelect : MonoBehaviour
                    // UnityEngine.Debug.Log("Main Menu Selected");
                     hand.DetachObject(this.gameObject);
                     //Resources.UnloadAsset(this.transform.parent.gameObject);
+                    levelSelectCenter.GetComponent<LevelSelectCenter>().DestroyChildren();
                     Destroy(levelSelectCenter);
                     Instantiate(mainMenuPrefab, new Vector3(-2.955297f, 0.671f, -12.256f), Quaternion.identity);                  
                 }

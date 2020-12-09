@@ -42,6 +42,7 @@ public class Menu : MonoBehaviour
                     hand.DetachObject(this.gameObject);
                     
                    // levelSelect.SetActive(true);
+                    menuCenter.GetComponent<MenuCenter>().DestroyChildren();
                     Destroy(menuCenter);
                     //Resources.Load(levelSelectPath);
                     Instantiate(levelSelectPrefab, new Vector3(-2.955297f, 0.671f, -12.256f), Quaternion.identity);

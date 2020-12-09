@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MenuCenter : MonoBehaviour
 {
-    public List<GameObject> toDestroy;
+    private List<GameObject> toDestroy;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +13,7 @@ public class MenuCenter : MonoBehaviour
             toDestroy.Add(child.gameObject);
     }    
 
-    void OnDestroy() 
+    public void DestroyChildren() 
     {
         foreach(GameObject menuitem in toDestroy)
         {
