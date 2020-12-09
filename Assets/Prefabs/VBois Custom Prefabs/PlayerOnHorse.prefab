@@ -3721,6 +3721,7 @@ Transform:
   - {fileID: 6609561005369275179}
   - {fileID: 8283473782266046532}
   - {fileID: 8450994903157012976}
+  - {fileID: 1065906374845314568}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -5.882, z: 0}
@@ -5359,10 +5360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463c18893e71f364896e1bf3142969d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchor: {fileID: 8009282628707682590}
-  hipTurnAngle: 89
+  anchor: {fileID: 8226958788870025433}
+  hipTurnAngle: 0
   turnSpeed: 120
-  beltDistanceFromHead: 0.57
+  beltDistanceFromHead: -0.3
 --- !u!1 &8009282630080066794
 GameObject:
   m_ObjectHideFlags: 0
@@ -5802,6 +5803,45 @@ MonoBehaviour:
   - {x: -360.23807, y: -259.78067, z: 7.0033574}
   m_OrientationOffsets:
   - {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8226958788870025433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1065906374845314568}
+  - component: {fileID: 5080021477600316016}
+  m_Layer: 0
+  m_Name: HolsterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1065906374845314568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226958788870025433}
+  m_LocalRotation: {x: -0, y: 0.05130758, z: -0, w: 0.998683}
+  m_LocalPosition: {x: -0.044, y: 0.679, z: 0.746}
+  m_LocalScale: {x: 0.089901, y: 0.089901, z: 0.089901}
+  m_Children: []
+  m_Father: {fileID: 8009282629220397320}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5080021477600316016
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226958788870025433}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8629008555903516205
 GameObject:
   m_ObjectHideFlags: 0
