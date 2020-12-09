@@ -13,9 +13,9 @@ public enum Achievement
     get_to_second_town,
     level_one_100_accuracy,
     level_one_score,
-    level_two_time_gold,
-    level_two_time_silver,
-    level_two_time_bronze
+    level_two_gold,
+    level_two_silver,
+    level_two_bronze
 }
 
 public class GlobalAchievements : MonoBehaviour
@@ -59,9 +59,9 @@ public class GlobalAchievements : MonoBehaviour
         "Travel to the second town.",
         "Complete level 1 with 100% accuracy.",
         "Hit at least 10 targets on level 1.",
-        "Obtain a gold medal on level 2.",
-        "Obtain a silver medal on level 2.",
-        "Obtain a bronze medal on level 2.",
+        "Earn at least 200 points in level 2.",
+        "Earn at least 100 points in level 2.",
+        "Earn at least 50 points in level 2.",
     };
 
     private void Start()
