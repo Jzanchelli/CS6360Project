@@ -13,7 +13,7 @@ public class LevelSelect : MonoBehaviour
     private string Level2 = "Level2";
     private string Level3 = "SampleScene";
 
-    private string OpenWorld = "OpenWorld";
+    private string OpenWorld = "OpenWorldLevel";
 
     public GameObject levelSelectCenter;
 

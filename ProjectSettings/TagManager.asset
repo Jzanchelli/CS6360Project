@@ -13,6 +13,7 @@ TagManager:
   - item
   - horse
   - reins
+  - barrel
   - Climbable
   layers:
   - Default
