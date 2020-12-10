@@ -17,11 +17,25 @@ public class HorseControls : MonoBehaviour
     private Reins reins;
     private Vector3 reinsDiff;
     // Start is called before the first frame update
+
+    public void Awake()
+    {
+        GameObject globalSpeed = GameObject.FindGameObjectWithTag("Global Settings");
+        if(globalSpeed != null)
+            speed = globalSpeed.GetComponent<OptionValues>().playerSpeed;
+        else
+        {
+            speed = 1f;            
+        }
+    }
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         gameObj = GameObject.FindGameObjectWithTag("reins");
         reins = gameObj.GetComponent<Reins>();
+        GameObject globalOptions = GameObject.FindGameObjectWithTag("Global Settings");
+        if(globalOptions != null)
+            Destroy(globalOptions);
     }
 
     // Update is called once per frame
