@@ -54,7 +54,14 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
         instance.levelName = menuSceneName;
         GameObject optionValuesInstance = Instantiate(OptionsValuesPrefab, Vector3.zero, Quaternion.identity);
         optionValuesInstance.GetComponent<OptionValues>().bottomlessClip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
-        optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        try
+        {
+            optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        }
+        catch
+        {
+            optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<HorseControls>().speed;
+        }
         DontDestroyOnLoad(optionValuesInstance);
         //instance.loadAsync = false;
         instance.Trigger();
@@ -79,7 +86,14 @@ public class PauseMenuItem : MonoBehaviour//, IPointerClickHandler
         currentSceneName = SceneManager.GetActiveScene().name;
         GameObject optionValuesInstance = Instantiate(OptionsValuesPrefab, Vector3.zero, Quaternion.identity);
         optionValuesInstance.GetComponent<OptionValues>().bottomlessClip = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().bottomless;
-        optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        try
+        {
+            optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        }
+        catch
+        {
+            optionValuesInstance.GetComponent<OptionValues>().playerSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<HorseControls>().speed;
+        }
         DontDestroyOnLoad(optionValuesInstance);
         // char[] alt = {'A','l','t'};
         // string sceneToLoad;
