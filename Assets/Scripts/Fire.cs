@@ -39,6 +39,8 @@ public class Fire : MonoBehaviour
 
     GameObject GC = null;
     GameController GCScript = null;
+    GameController3 GCScript3 = null;
+
     void Start()
     {
         //Just incase a scene does not have a game controller.
@@ -46,8 +48,17 @@ public class Fire : MonoBehaviour
         {
             GC = GameObject.Find("GameController");
             GCScript = GC.GetComponent<GameController>();
+            GCScript3 = GC.GetComponent<GameController3>();
         } catch
         {
+            try
+            {
+                GCScript3 = GC.GetComponent<GameController3>();
+            }
+            catch
+            {
+
+            }
             //nothing
         }
 
@@ -127,6 +138,11 @@ public class Fire : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("barrel"))
             {
                 ExplodingBarrel eb = hit.collider.gameObject.GetComponent<ExplodingBarrel>();
+                if (GCScript3 != null)
+                {
+                    Level3Target t = hit.collider.gameObject.GetComponent<Level3Target>();
+                    GCScript3.TargetShot(t.scoreValue);
+                }
                 eb.Explode();
 
             }
@@ -166,6 +182,12 @@ public class Fire : MonoBehaviour
                 if (GCScript != null)
                 {
                     GCScript.TargetShot();
+                }
+
+                if (GCScript3 != null)
+                {
+                    Level3Target t = hit.collider.gameObject.GetComponent<Level3Target>();
+                    GCScript3.TargetShot(t.scoreValue);
                 }
 
                 //get the target action and call the target PerformAction function.

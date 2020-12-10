@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameController2 : MonoBehaviour
+public class GameController3 : MonoBehaviour
 {
+    public TextMeshPro score;
     int currentScore;
     // Start is called before the first frame update
     void Start()
@@ -12,20 +13,15 @@ public class GameController2 : MonoBehaviour
         currentScore = 0;
     }
 
-    [SerializeField]
-    int test;
-    [SerializeField]
-    public TextMeshPro score;
-
-    public void ItemRanInto(int value)
-    {
-        currentScore += value;
-        score.text = currentScore.ToString() + " pts";
-    }
-
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void TargetShot(int value)
+    {
+        currentScore += value;
+        score.text = currentScore.ToString() + " pts";
     }
 }
