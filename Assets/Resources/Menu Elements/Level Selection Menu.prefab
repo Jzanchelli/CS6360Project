@@ -916,7 +916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b565a50420382a34c893cebd019c968d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toDestroy: []
 --- !u!1 &1221113042285547348
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,6 +2524,7 @@ GameObject:
   - component: {fileID: 3102879507940299699}
   - component: {fileID: 3102879507939299699}
   - component: {fileID: 3102879507943334163}
+  - component: {fileID: 937736602163426447}
   m_Layer: 0
   m_Name: Cactus
   m_TagString: Untagged
@@ -2539,13 +2539,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3102879507941232563}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalRotation: {x: 0.4838148, y: -0.51567733, z: -0.5156774, w: 0.48381492}
   m_LocalPosition: {x: 0, y: 0.231, z: 0.3755557}
   m_LocalScale: {x: 0.4166667, y: 0.2, z: 0.4166667}
   m_Children: []
   m_Father: {fileID: 4628452096582688571}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: -3.6520002, y: -90.00001, z: -90.00001}
 --- !u!33 &3102879507940299699
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2607,6 +2607,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: dee1f2cda9492694e9124ff28f53c5f3, type: 3}
+--- !u!65 &937736602163426447
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3102879507941232563}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.84026474, y: 3.142935, z: 0.73672485}
+  m_Center: {x: 0.017385205, y: 1.4845834, z: 0.0058232197}
 --- !u!1 &3175726863997728903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3753,6 +3766,7 @@ GameObject:
   - component: {fileID: 5774294896370749246}
   - component: {fileID: 5774294896371748350}
   - component: {fileID: 8749616484925809451}
+  - component: {fileID: 683102401912724712}
   m_Layer: 0
   m_Name: Options
   m_TagString: Untagged
@@ -3835,6 +3849,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7382d77bde8ee5b4782bd9d23e58b08f, type: 3}
+--- !u!65 &683102401912724712
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774294896373683006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44437385, y: 0.26218224, z: 0.693475}
+  m_Center: {x: -0.0016036782, y: 0.01736463, z: -0.0026732988}
 --- !u!1 &5779240166119389001
 GameObject:
   m_ObjectHideFlags: 0
