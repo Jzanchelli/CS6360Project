@@ -4975,7 +4975,7 @@ MonoBehaviour:
   radius: 5
   audioSource: {fileID: 6097483679396308397}
   gameController: {fileID: 0}
-  particleSystem: {fileID: 7140892828029626914}
+  pSystem: {fileID: 7140892828029626914}
 --- !u!65 &-2416435864724268764
 BoxCollider:
   m_ObjectHideFlags: 0
