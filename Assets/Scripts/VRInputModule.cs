@@ -9,7 +9,7 @@ public class VRInputModule : BaseInputModule
     public PointerEventData Data { get; private set; } = null;
 
     public SteamVR_Input_Sources m_Source = SteamVR_Input_Sources.RightHand;
-    [SerializeField] private SteamVR_Action_Boolean m_Click;
+    public SteamVR_Action_Boolean m_Click;
     //public string m_Click = "InteractUI";
     
     protected override void Start()

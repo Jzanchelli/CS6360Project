@@ -11,14 +11,12 @@ public class TargetMovement : MonoBehaviour
     private Vector3 posA;
     private Vector3 posB;
     private Vector3 nextPos;
-    [SerializeField]
-    private float speed;
 
-    [SerializeField]
-    private Transform childTransform;
+    public float speed;
 
-    [SerializeField]
-    private Transform endPosition;
+    public Transform childTransform;
+
+    public Transform endPosition;
 
     void Start()
     {

@@ -17,7 +17,7 @@ public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
     private GameObject pauseCenterInstance;
 
     [SerializeField]private GameObject pauseCenterPrefab;
-    [SerializeField]private TextMeshProUGUI scaleDisplay;
+    public TextMeshProUGUI scaleDisplay;
     public GameObject pointerPrefab;
     private GameObject pointerInstance;
 

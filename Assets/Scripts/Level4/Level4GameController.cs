@@ -262,7 +262,7 @@ public class Level4GameController : MonoBehaviour
     bool weaponsHolstered()
     {
         //transform.Find("LeftShoulder/Arm/Hand/Finger");
-        GameObject[] gameObjects;
+        //GameObject[] gameObjects;
         foreach (Transform tran in this.player.transform.Find("SteamVRObjects/LeftHand"))
         {
             if (tran.gameObject.CompareTag("weapon"))

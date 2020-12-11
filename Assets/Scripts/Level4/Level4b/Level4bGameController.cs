@@ -49,7 +49,7 @@ public class Level4bGameController : MonoBehaviour
     private Vector3 targetPosition;
     private float distance;
     private IEnumerator coroutine;
-    private bool isDisqualified;
+    //private bool isDisqualified;
     private bool isStart;
     private bool gameStart;
     private int score;
@@ -69,7 +69,7 @@ public class Level4bGameController : MonoBehaviour
         this.levelSelect = 0;
         this.subLevel = 0;
         this.subSubLevel = 0;
-        this.isDisqualified = false;
+        //this.isDisqualified = false;
         this.isStart = false;
         this.gameStart = false;
         levelText.text = System.Convert.ToString((subSubLevel / 3) + 1);

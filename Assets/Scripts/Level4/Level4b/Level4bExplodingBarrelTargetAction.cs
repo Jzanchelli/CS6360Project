@@ -9,9 +9,7 @@ public class Level4bExplodingBarrelTargetAction : MonoBehaviour, TargetAction
     public float radius = 5f;
     public AudioSource audioSource;
     public Level4bGameController gameController;
-    public ParticleSystem particleSystem;
-    GameObject GC = null;
-    GameController GCScript = null;
+    public ParticleSystem pSystem;
     // Start is called before the first frame update
 
     public bool PerformAction()
@@ -22,8 +20,8 @@ public class Level4bExplodingBarrelTargetAction : MonoBehaviour, TargetAction
 
     IEnumerator ExplodeTarget()
     {
-        particleSystem.Play();
-        yield return new WaitForSeconds(particleSystem.main.duration);
+        pSystem.Play();
+        yield return new WaitForSeconds(pSystem.main.duration);
         gameController.TargetHit();
     }
 }

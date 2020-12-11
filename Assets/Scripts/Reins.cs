@@ -47,9 +47,9 @@ public class Reins : MonoBehaviour
             currentPos = currentHand.transform.localPosition;
             //player offset in PlayerOnHorse
             posDiff = (currentPos+ new Vector3(0f,0f, 0.383f)) - startPos;
-            Debug.Log(startPos);
-            Debug.Log(currentPos);
-            Debug.Log(posDiff);
+            //Debug.Log(startPos);
+            //Debug.Log(currentPos);
+            //Debug.Log(posDiff);
         }
         else
         {
