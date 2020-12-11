@@ -10,8 +10,8 @@ public class CoinTagetAction : MonoBehaviour
 
     public bool PerformAction()
     {
-        audioSource.clip = this.ricochetSound;
-        audioSource.Play();
+        //gameObject.transform.parent.gameObject.GetComponent<AudioSource>().PlayOneShot(this.ricochetSound);
+        audioSource.PlayOneShot(this.ricochetSound);
         //StartCoroutine("WaitToMoveOn");
         //audioSource.clip = this.glassShatterClip;
         //audioSource.Play();

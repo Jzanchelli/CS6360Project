@@ -106,6 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe1c010ad29dd046ba5e21be0d2b14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glassShatterClip: {fileID: 0}
+  ricochetSound: {fileID: 8300000, guid: 0486dafebc59dfc4c834b5bee03f28e7, type: 3}
   audioSource: {fileID: 0}
   gameController: {fileID: 0}

@@ -459,6 +459,7 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel1TargetAreaCenter.transform.position.x + Random.value * this.subLevel1PerimeterWidth * 2 - this.subLevel1PerimeterWidth, subLevel1TargetAreaCenter.transform.position.y, subLevel1TargetAreaCenter.transform.position.z + Random.value * this.subLevel1PerimeterHeight * 2 - this.subLevel1PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0,-90,0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bTargetAction>().audioSource =subLevel1TargetAreaCenter.GetComponent<AudioSource>();
                 }
                 else if (tempTargetSelect==1)
                 {
@@ -466,6 +467,7 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel1TargetAreaCenter.transform.position.x + Random.value * this.subLevel1PerimeterWidth * 2 - this.subLevel1PerimeterWidth, subLevel1TargetAreaCenter.transform.position.y, subLevel1TargetAreaCenter.transform.position.z + Random.value * this.subLevel1PerimeterHeight * 2 - this.subLevel1PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
                     tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().audioSource = subLevel1TargetAreaCenter.GetComponent<AudioSource>();
                 }
                 else if (tempTargetSelect==2)
                 {
@@ -482,6 +484,7 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel2TargetAreaCenter.transform.position.x + Random.value * this.subLevel2PerimeterWidth * 2 - this.subLevel2PerimeterWidth, subLevel2TargetAreaCenter.transform.position.y, subLevel2TargetAreaCenter.transform.position.z + Random.value * this.subLevel2PerimeterHeight * 2 - this.subLevel2PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0, -90, 0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bTargetAction>().audioSource = subLevel2TargetAreaCenter.GetComponent<AudioSource>();
                 }
                 else if (tempTargetSelect==1)
                 {
@@ -489,6 +492,7 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel2TargetAreaCenter.transform.position.x + Random.value * this.subLevel2PerimeterWidth * 2 - this.subLevel2PerimeterWidth, subLevel2TargetAreaCenter.transform.position.y, subLevel2TargetAreaCenter.transform.position.z + Random.value * this.subLevel2PerimeterHeight * 2 - this.subLevel2PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
                     tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().audioSource = subLevel2TargetAreaCenter.GetComponent<AudioSource>();
                 }
                 else if (tempTargetSelect==2)
                 {
@@ -505,6 +509,7 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel3TargetAreaCenter.transform.position.x + Random.value * this.subLevel3PerimeterWidth * 2 - this.subLevel3PerimeterWidth, subLevel3TargetAreaCenter.transform.position.y, subLevel3TargetAreaCenter.transform.position.z + Random.value * this.subLevel3PerimeterHeight * 2 - this.subLevel3PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0, -90, 0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bTargetAction>().audioSource = subLevel3TargetAreaCenter.GetComponent<AudioSource>();
                 }
                 else if (tempTargetSelect==1)
                 {
@@ -512,6 +517,7 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel3TargetAreaCenter.transform.position.x + Random.value * this.subLevel3PerimeterWidth * 2 - this.subLevel3PerimeterWidth, subLevel3TargetAreaCenter.transform.position.y, subLevel3TargetAreaCenter.transform.position.z + Random.value * this.subLevel3PerimeterHeight * 2 - this.subLevel3PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
                     tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().audioSource = subLevel3TargetAreaCenter.GetComponent<AudioSource>();
                 }
                 else if (tempTargetSelect==2)
                 {
@@ -528,6 +534,7 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel4TargetAreaCenter.transform.position.x + Random.value * this.subLevel4PerimeterWidth * 2 - this.subLevel4PerimeterWidth, subLevel4TargetAreaCenter.transform.position.y, subLevel4TargetAreaCenter.transform.position.z + Random.value * this.subLevel4PerimeterHeight * 2 - this.subLevel4PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0, -90, 0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bTargetAction>().audioSource = subLevel4TargetAreaCenter.GetComponent<AudioSource>();
                 }
                 else if (tempTargetSelect==1)
                 {
@@ -535,6 +542,8 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel4TargetAreaCenter.transform.position.x + Random.value * this.subLevel4PerimeterWidth * 2 - this.subLevel4PerimeterWidth, subLevel4TargetAreaCenter.transform.position.y, subLevel4TargetAreaCenter.transform.position.z + Random.value * this.subLevel4PerimeterHeight * 2 - this.subLevel4PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
                     tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().audioSource = subLevel4TargetAreaCenter.GetComponent<AudioSource>();
+
                 }
                 else if (tempTargetSelect==2)
                 {
@@ -551,6 +560,7 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel5TargetAreaCenter.transform.position.x + Random.value * this.subLevel5PerimeterWidth * 2 - this.subLevel5PerimeterWidth, subLevel5TargetAreaCenter.transform.position.y, subLevel5TargetAreaCenter.transform.position.z + Random.value * this.subLevel5PerimeterHeight * 2 - this.subLevel5PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab1, targetPosition, Quaternion.Euler(0, -90, 0));
                     tempTarget.GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.GetComponent<Level4bTargetAction>().audioSource = subLevel5TargetAreaCenter.GetComponent<AudioSource>();
                 }
                 else if (tempTargetSelect==1)
                 {
@@ -558,6 +568,7 @@ public class Level4bGameController : MonoBehaviour
                     targetPosition = new Vector3(subLevel5TargetAreaCenter.transform.position.x + Random.value * this.subLevel5PerimeterWidth * 2 - this.subLevel5PerimeterWidth, subLevel5TargetAreaCenter.transform.position.y, subLevel5TargetAreaCenter.transform.position.z + Random.value * this.subLevel5PerimeterHeight * 2 - this.subLevel5PerimeterHeight);
                     tempTarget = Instantiate(targetPrefab2, targetPosition, Quaternion.identity);
                     tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().gameController = this;
+                    tempTarget.transform.GetChild(0).GetComponent<Level4bTargetAction>().audioSource = subLevel5TargetAreaCenter.GetComponent<AudioSource>();
                 }
                 else if (tempTargetSelect==2)
                 {
