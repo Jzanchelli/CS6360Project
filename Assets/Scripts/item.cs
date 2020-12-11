@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class item : MonoBehaviour
 {
     GameObject GC = null;
     GameController2 GCScript = null;
@@ -21,6 +21,8 @@ public class Item : MonoBehaviour
 
         }
     }
+
+
     [SerializeField]
     GameObject controller;
 
