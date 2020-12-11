@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Obi/Samples/RopeAndRod/SampleResources/Models.meta
 guid: 2408079b738194e52942dd5e44c3e4aa
+=======
+guid: f5fe1ad9850bc0c4a9e782d8c7624534
+>>>>>>> 57e442eee1369a49c8913bb2f7d84514c0a7e813:Assets/Imports/EffectExamples/Shared/Models.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

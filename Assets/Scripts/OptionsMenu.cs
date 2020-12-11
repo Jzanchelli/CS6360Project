@@ -59,14 +59,14 @@ public class OptionsMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-
+        
         UnityEngine.Debug.Log("Loading OptionsMenu " + name);
         Transform rightHand = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetChild(2).transform;
 
         Vector3 playerPos = playerCam.position;
         Vector3 playerDirection = playerCam.transform.forward;
         Quaternion playerRotation = playerCam.transform.rotation;
-        float spawnDistance = 10f;
+        float spawnDistance = 3f;
         Vector3 pausePos = playerPos+ playerDirection*spawnDistance;
         //Quaternion pauseRotation = Quaternion.(playerDirection, Vector3.up);
 
@@ -83,7 +83,11 @@ public class OptionsMenu : MonoBehaviour
         optionsCenterInstance.GetComponentInChildren<Canvas>().worldCamera = pointerInstance.GetComponent<Camera>();
         GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().initializePointer();
         optionsCenterInstance.GetComponent<OptionsMenuItem>().fromPause = fromPause;
-        float currentSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        float currentSpeed = 0f;
+        if(!GameObject.FindGameObjectWithTag("Player").name.Equals("PlayerOnHorse"))
+            currentSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        else
+            currentSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<HorseControls>().speed;
         optionsCenterInstance.GetComponentInChildren<Slider>().value = currentSpeed;
         optionsCenterInstance.transform.GetChild(0).GetChild(3).GetChild(4).GetComponent<TextMeshProUGUI>().SetText("Value: "+currentSpeed + "x");
         //optionsCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;
@@ -116,7 +120,11 @@ public class OptionsMenu : MonoBehaviour
         optionsCenterInstance.GetComponentInChildren<Canvas>().worldCamera = pointerInstance.GetComponent<Camera>();
         GameObject.FindWithTag("Player").GetComponentInChildren<VRInputModule>().initializePointer();
         optionsCenterInstance.GetComponent<OptionsMenuItem>().fromPause = fromPause;
-        float currentSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        float currentSpeed = 0f;
+        if(!GameObject.FindGameObjectWithTag("Player").name.Equals("PlayerOnHorse"))
+            currentSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed;
+        else
+            currentSpeed = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<HorseControls>().speed;
         optionsCenterInstance.GetComponentInChildren<Slider>().value = currentSpeed;
         optionsCenterInstance.transform.GetChild(0).GetChild(3).GetChild(3).GetComponent<TextMeshProUGUI>().SetText("Value: "+currentSpeed + "x");
         //optionsCenterInstance.GetComponentInChildren<VRInputModule>().eventSystem = EventSystem.current;

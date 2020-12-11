@@ -67,7 +67,10 @@ public class OptionsMenuItem : MonoBehaviour//, IPointerClickHandler
         float scalar = this.GetComponentInChildren<Slider>().value;  
         //UnityEngine.Debug.Log(scaleDisplay.name);      
         //UnityEngine.Debug.Log(display.name);
-        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed = scalar;
+        if(!GameObject.FindGameObjectWithTag("Player").name.Equals("PlayerOnHorse"))
+            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerControls>().speed = scalar;
+        else
+            GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<HorseControls>().speed = scalar;
         //GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OptionsMenu>().playerSpeedScale = scalar;
         //UnityEngine.Debug.Log("Scalar:" + scalar + "Changed by: " + name);
         //scaleDisplay = this.gameObject.transform.GetChild(0).GetChild(3).GetChild(4)
